@@ -1,6 +1,6 @@
 # nが素数か判定せよ。
 n = int(input())
-max_num = int(n ** (1/2)) # floor
+max_num = int(n ** (1 / 2))  # floor
 
 is_prime = True
 for m in range(2, max_num + 1):
