@@ -93,9 +93,15 @@ df_receipt_only_member = df_receipt.query("not customer_id.str.startswith('Z')",
 # -
 
 # <details>
-# <summary>ヒント</summary>
+# <summary>ヒント1</summary>
 # 「pandas 要素ごと 集計」 などで今回使える機能に関する記事が見つかります。  
 # メソッド名は "groupby" です。
+# </details>
+
+# <details>
+# <summary>ヒント2</summary>
+# メソッド名は "groupby" です。
+# </details>
 
 # + [markdown] colab_type="text" id="iNO7ESvWhhyw"
 # ---
@@ -111,10 +117,16 @@ df_customer_only_member = df_customer.query("not customer_id.str.startswith('Z')
 # -
 
 # <details>
-# <summary>ヒント</summary>
+# <summary>ヒント1</summary>
 # タイトル通り 「pandas DataFrame 結合」などと調べれば必要な機能に関する記事が見つかります。  
-# "merge"と"join"という似た機能が二つあります。
+# </details>
 #
+
+# <details>
+# <summary>ヒント2</summary>
+# "merge", "join"という似たメソッドがあります。  
+# 今回の場合"merge"が便利でしょう。
+# </details>
 
 # + [markdown] colab_type="text" id="umDmd8kohhzA"
 # ---
@@ -126,10 +138,14 @@ df_customer_only_member = df_customer.query("not customer_id.str.startswith('Z')
 # -
 
 # <details>
-# <summary>ヒント</summary>
-# 「pandas datetime」などで該当の機能が見つかるかと思います。"pd.to_datetime"です。
-# このメソッドを適用する際ですが、for文を使わずに実装しましょう。
+# <summary>ヒント1</summary>
+# 「pandas datetime」などで該当の機能が見つかるかと思います。
+# </details>
 #
+
+# <details>
+# <summary>ヒント2</summary>
+# "pd.to_datetime"というメソッドが使えるでしょう。このメソッドを適用する際ですが、for文を使わずに実装しましょう。
 
 # + [markdown] colab_type="text" id="9v_q6BLjhhzU"
 # ---
