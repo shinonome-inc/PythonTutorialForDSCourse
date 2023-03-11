@@ -143,10 +143,12 @@ plt.plot(x, y)
 import seaborn as sns
 
 # + [markdown] colab_type="text" id="5bPq2uG-VcL0"
-# データの分布を確認する際は、Matplotlib のヒストグラムよりも使い方がシンプルかつ見やすい図を作成することができる `sns.distplot()` がおすすめです。
+# データの分布を確認する際は、Matplotlib のヒストグラムよりも使い方がシンプルかつ見やすい図を作成することができる `sns.histplot()` や `sns.kdeplot()` がおすすめです。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 350} colab_type="code" id="bE6suI8I1E3D" outputId="7a79d6e4-2043-452d-bb82-ccac27a21cc4"
-sns.distplot(df['population'])
+ax = sns.histplot(df["population"], kde=True, bins=50)
+ax.lines[0].set_color("red")
+
 
 # + [markdown] colab_type="text" id="-16KYq-AVm3Y"
 # また、描画が完了するまで少し時間がかかってしまいますが、与えられたデータフレームオブジェクトの各列の全てのペアでの散布図をグリッド状に描画し、様々な変数間の相関関係を視覚的に見渡すことができる `plt.pairplot()` も便利です。
