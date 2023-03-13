@@ -94,8 +94,7 @@ df_receipt_only_member = df_receipt.query("not customer_id.str.startswith('Z')",
 
 # <details>
 # <summary>ヒント1</summary>
-# 「pandas 要素ごと 集計」 などで今回使える機能に関する記事が見つかります。  
-# メソッド名は "groupby" です。
+# 「pandas 要素ごと 集計」 などで今回使える機能に関する記事が見つかります。
 # </details>
 
 # <details>
