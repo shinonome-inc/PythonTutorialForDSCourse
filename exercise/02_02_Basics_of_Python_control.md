@@ -25,7 +25,7 @@ $$a = bq + r$$
 「$a$と$b$の最大公約数」 = 「$b$と$r$の最大公約数」  
 となる性質を利用してaとbの最大公約数を求める方法です。  
 ![ユークリッドの互除法](../exercise/images/euclid.png)  
-ユークリッドの互除法の詳細は[こちら](https://manabitimes.jp/math/672)  
+ユークリッドの互除法の詳細は[こちら](https://study-line.com/seisu-gojoho/)  
 提出ファイル: `euclid.py`  
 (1) $10, 20$  
 (2) $14, 91$
