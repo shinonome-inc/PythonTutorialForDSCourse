@@ -1,0 +1,4 @@
+jupyter-book
+pandas
+scikit-learn
+seaborn

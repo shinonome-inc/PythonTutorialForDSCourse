@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: ja-edited/01_Welcome_to_Chainer_Tutorial.ipynb
+chapters:
+  - file: ja-edited/02_01_Basics_of_Python_variable.ipynb
+  - file: exercise/02_01_Basics_of_Python_variable.md
+  - file: ja-edited/02_02_Basics_of_Python_control.ipynb
+  - file: exercise/02_02_Basics_of_Python_control.md
+  - file: ja-edited/02_03_Basics_of_Python_function.ipynb
+  - file: ja-edited/08_Introduction_to_NumPy.ipynb
+  - file: ja-edited/11_Introduction_to_Pandas.ipynb
+  - file: ja-edited/12_Introduction_to_Matplotlib.ipynb
+  - file: ja-edited/03_Basic_Math_for_Machine_Learning.ipynb
+  - file: ja-edited/09_Introduction_to_Scikit-learn.ipynb
+  - file: ja-edited/99_Basics_of_Python_class.ipynb

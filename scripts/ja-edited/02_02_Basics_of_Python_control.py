@@ -13,7 +13,7 @@
 # ---
 
 # + [markdown] colab_type="text" id="zTYLayT3qEzA"
-# ## 制御構文
+# # 制御構文
 #
 # 複雑なプログラムを記述しようとすると、繰り返しの処理や、条件によって動作を変える処理が必要となります。
 # これらは**制御構文**を用いて記述します。
@@ -33,7 +33,7 @@
 # Python では、インデントとして**スペース 4 つ**を用いることが推奨されています。
 
 # + [markdown] colab_type="text" id="oELnTpERNwCQ"
-# ### 繰り返し（for 文）
+# ## 繰り返し （for 文）
 #
 # 同じ内容のメールを宛名だけ個別に変えて、1000 人に一斉送信したい場合など、繰り返す処理を記述する制御構文である `for` を使います。
 #
@@ -144,7 +144,7 @@ for name, version, suffix in zip(names, versions, suffixes):
 # `suffixes` の要素数は 3 ですが、より短いイテラブルオブジェクトと共に `zip` に渡されたため、先頭から 2 つ目までしか値が取り出されていません。
 
 # + [markdown] colab_type="text" id="WguFiYgqQnQT"
-# ### 条件分岐（if 文）
+# ## 条件分岐 （if 文）
 #
 # `if` は、指定した条件が `True` か `False` かによって、処理を変えるための制御構文です。
 #
@@ -187,7 +187,7 @@ else:
     print('0より小さいです')
 
 # + [markdown] colab_type="text" id="tZ15Hv9Gv9dY"
-# ### 繰り返し（while 文）
+# ## 繰り返し （while 文）
 #
 # 繰り返し処理は、`for` 以外にも `while` を用いて記述することもできます。
 # `while` 文では、以下のように**ループを継続する条件**を指定します。
