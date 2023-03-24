@@ -210,6 +210,37 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/shinonome-inc/PythonTutorialForDSCourse/blob/main/./ja-edited/08_Introduction_to_NumPy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -548,10 +579,10 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.31214624, 0.39152497, 0.14892916, 0.51237302, 0.12582393],
-       [0.68369822, 0.79245698, 0.94476203, 0.76483621, 0.66626499],
-       [0.1076134 , 0.62718814, 0.96106331, 0.24565555, 0.51389966],
-       [0.01136334, 0.0986131 , 0.49607646, 0.82324352, 0.24072104]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.96310047, 0.25853644, 0.31577803, 0.5794022 , 0.72595659],
+       [0.54874491, 0.53789449, 0.83384424, 0.86604254, 0.83903423],
+       [0.82897454, 0.67177991, 0.23000502, 0.30510121, 0.01033791],
+       [0.35103057, 0.24015865, 0.37853096, 0.73475078, 0.52181583]])
 </pre></div>
 </div>
 </div>
@@ -589,7 +620,7 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.391524973322789
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2585364392379309
 </pre></div>
 </div>
 </div>
@@ -612,8 +643,8 @@ ndarray はさらに、カンマ区切りで複数の次元に対するスライ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.79245698, 0.94476203, 0.76483621],
-       [0.62718814, 0.96106331, 0.24565555]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.53789449, 0.83384424, 0.86604254],
+       [0.67177991, 0.23000502, 0.30510121]])
 </pre></div>
 </div>
 </div>
@@ -645,10 +676,10 @@ Shape of center: (2, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.31214624, 0.39152497, 0.14892916, 0.51237302, 0.12582393],
-       [0.68369822, 0.        , 0.        , 0.        , 0.66626499],
-       [0.1076134 , 0.        , 0.        , 0.        , 0.51389966],
-       [0.01136334, 0.0986131 , 0.49607646, 0.82324352, 0.24072104]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.96310047, 0.25853644, 0.31577803, 0.5794022 , 0.72595659],
+       [0.54874491, 0.        , 0.        , 0.        , 0.83903423],
+       [0.82897454, 0.        , 0.        , 0.        , 0.01033791],
+       [0.35103057, 0.24015865, 0.37853096, 0.73475078, 0.52181583]])
 </pre></div>
 </div>
 </div>
@@ -1083,27 +1114,27 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:
- [[[3 8 7]]
+ [[[2 4 8]]
 
- [[1 0 7]]]
+ [[0 2 3]]]
 
 a.shape: (2, 1, 3)
 
 b:
- [[0]
+ [[7]
  [3]
- [3]]
+ [5]]
 
 b.shape: (3, 1)
 
 a + b:
- [[[ 3  8  7]
-  [ 6 11 10]
-  [ 6 11 10]]
+ [[[ 9 11 15]
+  [ 5  7 11]
+  [ 7  9 13]]
 
- [[ 1  0  7]
-  [ 4  3 10]
-  [ 4  3 10]]]
+ [[ 7  9 10]
+  [ 3  5  6]
+  [ 5  7  8]]]
 
 (a + b).shape: (2, 3, 3)
 </pre></div>
@@ -1155,9 +1186,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7],
        [3],
-       [3]])
+       [5]])
 </pre></div>
 </div>
 </div>
@@ -1169,9 +1200,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[7],
         [3],
-        [3]]])
+        [5]]])
 </pre></div>
 </div>
 </div>
@@ -1183,11 +1214,11 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[7]],
 
        [[3]],
 
-       [[3]]])
+       [[5]]])
 </pre></div>
 </div>
 </div>
@@ -1225,7 +1256,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.67 µs ± 11.3 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.73 µs ± 26.3 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1255,7 +1286,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.23 µs ± 0.77 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.48 µs ± 2.92 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1373,14 +1404,14 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0, 5, 0, 8, 0, 1, 7, 1, 8],
-       [1, 4, 7, 8, 7, 7, 4, 6, 9, 7],
-       [3, 0, 0, 0, 5, 8, 4, 6, 9, 7],
-       [5, 7, 3, 5, 9, 1, 6, 9, 6, 4],
-       [9, 7, 4, 9, 5, 7, 0, 7, 2, 7],
-       [8, 8, 0, 2, 1, 1, 8, 2, 8, 2],
-       [5, 1, 1, 3, 0, 1, 8, 8, 3, 5],
-       [1, 4, 7, 2, 2, 2, 3, 6, 6, 3]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 1, 8, 9, 9, 5, 3, 0, 4, 3],
+       [3, 8, 6, 6, 9, 4, 8, 8, 2, 3],
+       [5, 7, 5, 6, 6, 1, 5, 8, 7, 9],
+       [2, 8, 2, 5, 1, 8, 6, 1, 9, 2],
+       [8, 7, 4, 5, 6, 3, 5, 6, 9, 5],
+       [5, 3, 4, 8, 3, 1, 5, 3, 1, 7],
+       [9, 4, 9, 2, 7, 1, 4, 5, 5, 8],
+       [7, 0, 4, 1, 7, 2, 5, 8, 4, 3]])
 </pre></div>
 </div>
 </div>
@@ -1393,7 +1424,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.4375
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.975
 </pre></div>
 </div>
 </div>
@@ -1406,7 +1437,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.97109375
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.774375000000001
 </pre></div>
 </div>
 </div>
@@ -1419,7 +1450,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9951784170563194
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.602762955015305
 </pre></div>
 </div>
 </div>
@@ -1460,7 +1491,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3. , 6. , 4.2, 5.5, 5.7, 4. , 3.5, 3.6])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.5, 5.7, 5.9, 4.4, 5.8, 4. , 5.4, 4.1])
 </pre></div>
 </div>
 </div>
@@ -1483,7 +1514,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3. , 6. , 4.2, 5.5, 5.7, 4. , 3.5, 3.6])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.5, 5.7, 5.9, 4.4, 5.8, 4. , 5.4, 4.1])
 </pre></div>
 </div>
 </div>
