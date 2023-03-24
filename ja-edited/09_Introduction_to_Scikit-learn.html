@@ -1,0 +1,1100 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>scikit-learn 入門 &#8212; データコース教材</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/09_Introduction_to_Scikit-learn';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="クラス" href="99_Basics_of_Python_class.html" />
+    <link rel="prev" title="機械学習に使われる数学" href="03_Basic_Math_for_Machine_Learning.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="01_Welcome_to_Chainer_Tutorial.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">データコース教材</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_Welcome_to_Chainer_Tutorial.html">
+                    はじめに
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">Python 制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">scikit-learn 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ja-edited/09_Introduction_to_Scikit-learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>scikit-learn 入門</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">scikit-learn を用いた重回帰分析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1：データセットの準備</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データセットの分割</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-4">Step 2 ~ 4：モデル・目的関数・最適化手法を決める</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5">Step 5：モデルの訓練</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">新しい入力値に対する予測の計算（推論）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">テスト用データセットを用いた評価</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">各ステップの改善</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Step 1 の改善：前処理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">パイプライン化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="scikit-learn">
+<h1>scikit-learn 入門<a class="headerlink" href="#scikit-learn" title="Permalink to this heading">#</a></h1>
+<p>scikit-learn は Python のオープンソース機械学習ライブラリです。<br />
+様々な機械学習の手法が統一的なインターフェースで利用できるようになっています。
+scikit-learn では NumPy の ndarray でデータやパラメータを取り扱うため、他のライブラリとの連携もしやすくなっています。</p>
+<p>本章では、この scikit-learn というライブラリを用いて、<strong>データを使ってモデルを訓練し、評価するという一連の流れを解説</strong>し、Chainer を使ったディープラーニングの解説に入る前に、共通する重要な項目について説明します。</p>
+<p>機械学習の様々な手法を用いる際には、<strong>データを使ってモデルを訓練する</strong>までに、以下の <strong>5 つのステップ</strong>がよく共通して現れます。</p>
+<ul class="simple">
+<li><p>Step 1：<strong>データセットの準備</strong></p></li>
+<li><p>Step 2：<strong>モデルを決める</strong></p></li>
+<li><p>Step 3：<strong>目的関数を決める</strong></p></li>
+<li><p>Step 4：<strong>最適化手法を選択する</strong></p></li>
+<li><p>Step 5：<strong>モデルを訓練する</strong></p></li>
+</ul>
+<p>前章では、<strong>ステップ 2</strong> → <strong>ステップ 3</strong> → <strong>ステップ 4 &amp; 5</strong> という <strong>3 ステップ</strong>に分けて説明を行いましたが、この 5 つのステップに分けて考える方法は、後の章で解説する <strong>Chainer を用いたニューラルネットワークの訓練においても共通しています。</strong>
+また、上記の 5 つが完了した後には、通常、訓練済みモデルによるテストデータを用いた精度検証を行いますが、この点も共通しています。</p>
+<p>本章では、これらの 5 つのステップ + テストデータでの精度検証までを、scikit-learn の機能を使って簡潔に紹介します。</p>
+<section id="id1">
+<h2>scikit-learn を用いた重回帰分析<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>前章で NumPy を用いて実装した重回帰分析を、scikit-learn を使ってより大きなデータセットに対し適用してみましょう。</p>
+<section id="step-1">
+<h3>Step 1：データセットの準備<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
+<p>本章では、前章までのような人工データではなく、米国ボストンの 506 の地域ごとの住環境の情報などと家賃の中央値の情報を収集して作られた Boston house prices dataset というデータセットを使用します。</p>
+<p>このデータセットには 506 件のサンプルが含まれており、各サンプルは以下の情報を持っています。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>属性名</p></th>
+<th class="head text-left"><p>説明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>CRIM</p></td>
+<td class="text-left"><p>人口 1 人あたりの犯罪発生率</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>ZN</p></td>
+<td class="text-left"><p>25,000 平方フィート以上の住宅区画が占める割合</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>INDUS</p></td>
+<td class="text-left"><p>小売業以外の商業が占める面積の割合</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>CHAS</p></td>
+<td class="text-left"><p>チャールズ川の川沿いかどうか (0 or 1)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>NOX</p></td>
+<td class="text-left"><p>窒素酸化物の濃度</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>RM</p></td>
+<td class="text-left"><p>住居の平均部屋数</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>AGE</p></td>
+<td class="text-left"><p>1940 年より前に建てられた持ち主が住んでいる物件の割合</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>DIS</p></td>
+<td class="text-left"><p>5 つのボストン雇用施設からの重み付き距離</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>RAD</p></td>
+<td class="text-left"><p>環状高速道路へのアクセシビリティ指標</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>TAX</p></td>
+<td class="text-left"><p>$10,000 あたりの固定資産税率</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>PTRATIO</p></td>
+<td class="text-left"><p>町ごとにみた教師 1 人あたりの生徒数</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>B</p></td>
+<td class="text-left"><p>町ごとにみた黒人の比率を Bk としたときの (Bk - 0.63)^2 の値</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>LSTAT</p></td>
+<td class="text-left"><p>給与の低い職業に従事する人口の割合</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>MEDV</p></td>
+<td class="text-left"><p>物件価格の中央値</p></td>
+</tr>
+</tbody>
+</table>
+<p>このデータセットを用いて、最後の MEDV 以外の 13 個の指標から、MEDV を予測する回帰問題に取り組んでみましょう。
+このデータセットは、scikit-learn の <code class="docutils literal notranslate"><span class="pre">load_boston()</span></code> という関数を呼び出すことで読み込むことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+Cell In[1], line 1
+----&gt; 1 from sklearn.datasets import load_boston
+      3 dataset = load_boston()
+
+File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/__init__.py:156, in __getattr__(name)
+    105 if name == &quot;load_boston&quot;:
+    106     msg = textwrap.dedent(
+    107         &quot;&quot;&quot;
+    108         `load_boston` has been removed from scikit-learn since version 1.2.
+   (...)
+    154         &quot;&quot;&quot;
+    155     )
+--&gt; 156     raise ImportError(msg)
+    157 try:
+    158     return globals()[name]
+
+ImportError: 
+`load_boston` has been removed from scikit-learn since version 1.2.
+
+The Boston housing prices dataset has an ethical problem: as
+investigated in [1], the authors of this dataset engineered a
+non-invertible variable &quot;B&quot; assuming that racial self-segregation had a
+positive impact on house prices [2]. Furthermore the goal of the
+research that led to the creation of this dataset was to study the
+impact of air quality but it did not give adequate demonstration of the
+validity of this assumption.
+
+The scikit-learn maintainers therefore strongly discourage the use of
+this dataset unless the purpose of the code is to study and educate
+about ethical issues in data science and machine learning.
+
+In this special case, you can fetch the dataset from the original
+source::
+
+    import pandas as pd
+    import numpy as np
+
+    data_url = &quot;http://lib.stat.cmu.edu/datasets/boston&quot;
+    raw_df = pd.read_csv(data_url, sep=&quot;\s+&quot;, skiprows=22, header=None)
+    data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
+    target = raw_df.values[1::2, 2]
+
+Alternative datasets include the California housing dataset and the
+Ames housing dataset. You can load the datasets as follows::
+
+    from sklearn.datasets import fetch_california_housing
+    housing = fetch_california_housing()
+
+for the California housing dataset and::
+
+    from sklearn.datasets import fetch_openml
+    housing = fetch_openml(name=&quot;house_prices&quot;, as_frame=True)
+
+for the Ames housing dataset.
+
+[1] M Carlisle.
+&quot;Racist data destruction?&quot;
+&lt;https://medium.com/@docintangible/racist-data-destruction-113e3eff54a8&gt;
+
+[2] Harrison Jr, David, and Daniel L. Rubinfeld.
+&quot;Hedonic housing prices and the demand for clean air.&quot;
+Journal of environmental economics and management 5.1 (1978): 81-102.
+&lt;https://www.researchgate.net/publication/4974606_Hedonic_housing_prices_and_the_demand_for_clean_air&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>読み込んだデータセットは、<code class="docutils literal notranslate"><span class="pre">data</span></code> という属性と <code class="docutils literal notranslate"><span class="pre">target</span></code> という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。
+これらを取り出して、それぞれ <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> という変数に格納しておきましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>入力値が格納されている <code class="docutils literal notranslate"><span class="pre">x</span></code> は、506 個の 13 次元ベクトルを並べたものになっています。
+形を確認してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506, 13)
+</pre></div>
+</div>
+</div>
+</div>
+<p>一方 <code class="docutils literal notranslate"><span class="pre">t</span></code> は、各データ点ごとに 1 つの値を持つため、506 次元のベクトルになっています。
+形を確認してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506,)
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h4>データセットの分割<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<p>ここで、まずこのデータセットを 2 つに分割します。
+それは、モデルの訓練に用いるためのデータと、訓練後のモデルのパフォーマンスをテストするために用いるデータは、異なるものになっている必要があるためです。
+これは、<a class="reference external" href="https://tutorials.chainer.org/ja/03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a>の章で少しだけ触れた汎化性能というものに関わる重要なことです。</p>
+<p>ここで、例え話を使ってなぜデータセットを分割する必要があるかを説明します。
+例えば、大学受験の準備のために 10 年分の過去問を購入し、一部を<strong>勉強のため</strong>に、一部を<strong>勉強の成果をはかる</strong>ために使用したいとします。
+10 年分という限られた数の問題を使って、結果にある程度の信頼のおけるような方法で実力をチェックするには、下記の 2 つのうちどちらの方法がより良いでしょうか。</p>
+<ul class="simple">
+<li><p>10 年分の過去問全てを使って勉強したあと、もう一度同じ問題を使って実力をはかる</p></li>
+<li><p>5 年分の過去問だけを使って勉強し、残りの 5 年分の未だ見たことがない問題を使って実力をはかる</p></li>
+</ul>
+<p>一度勉強した問題を再び解くことができると確認できても、大学受験の当日に未知の問題が出たときにどの程度対処できるかを事前にチェックするには不十分です。
+よって、後者のような方法で数限られた問題を活用する方が、本当の実力をはかるには有効でしょう。</p>
+<p>これは機械学習におけるモデルの訓練と検証でも同様に言えることです。
+<strong>実力をつける</strong>ための勉強に使うデータの集まりを、<strong>訓練用データセット (training dataset)</strong> といい、<strong>実力をはかる</strong>ために使うデータの集まりを、<strong>テスト用データセット (test dataset)</strong> と言います。
+このとき、訓練用データセットとテスト用データセットに含まれるデータの間には、<strong>重複がないようにします。</strong></p>
+<p>早速、さきほど用意した <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> を、訓練用データセットとテスト用データセットに分割しましょう。
+どのように分けるかには色々な方法がありますが、単純に全体の何割かを訓練用データセットとし、残りをテスト用データセットとする、といった分割を行う方法は<strong>ホールドアウト法 (holdout method)</strong> と呼ばれます。
+scikit-learn では、データセットから指定された割合（もしくは個数）のデータをランダムに抽出して訓練用データセットを作成し、残りをテスト用データセットとする処理を行う関数が提供されています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データセットを分割する関数の読み込み</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># 訓練用データセットとテスト用データセットへの分割</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">t_train</span><span class="p">,</span> <span class="n">t_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで、<code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code> の <code class="docutils literal notranslate"><span class="pre">test_size</span></code> という引数に 0.3 を与えています。
+これはテスト用データセットを全体の 30% のデータを用いて作成することを意味しています。
+自動的に残りの 70% は訓練用データセットとなります。
+上のコードは全サンプルの中から<strong>ランダムに</strong> 70% を訓練データとして抽出し、残った 30% をテストデータとして返します。</p>
+<p>例えば、データセット中のサンプルが、目標値が 1 のサンプルが 10 個、2 のサンプルが 8 個、3 のサンプルが 12個…というように、カテゴリごとにまとめられて並んでいることがあります。
+そのとき、データセットの先頭から 18 個目のところで訓練データとテストデータに分割したとすると、訓練データには目標値が 3 のデータが 1 つも含まれないこととなります。</p>
+<p>そこで、ランダムにデータセットを分割する方法が採用されています。
+<code class="docutils literal notranslate"><span class="pre">random_state</span></code> という引数に毎回同じ整数を与えることで、実行のたびに結果が変わることを防いでいます。</p>
+<p>それでは、分割後の訓練データを用いてモデルの訓練、精度の検証を行いましょう。</p>
+</section>
+</section>
+<section id="step-2-4">
+<h3>Step 2 ~ 4：モデル・目的関数・最適化手法を決める<a class="headerlink" href="#step-2-4" title="Permalink to this heading">#</a></h3>
+<p>scikit-learn で重回帰分析を行う場合は、<code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> クラスを使用します。
+<code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> 以下にある <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> クラスを読み込んで、インスタンスを作成しましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># モデルの定義</span>
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記のコードは、前述の 2 〜 4 までのステップを行います。
+<code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> は最小二乗法を行うクラスで、目的関数や最適化手法もあらかじめ内部で用意されたものが使用されます。
+詳しくはこちらのドキュメントを参照してください。
+参考：<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn.linear_model.LinearRegression">sklearn.linear_model.LinearRegression</a></p>
+</section>
+<section id="step-5">
+<h3>Step 5：モデルの訓練<a class="headerlink" href="#step-5" title="Permalink to this heading">#</a></h3>
+<p>次にモデルの訓練を行います。
+scikit-learn に用意されている手法の多くは、共通して <code class="docutils literal notranslate"><span class="pre">fit()</span></code> というメソッドを持っており、
+再利用可能なコードが書きやすくなっています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">reg_model</span></code> を用いて訓練を実行するには、<code class="docutils literal notranslate"><span class="pre">fit()</span></code> の引数に入力値 <code class="docutils literal notranslate"><span class="pre">x</span></code> と目標値 <code class="docutils literal notranslate"><span class="pre">t</span></code> を与えます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># モデルの訓練</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False)
+</pre></div>
+</div>
+</div>
+</div>
+<p>モデルの訓練が完了しました。
+求まったパラメータの値を確認してみましょう。
+重回帰分析では、重み <code class="docutils literal notranslate"><span class="pre">w</span></code> とバイアス <code class="docutils literal notranslate"><span class="pre">b</span></code> の２つがパラメータでした。
+求まった重み <code class="docutils literal notranslate"><span class="pre">w</span></code> の値は <code class="docutils literal notranslate"><span class="pre">model.coef_</span></code> に、バイアス <code class="docutils literal notranslate"><span class="pre">b</span></code> の値は <code class="docutils literal notranslate"><span class="pre">model.intercept_</span></code> に格納されています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練後のパラメータ w</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">coef_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.21310401e-01,  4.44664254e-02,  1.13416945e-02,  2.51124642e+00,
+       -1.62312529e+01,  3.85906801e+00, -9.98516565e-03, -1.50026956e+00,
+        2.42143466e-01, -1.10716124e-02, -1.01775264e+00,  6.81446545e-03,
+       -4.86738066e-01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練後のバイアス b</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">intercept_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.93710774183255
+</pre></div>
+</div>
+</div>
+</div>
+<p>モデルの訓練が完了したら、精度の検証を行います。
+<code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> クラスは <code class="docutils literal notranslate"><span class="pre">score()</span></code> メソッドを提供しており、入力値と目標値を与えると訓練済みのモデルを用いて計算した<strong>決定係数 (coefficient of determination)</strong> という指標を返します。</p>
+<p>これは、使用するデータセットのサンプルサイズを <span class="math notranslate nohighlight">\(N\)</span>、<span class="math notranslate nohighlight">\(n\)</span> 個目の入力値に対する予測値を <span class="math notranslate nohighlight">\(y_{n}\)</span>、目標値を <span class="math notranslate nohighlight">\(t_n\)</span>、そしてそのデータセット内の全ての目標値の平均値を <span class="math notranslate nohighlight">\(\bar{t}\)</span> としたとき、</p>
+<div class="math notranslate nohighlight">
+\[
+R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N}\left( t_{n} - \bar{t} \right)^{2}}
+\]</div>
+<p>で表される指標です。</p>
+<p>決定係数の最大値は 1 であり、値が大きいほどモデルが与えられたデータに当てはまっていることを表します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 精度の検証</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7645451026942549
+</pre></div>
+</div>
+</div>
+</div>
+<p>訓練済みモデルを用いて訓練用データセットで計算した決定係数は、およそ 0.765 でした。</p>
+</section>
+<section id="id3">
+<h3>新しい入力値に対する予測の計算（推論）<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>訓練が終わったモデルに、新たな入力値を与えて、予測値を計算させるには、<code class="docutils literal notranslate"><span class="pre">predict()</span></code> メソッドを用います。
+訓練済みのモデルを使ったこのような計算は、<strong>推論 (inference)</strong> と呼ばれることがあります。
+今回は、訓練済みモデル <code class="docutils literal notranslate"><span class="pre">reg_model</span></code> を用いて、テスト用データセットからサンプルを 1 つ取り出し、推論を行ってみましょう。
+このとき、<code class="docutils literal notranslate"><span class="pre">predict()</span></code> メソッドに与える入力値の ndarray の形が <code class="docutils literal notranslate"><span class="pre">(サンプルサイズ,</span> <span class="pre">各サンプルの次元数)</span></code> となっている必要があることに気をつけてください。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([24.9357079])
+</pre></div>
+</div>
+</div>
+</div>
+<p>この入力に対する目標値を見てみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_test</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.6
+</pre></div>
+</div>
+</div>
+</div>
+<p>22.6 という目標値に対して、およそ 24.94 という予測値が返ってきました。</p>
+</section>
+<section id="id4">
+<h3>テスト用データセットを用いた評価<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>それでは、訓練済みモデルの性能を、テスト用データセットを使って決定係数を計算することで評価してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6733825506400194
+</pre></div>
+</div>
+</div>
+</div>
+<p>訓練用データセットを用いて算出した値（およそ 0.765）よりも、低い値がでてしまいました。</p>
+<p>教師あり学習の目的は、訓練時には見たことがない新しいデータ、ここではテスト用データセットに含まれているデータに対しても、高い性能を発揮するように、モデルを訓練することです。
+逆に、訓練時に用いたデータに対してはよく当てはまっていても、訓練時に用いなかったデータに対しては予測値と目標値の差異が大きくなってしまう現象を、<strong>過学習 (overfitting)</strong> と言います。</p>
+<p>過学習を防ぐために、色々な方法が研究されています。
+ここでは、データに前処理を行い、テスト用データセットを用いて計算した決定係数を改善します。</p>
+</section>
+</section>
+<section id="id5">
+<h2>各ステップの改善<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3>Step 1 の改善：前処理<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p><strong>前処理 (preprocessing)</strong> とは、欠損値の補完、外れ値の除去、特徴量選択、正規化などの処理を訓練を開始する前にデータセットに対して行うことです。</p>
+<p>手法やデータに合わせた前処理が必要となるため、適切な前処理を行うためには手法そのものについて理解している必要があるだけでなく、使用するデータの特性についてもよく調べておく必要があります。</p>
+<p>今回のデータは、入力値の値の範囲が CRIM, ZN, INDUS, … といった指標ごとに大きく異なっています。
+そこで、各入力変数ごとに平均が 0、分散が 1 となるように値をスケーリングする<strong>標準化 (standardization)</strong> をおこなってみましょう。</p>
+<p>scikit-learn では <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> というモジュール以下に <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> というクラスが定義されています。
+今回は、これを用いてデータセットに対し標準化を適用します。
+それでは、<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> クラスを読み込み、インスタンスを作成します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>標準化を行うためには、データセットの各入力変数ごとの平均と分散の値を計算する必要があります。
+この計算は、<code class="docutils literal notranslate"><span class="pre">scaler</span></code> オブジェクトがもつ <code class="docutils literal notranslate"><span class="pre">fit()</span></code> メソッドを用いて行います。
+引数には、平均・分散を計算したい入力値の ndarray を渡します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StandardScaler(copy=True, with_mean=True, with_std=True)
+</pre></div>
+</div>
+</div>
+</div>
+<p>すべてのサンプルではなく、訓練用データセットのみを用いてこれらの値を算出します。
+先ほどの <code class="docutils literal notranslate"><span class="pre">fit()</span></code> の実行の結果、算出された平均値が <code class="docutils literal notranslate"><span class="pre">mean_</span></code> 属性に、分散が <code class="docutils literal notranslate"><span class="pre">var_</span></code> 属性に格納されているので、確認してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">mean_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.35828432e+00, 1.18093220e+01, 1.10787571e+01, 6.49717514e-02,
+       5.56098305e-01, 6.30842655e+00, 6.89940678e+01, 3.76245876e+00,
+       9.35310734e+00, 4.01782486e+02, 1.84734463e+01, 3.60601186e+02,
+       1.24406497e+01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分散</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">var_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6.95792305e+01, 5.57886665e+02, 4.87753572e+01, 6.07504229e-02,
+       1.33257561e-02, 4.91423928e-01, 7.83932705e+02, 4.26314655e+00,
+       7.49911344e+01, 2.90195600e+04, 4.93579208e+00, 7.31040807e+03,
+       4.99634123e+01])
+</pre></div>
+</div>
+</div>
+</div>
+<p>これらの平均・分散の値を使って、データセットに含まれる値に標準化を施すには、<code class="docutils literal notranslate"><span class="pre">transform()</span></code> メソッドを使用します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test_scaled</span>  <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>それでは、標準化を行ったデータを使って、同じモデルを訓練してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># モデルの訓練</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 精度の検証（訓練データ）</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7645451026942549
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 精度の検証（テストデータ）</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test_scaled</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6733825506400195
+</pre></div>
+</div>
+</div>
+</div>
+<p>結果は変わりませんでした。</p>
+<p>べき変換をする別の前処理を適用し、再度同じモデルの訓練を行ってみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PowerTransformer</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">PowerTransformer</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+
+<span class="n">x_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練データでの決定係数</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7859862562650238
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># テストデータでの決定係数</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test_scaled</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7002856552456189
+</pre></div>
+</div>
+</div>
+</div>
+<p>結果が改善しました。</p>
+<section id="id7">
+<h4>パイプライン化<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<p>前処理用の <code class="docutils literal notranslate"><span class="pre">scaler</span></code> と 重回帰分析を行う <code class="docutils literal notranslate"><span class="pre">reg_model</span></code> は、両方 <code class="docutils literal notranslate"><span class="pre">fit()</span></code> メソッドを持っていました。
+scikit-learn には、パイプラインと呼ばれる一連の処理を統合できる機能があります。
+これを用いて、これらの処理をまとめてみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># パイプラインの作成 (scaler -&gt; svr)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">PowerTransformer</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scaler および reg を順番に使用</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(memory=None,
+     steps=[(&#39;scaler&#39;, PowerTransformer(copy=True, method=&#39;yeo-johnson&#39;, standardize=True)), (&#39;reg&#39;, LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
+         normalize=False))])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練用データセットを用いた決定係数の算出</span>
+<span class="n">pipeline</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7859862562650238
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># テスト用データセットを用いた決定係数の算出</span>
+<span class="n">linear_result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span>
+
+<span class="n">linear_result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7002856552456189
+</pre></div>
+</div>
+</div>
+</div>
+<p>パイプライン化を行うことで、<code class="docutils literal notranslate"><span class="pre">x_train_scaled</span></code> のような中間変数を作成することなく、同じ処理が行えるようになりました。
+これによってコード量が減らせるだけでなく、評価を行う前にテスト用データセットに対しても訓練用データセットに対して行ったのと同様の前処理を行うことを忘れてしまうといったミスを防ぐことができます。</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ja-edited"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="03_Basic_Math_for_Machine_Learning.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">機械学習に使われる数学</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="99_Basics_of_Python_class.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">クラス</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">scikit-learn を用いた重回帰分析</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1">Step 1：データセットの準備</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データセットの分割</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-4">Step 2 ~ 4：モデル・目的関数・最適化手法を決める</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5">Step 5：モデルの訓練</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">新しい入力値に対する予測の計算（推論）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">テスト用データセットを用いた評価</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">各ステップの改善</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Step 1 の改善：前処理</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">パイプライン化</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PlayGround
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

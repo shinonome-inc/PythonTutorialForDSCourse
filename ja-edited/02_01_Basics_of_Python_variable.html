@@ -1,0 +1,1521 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Python 入門 &#8212; データコース教材</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/02_01_Basics_of_Python_variable';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python 入門 確認課題" href="../exercise/02_01_Basics_of_Python_variable.html" />
+    <link rel="prev" title="はじめに" href="01_Welcome_to_Chainer_Tutorial.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="01_Welcome_to_Chainer_Tutorial.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">データコース教材</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_Welcome_to_Chainer_Tutorial.html">
+                    はじめに
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">Python 制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ja-edited/02_01_Basics_of_Python_variable.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python 入門</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python の特徴</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">文法とアルゴリズム</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">代入と値の確認</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">コメント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">変数の型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">算術演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">比較演算子</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">複合データ型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">タプル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">辞書</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python">
+<h1>Python 入門<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h1>
+<p>本章では、プログラミング言語 Python の基礎的な文法を学んでいきます。
+次章以降に登場するコードを理解するにあたって必要となる最低限の知識について、最短で習得するのが目標です。
+より正確かつ詳細な知識を確認したい場合には、<a class="reference external" href="https://docs.python.jp/3/tutorial/index.html">公式のチュートリアル</a>などを参照してください。</p>
+<p>Pythonにはバージョンとして 2 系と 3 系の 2 つの系統があり、互換性のない部分もあります。
+本チュートリアルでは、3 系である <strong>Python 3.6</strong> 以上を前提とした解説を行っています。</p>
+<section id="id1">
+<h2>Python の特徴<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>プログラミング言語には、Python 以外にも C 言語や Java、Ruby、R のように様々なものがあります。それぞれの言語がすべての用途に適しているわけではなく、しばしば用途によって得手不得手があります。</p>
+<p>本チュートリアルでは基本的に Python というプログラミング言語を扱います。
+その理由は、Python はデータ解析・機械学習のためのライブラリが充実しており、データ解析や機械学習の分野で最もよく使われている言語だからです。
+また、Web アプリケーションフレームワークの開発も活発で、データ解析だけでなく Web サービス開発まで同じ言語で統一して行える点も魅力です。</p>
+<p>さらには、初学者にとっても学びやすい言語です。
+初学者がプログラミングを学び始めるときにつまづきがちな難しい概念が他の言語と比べ多くなく、入門しやすい言語といえます。</p>
+<p>まとめると、Python には</p>
+<ul class="simple">
+<li><p>データ解析や機械学習によく使われている</p></li>
+<li><p>Web アプリケーションの開発などでもよく使われている</p></li>
+<li><p>初学者がはじめやすい言語</p></li>
+</ul>
+<p>のような魅力があります。</p>
+<section id="id2">
+<h3>文法とアルゴリズム<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>プログラミングによってある特定の処理をコンピュータで自動化したい場合、<strong>文法</strong>と<strong>アルゴリズム</strong>の 2 つを理解しておく必要があります。</p>
+<p>プログラムでは、まずはじめにコンピュータに命令を伝えるためのルールとなる<strong>文法</strong>を覚える必要があります。
+文法を無視した記述があるプログラムは、実行した際にエラーとなり処理が停止します。そのため、文法はしっかりと理解しておく必要があります。</p>
+<p>ただし、文法さえ理解していれば十分かというとそうではありません。一般的に、初学者向けのプログラミングの参考書では、この文法だけを取り扱うことも多いのですが、コンピュータに処理を自動化させることが目的であれば、文法だけでなく<strong>アルゴリズム</strong>も理解する必要があります。アルゴリズムとは、どういう順番でどのような処理をしていくかの一連の手順をまとめたものです。</p>
+<p>この章では、Python の文法について紹介し、機械学習やディープラーニングで必要となるアルゴリズムについてはこれ以降の章で紹介します。</p>
+<p>ここでは以下 4 つの文法に主眼を置きながら説明していきます。</p>
+<ul class="simple">
+<li><p>変数</p></li>
+<li><p>制御構文</p></li>
+<li><p>関数</p></li>
+<li><p>クラス</p></li>
+</ul>
+</section>
+</section>
+<section id="id3">
+<h2>変数<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p><strong>変数 (variable)</strong> とは、様々な値を格納することができる、<strong>名前がついた入れ物</strong>です。
+この変数に値を格納したり、更新したりすることで、計算結果を一時的に保持しておくことができます。</p>
+<section id="id4">
+<h3>代入と値の確認<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>それでは、<code class="docutils literal notranslate"><span class="pre">a</span></code> という名前の変数に、<code class="docutils literal notranslate"><span class="pre">1</span></code> を<strong>代入</strong>してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>代入は <code class="docutils literal notranslate"><span class="pre">=</span></code> の記号を用います。
+数学的には <code class="docutils literal notranslate"><span class="pre">=</span></code> は等しいという意味を持ちますが、Python では <strong>「左辺の変数に、右辺の値を代入する」</strong> という意味になります。</p>
+<p>Jupyter Notebook 上では、変数名だけ、もしくは変数名を最後の行に記述したセルを実行すると、値を確認することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、変数に格納されている値を確認することができました。
+また、値を確認するための他の方法として、<code class="docutils literal notranslate"><span class="pre">print()</span></code> と呼ばれる<strong>関数 (function)</strong> を使用することもできます。
+関数について詳しくは後述しますが、<code class="docutils literal notranslate"><span class="pre">print()</span></code> のように Python には予め多くの関数が定義されています。 そのような関数を<strong>組み込み関数 (built-in function)</strong> といいます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>変数につける名前は、コードを書く人が自由に決めることができます。
+ただし、わかりやすい名前をつけることがとても大切です。
+例えば、人の名前を格納するための変数が <code class="docutils literal notranslate"><span class="pre">a</span></code> という変数名だと、それがどのような使われ方をするのかを容易に類推することができません。
+<code class="docutils literal notranslate"><span class="pre">name</span></code> という名前であれば、ひと目で見て何のための変数かが分かるようになります。
+これは、自分のコードを読む他人や、未来の自分にとってコードを理解するための大きな手がかりとなります。</p>
+</section>
+<section id="id5">
+<h3>コメント<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Python では、<code class="docutils literal notranslate"><span class="pre">#</span></code> の後からその行の終わりまでに存在する全ての文字列は無視されます。
+この <code class="docutils literal notranslate"><span class="pre">#</span></code> の後ろに続く部分を <strong>コメント (comment)</strong> と呼び、すでに書かれたコードをコメントにすることを <strong>コメントアウト (comment out)</strong> と言います。
+コメントは、コード中に変数の意味や処理の意味をコードを読む人に伝えるためによく使われます。</p>
+<p>Jupyter Notebook のコードセルに書かれたコードを行ごとコメントアウトしたい場合は、その行を選択した状態で <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">/</span></code> を入力することで自動的に行の先頭に <code class="docutils literal notranslate"><span class="pre">#</span></code> 記号を挿入することができます。複数行を選択していれば、選択された複数の行が同時にコメントアウトされます。また、コメントアウトされている行を選択した状態で同じキー入力を送ると、コメントアウトが解除されます。
+下のセルを実行してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># この行及び下の行はコメントアウトされているため実行時に無視されます</span>
+<span class="c1"># print(a)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">print(a)</span></code> が書かれているにも関わらず、何も表示されませんでした。
+これは、<code class="docutils literal notranslate"><span class="pre">print(a)</span></code> 関数が書かれた行がコメントアウトされていたためです。</p>
+</section>
+<section id="id6">
+<h3>変数の型<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>プログラミングで扱う値には種類があります。
+Python では、<strong>整数 (integer)</strong>、<strong>実数 (real number)</strong>、<strong>文字列 (string)</strong> などが代表的な値の種類です。
+それぞれの種類によって、コンピュータ内での取扱い方が異なり、この種類のことは一般に<strong>型 (type)</strong> と呼びます。</p>
+<p>例えば、整数、実数、そして文字列をそれぞれ別々の変数に代入するコードは以下のとおりです。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="mf">1.2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;Chainer&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>プログラムは型によって変数の取り扱いが異なるため、型の違いがエラーの原因になることがあります。そのため、簡単に型の特徴は把握しておく必要があります。</p>
+<p>まずは、上記の <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code> の型を確認する方法を紹介します。
+型の確認は <code class="docutils literal notranslate"><span class="pre">type()</span></code> という組み込み関数を使用します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span></code> は <code class="docutils literal notranslate"><span class="pre">int</span></code> という整数の型をもつ変数であり、<code class="docutils literal notranslate"><span class="pre">b</span></code> は <code class="docutils literal notranslate"><span class="pre">float</span></code> という実数の型をもつ変数です。
+この <code class="docutils literal notranslate"><span class="pre">float</span></code> という型の名前は、コンピュータ内で実数を扱うときの形式である<strong>浮動小数点数 (floating-point number)</strong> に由来しています。</p>
+<p><code class="docutils literal notranslate"><span class="pre">c</span></code> は <code class="docutils literal notranslate"><span class="pre">str</span></code> という文字列の型をもつ変数であり、値を定義するにはシングルクォーテーション <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code> もしくはダブルクォーテーション <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">&quot;</span></code> で対象の文字列をくくる必要があります。</p>
+<p>Python では、<code class="docutils literal notranslate"><span class="pre">.</span></code> を含まない連続した数字を <code class="docutils literal notranslate"><span class="pre">int</span></code>、直前・直後も含め <code class="docutils literal notranslate"><span class="pre">.</span></code> が含まれる連続した数字を <code class="docutils literal notranslate"><span class="pre">float</span></code> だと自動的に解釈します。
+例えば、<code class="docutils literal notranslate"><span class="pre">7</span></code> や <code class="docutils literal notranslate"><span class="pre">365</span></code> は <code class="docutils literal notranslate"><span class="pre">int</span></code> ですが、<code class="docutils literal notranslate"><span class="pre">2.718</span></code>、<code class="docutils literal notranslate"><span class="pre">.25</span></code>、<code class="docutils literal notranslate"><span class="pre">10.</span></code> などは <code class="docutils literal notranslate"><span class="pre">float</span></code> になります。</p>
+<p>例えば、実数の <code class="docutils literal notranslate"><span class="pre">5</span></code> は以下のように書くことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<p>一方、<code class="docutils literal notranslate"><span class="pre">.5</span></code> と書くと、これは <code class="docutils literal notranslate"><span class="pre">0.5</span></code> の略記と解釈されることに注意してください。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>算術演算子<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>様々な計算を意味する<strong>演算子</strong>と呼ばれる記号があります。
+はじめに紹介するのは<strong>算術演算子 (arithmetic operator)</strong> と呼ばれるもので、 2 つの変数または値を取り、 1 つの演算結果を返します。</p>
+<p>代表的な演算として**四則演算（加算・減算・乗算・除算）**があります。
+四則演算に対応する演算子として、Python では以下の記号が用いられます。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算</p></th>
+<th class="head"><p>記号</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>加算（足し算）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>減算（引き算）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>乗算（掛け算）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>除算（割り算）</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>具体例を見ながら使い方を説明します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で加算 -&gt; 結果は整数</span>
+<span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、演算子を使う際には、<strong>記号の両側に値を書きます。</strong>
+このとき、演算子の両側にひとつずつ空白を空けることが多いです。
+文法的な意味はありませんが、コードが読みやすくなります。
+この空白は Python のコーディング規約である <a class="reference external" href="https://pep8-ja.readthedocs.io/ja/latest/#section-14">PEP8</a> でも推奨されています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>値が代入されている変数との演算も下記のように行うことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">+</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、<code class="docutils literal notranslate"><span class="pre">int</span></code> と <code class="docutils literal notranslate"><span class="pre">float</span></code> は異なる型同士ですが、計算を行うことができます。
+<code class="docutils literal notranslate"><span class="pre">int</span></code> と <code class="docutils literal notranslate"><span class="pre">float</span></code> の演算結果の型は <code class="docutils literal notranslate"><span class="pre">float</span></code> になります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と実数で加算 -&gt; 結果は実数</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2
+</pre></div>
+</div>
+</div>
+</div>
+<p>他の演算子の例を示します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で減算 -&gt; 結果は整数</span>
+<span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 実数と整数で減算 -&gt; 結果は実数</span>
+<span class="mf">3.5</span> <span class="o">-</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で乗算 -&gt; 結果は整数</span>
+<span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 実数と整数で乗算 -&gt; 結果は実数</span>
+<span class="mf">2.5</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で除算 -&gt; 結果は実数</span>
+<span class="mi">3</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で除算 -&gt; 結果は実数</span>
+<span class="mi">4</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python 3 では、 <code class="docutils literal notranslate"><span class="pre">/</span></code> 記号を用いて除算を行う場合、除数（割る数）と被除数（割られる数）が整数であっても、計算結果として実数が返ります。
+計算結果として実数を返す除算のことを特に、<strong>真の除算 (true division)</strong> と言います。
+一方、商（整数部分）を返すような除算演算子として、 <code class="docutils literal notranslate"><span class="pre">//</span></code> 記号が用意されています。 <code class="docutils literal notranslate"><span class="pre">/</span></code> 記号を 2 回、間を空けずに繰り返します。計算結果として商を返す除算のことを、 <strong>切り捨て除算 (floor division)</strong> と呼びます。
+商を計算したい場合に便利な演算子であるため、こちらも覚えておきましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で切り捨て除算 -&gt; 結果は整数</span>
+<span class="mi">3</span> <span class="o">//</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 整数と整数で切り捨て除算 -&gt; 結果は整数</span>
+<span class="mi">4</span> <span class="o">//</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、ここで注意すべき点として、整数や実数と文字列の演算は基本的にエラーになります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># error</span>
+<span class="n">a</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># error</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">a</span> <span class="o">+</span> <span class="n">c</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: &#39;int&#39; and &#39;str&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>エラーメッセージを読みましょう。</strong></p>
+<blockquote>
+<div><p>TypeError: unsupported operand type(s) for +: ‘int’ and ‘str’</p>
+</div></blockquote>
+<p>と言われています。「+ にとって int と str はサポートされていない被作用子（+ が作用する対象のこと。operand）です」と書かれています。「int に str を足す」ということはできないというわけです。</p>
+<p>このようにエラーメッセージからは自分のミスに関する情報を得ることができます。
+何を間違えたかはエラーをもとに調べれば大抵わかりますから、まずはエラーについて調べることを心がけましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">int</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">float</span></code> と、 <code class="docutils literal notranslate"><span class="pre">str</span></code> の間の加算、減算、除算では上記のエラーが生じます。
+ただし、<code class="docutils literal notranslate"><span class="pre">str</span></code> と <code class="docutils literal notranslate"><span class="pre">int</span></code> の<strong>乗算</strong>は特別にサポートされており、計算を実行することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># str と int で乗算</span>
+<span class="n">c</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上のコードは、<code class="docutils literal notranslate"><span class="pre">c</span></code> という文字列を <code class="docutils literal notranslate"><span class="pre">3</span></code> 回繰り返す、という意味になります。</p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> 同士は足し算を行うことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name1</span> <span class="o">=</span> <span class="s1">&#39;Chainer&#39;</span>
+<span class="n">name2</span> <span class="o">=</span> <span class="s1">&#39;チュートリアル&#39;</span>
+
+<span class="n">name1</span> <span class="o">+</span> <span class="n">name2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>整数と文字列を連結したいこともあります。
+例えば、<code class="docutils literal notranslate"><span class="pre">1</span></code> という整数に、 <code class="docutils literal notranslate"><span class="pre">'番目'</span></code> という文字列を足して <code class="docutils literal notranslate"><span class="pre">'1番目'</span></code> という文字列を作りたいような場合です。
+その場合には、型を変換する<strong>キャスト (cast)</strong> という操作をする必要があります。</p>
+<p>何かを <code class="docutils literal notranslate"><span class="pre">int</span></code> にキャストしたい場合は <code class="docutils literal notranslate"><span class="pre">int()</span></code> という組み込み関数を使い、<code class="docutils literal notranslate"><span class="pre">str</span></code> にキャストしたい場合は <code class="docutils literal notranslate"><span class="pre">str()</span></code> という組み込み関数を使います。では、<code class="docutils literal notranslate"><span class="pre">1</span></code> という整数を <code class="docutils literal notranslate"><span class="pre">str</span></code> にキャストして、 <code class="docutils literal notranslate"><span class="pre">'番目'</span></code> という文字列と足し算を行ってみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;番目&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>演算子の話から少しそれますが、フォーマット文字列を使用すると <code class="docutils literal notranslate"><span class="pre">+</span></code> を使用せずに、自然な文字列の中に変数の値を埋め込むことができます。
+フォーマット文字列の書き方はいくつかありますが、簡単な例を 2 つ紹介します。</p>
+<p>文字列を通常のクォーテーション (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;,</span> <span class="pre">''</span></code>) の代わりに、<code class="docutils literal notranslate"><span class="pre">f</span></code> がついた <code class="docutils literal notranslate"><span class="pre">f&quot;&quot;</span></code> または <code class="docutils literal notranslate"><span class="pre">f''</span></code> で囲みます。
+すると、変数を波括弧で囲んで文字列に挿入すると、その部分に変数の値が埋め込まれます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">d</span><span class="si">}</span><span class="s1">番目&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>文字列に空の波括弧 <code class="docutils literal notranslate"><span class="pre">{}</span></code> を挿入して、文字列の後ろに <code class="docutils literal notranslate"><span class="pre">.format()</span></code> を続けて書くと、format 関数に渡された変数の値が <code class="docutils literal notranslate"><span class="pre">{}</span></code> の部分に埋め込まれます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="s1">&#39;</span><span class="si">{}</span><span class="s1">番目&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>演算子に話を戻します。<code class="docutils literal notranslate"><span class="pre">+=</span></code> や <code class="docutils literal notranslate"><span class="pre">-=</span></code> もよく使われる演算子です。
+これは、演算と代入を合わせて行うもので、<strong>累積代入文 (augmented assignment statement)</strong> と呼ばれます。</p>
+<p>下記に示すとおり、<code class="docutils literal notranslate"><span class="pre">+=</span></code> では左辺の変数に対して右辺の値を足した結果で、左辺の変数を更新します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 累積代入文を使わない場合</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 累積代入文を使う場合</span>
+<span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>四則演算の全てで累積代入文を利用することができます。
+つまり、<code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">*=</span></code>, <code class="docutils literal notranslate"><span class="pre">/=</span></code> がそれぞれ利用可能です。</p>
+<p>Python には、他にも幾つかの算術演算子が用意されています。
+例えば以下の演算子です。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算</p></th>
+<th class="head"><p>記号</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>累乗</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>剰余</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">**</span></code> を使うと、<span class="math notranslate nohighlight">\(2^3\)</span> は以下のように記述することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 累乗</span>
+<span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">%</span></code> を使って、<code class="docutils literal notranslate"><span class="pre">9</span></code> を <code class="docutils literal notranslate"><span class="pre">2</span></code> で割った余りを計算してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 剰余</span>
+<span class="mi">9</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>比較演算子<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>比較演算子は、2 つの値の比較を行うための演算子です。</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>演算</p></th>
+<th class="head"><p>記号</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>小なり</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>大なり</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>以下</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>以上</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>等しい</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>等しくない</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>比較演算子は、その両側に与えられた値が決められた条件を満たしているかどうか計算し、満たしている場合は <code class="docutils literal notranslate"><span class="pre">True</span></code> を、満たしていない場合は <code class="docutils literal notranslate"><span class="pre">False</span></code> を返します。
+<code class="docutils literal notranslate"><span class="pre">True</span></code> や <code class="docutils literal notranslate"><span class="pre">False</span></code> は、<strong>ブール (bool) 型</strong>と呼ばれる型を持った値です。
+ブール型の値は <code class="docutils literal notranslate"><span class="pre">True</span></code> もしくは <code class="docutils literal notranslate"><span class="pre">False</span></code> の 2 つしか存在しません。</p>
+<p>いくつかの比較演算子の計算例を示します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">!=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;test&#39;</span> <span class="o">==</span> <span class="s1">&#39;test&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>等しいかどうかを判定する比較演算子 <code class="docutils literal notranslate"><span class="pre">==</span></code> を使う際は、代入演算子 <code class="docutils literal notranslate"><span class="pre">=</span></code> と間違えないように気をつけてください。</p>
+</section>
+</section>
+<section id="id9">
+<h2>複合データ型<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p>これまでは <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">1</span></code> のように 1 つの変数に 1 つの値を代入する場合を扱ってきましたが、複数の値をまとめて取り扱いたい場面もあります。
+Python では複数の変数や値をまとめて扱うのに便利な、以下の 3 つの複合データ型があります。</p>
+<ul class="simple">
+<li><p>リスト (list)</p></li>
+<li><p>タプル (tuple)</p></li>
+<li><p>辞書 (dictionary)</p></li>
+</ul>
+<section id="id10">
+<h3>リスト<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>複数の変数を <code class="docutils literal notranslate"><span class="pre">,</span></code> （カンマ）区切りで並べ、それらの全体を <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> で囲んだものを <strong>リスト (list)</strong> と言います。
+リストに含まれる値を<strong>要素</strong>と呼び、整数の<strong>インデックス</strong> （要素番号）を使ってアクセスします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># リスト型の変数を定義</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># 値の確認</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">numbers</span></code> には 4 つの数値が入っており、<strong>要素数</strong> は 4 です。
+リストの要素数は、リストの<strong>長さ (length)</strong> とも呼ばれ、組み込み関数の <code class="docutils literal notranslate"><span class="pre">len()</span></code> を用いて取得することができます。
+<code class="docutils literal notranslate"><span class="pre">len()</span></code> はよく使う関数であるため、覚えておきましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 要素数の確認</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リストの各要素へアクセスする方法はいくつかあります。
+最も簡単な方法は <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使ってアクセスしたい要素番号を指定して、リストから値を取り出したり、その位置の値を書き換えたりする方法です。
+ここで、注意が必要な点として、Python では先頭の要素のインデックス番号が <code class="docutils literal notranslate"><span class="pre">0</span></code> である点があります。
+インデックス番号 <code class="docutils literal notranslate"><span class="pre">1</span></code> は 2 番目の要素を指します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の要素にアクセス</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭から3番目の要素にアクセス</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2 番目の要素を書き換え</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 値の確認</span>
+<span class="n">numbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、インデックスに負の値を指定すると、末尾からの位置となります。
+要素番号 <code class="docutils literal notranslate"><span class="pre">-1</span></code> で最後の要素を参照することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾の要素にアクセス</span>
+<span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾から3番目の要素にアクセス</span>
+<span class="n">numbers</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>次に、リストから一度に複数の要素を取り出す操作である<strong>スライス (slice)</strong> を紹介します。
+<code class="docutils literal notranslate"><span class="pre">開始位置:終了位置</span></code> のようにコロン <code class="docutils literal notranslate"><span class="pre">:</span></code> を用いてインデックスを範囲指定し、複数の部分要素にアクセスします。
+このスライスの処理は、この後の章でも多用するため、慣れておきましょう。</p>
+<p>例えば、先頭から 2 つの要素を取り出したい場合、以下のように指定します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">開始位置:終了位置</span></code> と指定することで、開始位置から<strong>終了位置のひとつ手前</strong>までの要素を抽出します。
+終了位置に指定したインデックスの値は含まれないことに注意してください。</p>
+<p>また、指定する開始番号が <code class="docutils literal notranslate"><span class="pre">0</span></code> である場合、以下のような略記がよく用いられます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、先頭のインデックスは省略することができます。
+このような記法を使う場合は、終了位置を示す数字を<strong>取り出したい要素の個数</strong>と捉えて、<strong>先頭から 2 つを取り出す</strong>操作だと考えると分かりやすくなります。</p>
+<p>同様に、ある位置からリストの末尾までを取り出す場合も、終了位置のインデックスを省略することができます。
+例えば、2 個目の要素から最後までを取り出すには以下のようにします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>この場合は、取り出される要素の個数は <code class="docutils literal notranslate"><span class="pre">len(numbers)</span> <span class="pre">-</span> <span class="pre">1</span></code> 個となることに注意してください。<br />
+以上から、<code class="docutils literal notranslate"><span class="pre">numbers[:2]</span></code> と <code class="docutils literal notranslate"><span class="pre">numbers[2:]</span></code> は、ちょうど 2 個目の要素を境に <code class="docutils literal notranslate"><span class="pre">numbers</span></code> の要素を 2 分割した前半部分と後半部分になっています。
+ここで、インデックスが 2 の要素自体は<strong>後半部に含まれる</strong>ということに注意してください。
+また、開始位置も終了位置も省略した場合は、すべての要素が選択されます。</p>
+<p>一見ややこしい挙動のようですが、ここで下画像のようにインデックスは要素の間にふられているとすると理解しやすくなります。<br />
+例えば <code class="docutils literal notranslate"><span class="pre">numbers[:2]</span></code> は「2の位置”まで”」だから2個目の要素は含まないというわけです。<br />
+<img alt="indexのイメージ" src="../_images/02_indexing.jpg" /></p>
+<p>ちなみにこれは<a class="reference external" href="https://docs.python.org/ja/3/tutorial/introduction.html#strings">Pythonの公式ドキュメント</a>で紹介されている覚え方です。</p>
+<p>全ての要素を選択する場合、下記のように書くこともできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="p">[:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>現状では、<code class="docutils literal notranslate"><span class="pre">numbers[:]</span></code> と <code class="docutils literal notranslate"><span class="pre">numbers</span></code> の結果が同じであるため、どのように使用するか疑問に思われるかも知れません。<br />
+しかし、後の章では NumPy というライブラリを用いてリストの中にリストが入ったような<strong>多次元配列 (multidimensional array)</strong> を扱っていきます。<br />
+そして多次元配列を用いて行列を表す場合には、<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">列目のすべての値</span></code>を抽出するために <code class="docutils literal notranslate"><span class="pre">[:,</span> <span class="pre">0]</span></code> のような記法を用いるケースが登場します。<br />
+これは Python 標準の機能ではありませんが、Python 標準のスライス表記を拡張したものになっています。</p>
+<p>リストは数値以外に、文字列を扱うこともでき、また複数の型を同一のリスト内に混在させることもできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 文字列を格納したリスト</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;world&#39;</span><span class="p">]</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 複数の型が混在したリスト</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;Chainer&#39;</span><span class="p">]</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リストにリストを代入することもできます。
+また、Python 標準のリストでは入れ子になったリスト内の要素数がばらばらでも問題ありません。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="s1">&#39;Chainer&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">],</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="s1">&#39;Tutorial&#39;</span><span class="p">]]</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>リストを使う際に頻出する操作として、<strong>リストへの値の追加</strong>があります。
+リスト型には <code class="docutils literal notranslate"><span class="pre">append()</span></code> というメソッドが定義されており、これを用いてリストの末尾に新しい値を追加することができます。</p>
+<p>上記の <code class="docutils literal notranslate"><span class="pre">array</span></code> に値を追加してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 末尾に 2.5 を追加</span>
+<span class="n">array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 値の確認</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、今後頻出する処理として、<strong>空のリスト</strong>を定義しておき、そこに後段の処理の中で適宜新たな要素を追加していくという使い方があります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 空のリストを定義</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 空のリストに要素を追加</span>
+<span class="n">array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Chainer&#39;</span><span class="p">)</span>
+<span class="n">array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;チュートリアル&#39;</span><span class="p">)</span>
+
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>タプル<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p><strong>タプル (tuple)</strong> はリストと同様に複数の要素をまとめた型ですが、リストとは異なる点として、定義した後に<strong>中の要素を変更できない</strong>という性質を持ちます。</p>
+<p>タプルの定義には <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code>を用います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># タプルを定義</span>
+<span class="n">array</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">array</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>タプルの定義する際に <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> を使用したため、要素へのアクセスも <code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code> を使うように感じるかもしれませんが、実際にはリストと同様 <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> を使用します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の要素へアクセス</span>
+<span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># リストと同様、スライスも使用可能</span>
+<span class="n">array</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>先述の通り、タプルは各要素の値を変更することができません。
+この性質は、定数項などプログラムの途中で書き換わってしまうことが望ましくないものをまとめて扱うのに便利です。</p>
+<p>実際に、タプルの要素に値の書き換えを行うとエラーが発生します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># error</span>
+<span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tuple</span></code> のように中身が変更できない性質のことを**イミュータブル (immutable)<strong>であると言います。反対に、<code class="docutils literal notranslate"><span class="pre">list</span></code> のように中身が変更できる性質のことを</strong>ミュータブル (mutable)**であると言います</p>
+<p>タプルも Chainer でデータセットを扱うときなどに頻出する型です。その性質と取り扱い方を覚えておきましょう。</p>
+</section>
+<section id="id12">
+<h3>辞書<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>リストやタプルでは、複数の値をまとめて扱うことができました。
+そこで、定期テストの結果をまとめることを考えてみましょう。</p>
+<p>例えば、数学 90 点、理科 75 点、英語 80 点だったという結果を <code class="docutils literal notranslate"><span class="pre">scores</span> <span class="pre">=</span> <span class="pre">[90,</span> <span class="pre">75,</span> <span class="pre">80]</span></code> とリストで表してみます。
+しかし、これでは<strong>何番目がどの教科の点数に対応するか</strong>、一見して分かりにくいと思われます。</p>
+<p>Python の <code class="docutils literal notranslate"><span class="pre">dict</span></code> 型は、<strong>キー (key)</strong> とそれに対応する<strong>値 (value)</strong> をセットにして格納することができる型であり、このようなときに便利です。</p>
+<p>リストやタプルでは、各要素にアクセスする際に整数のインデックスを用いていましたが、辞書ではキーでインデックス化されているため、整数や文字列など、色々なものを使って要素を指定することができます。</p>
+<p>辞書は <code class="docutils literal notranslate"><span class="pre">{}</span></code> を用いて定義し、要素にアクセスする際には、リストやタプルと同様に <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> を使用し、<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> の中にキーを指定して対応する値を取り出します。</p>
+<p><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> による要素へのアクセスは複数の要素を持つ型において一般的な記法なのがわかると思います。<br />
+要素のどれにアクセスするのかを、リストやタプルではインデックスで、辞書ではキーで指定するわけです。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 辞書を定義</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Math&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;Science&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;English&#39;</span><span class="p">:</span> <span class="mi">80</span> <span class="p">}</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># key が Math の value にアクセス</span>
+<span class="n">scores</span><span class="p">[</span><span class="s1">&#39;Math&#39;</span><span class="p">]</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># key に日本語を使用することも可能</span>
+<span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;数学&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;理科&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s1">&#39;英語&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">}</span>
+<span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;数学&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>他の人が定義した辞書に、<strong>どのようなキーが存在するのか</strong>を調べたいときがあります。
+辞書には、そのような場合に使える便利なメソッドがいくつか存在します。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keys()</span></code>: キーのリストを取得。<code class="docutils literal notranslate"><span class="pre">dict_keys</span></code> というリストと性質が似た型が返る</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values()</span></code>: 値のリストを取得。<code class="docutils literal notranslate"><span class="pre">dict_values</span></code> というリストと性質が似た型が返る</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">items()</span></code>: 各要素の <code class="docutils literal notranslate"><span class="pre">(key,</span> <span class="pre">value)</span></code> のタプルが並んだリストを取得。<code class="docutils literal notranslate"><span class="pre">dict_items</span></code> というリストと性質が似た型が返る</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># キーのリスト</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 値のリスト</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (キー, 値)というタプルを要素とするリスト</span>
+<span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dict_keys</span></code>, <code class="docutils literal notranslate"><span class="pre">dict_values</span></code>, <code class="docutils literal notranslate"><span class="pre">dict_items</span></code> と新しい型が登場しましたが、これは辞書型特有の型であり厳密には標準のリストとは異なりますが、リストと性質の似た型であるという程度の認識で問題ありません。</p>
+<p>辞書に要素を追加する場合は、新しいキーを指定して値を代入します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;国語&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">85</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、既に存在するキーを指定した場合には、値が上書きされます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="p">[</span><span class="s1">&#39;数学&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">95</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ja-edited"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_Welcome_to_Chainer_Tutorial.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">はじめに</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../exercise/02_01_Basics_of_Python_variable.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python 入門 確認課題</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python の特徴</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">文法とアルゴリズム</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">変数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">代入と値の確認</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">コメント</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">変数の型</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">算術演算子</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">比較演算子</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">複合データ型</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">リスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">タプル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">辞書</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PlayGround
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

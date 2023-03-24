@@ -1,0 +1,3883 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Pandas 入門 &#8212; データコース教材</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/11_Introduction_to_Pandas';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matplotlib 入門" href="12_Introduction_to_Matplotlib.html" />
+    <link rel="prev" title="NumPy 入門" href="08_Introduction_to_NumPy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="01_Welcome_to_Chainer_Tutorial.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">データコース教材</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="01_Welcome_to_Chainer_Tutorial.html">
+                    はじめに
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">Python 制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ja-edited/11_Introduction_to_Pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas 入門</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">CSV ファイルの読み書き</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame の表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">先頭の数件だけを表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">CSV ファイルの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データフレームの形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">統計量の算出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">並べ替え</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">データの選択</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件指定による要素の選択</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">複数の条件指定による要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">条件指定による要素の置換</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">欠損値の除去・補間</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarray">ndarray とデータフレームを相互に変換</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">グラフの描画</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<h1>Pandas 入門<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<p>Pandas はデータ操作によく用いられるパッケージであり、CSV などの一般的なデータ形式で保存されたデータの読み込みや、条件を指定しての一部データの抽出など、機械学習手法で取り扱うデータを整理するのに便利です。</p>
+<p>今回は Pandas の以下の代表的な機能の使い方を説明します。</p>
+<ul class="simple">
+<li><p>CSV ファイルの読み書き</p></li>
+<li><p>統計量の算出</p></li>
+<li><p>並べ替え</p></li>
+<li><p>データの選択</p></li>
+<li><p>条件指定による選択</p></li>
+<li><p>欠損値の除去 / 補間</p></li>
+<li><p>ndarray とデータフレームを相互に変換</p></li>
+<li><p>グラフの描画</p></li>
+</ul>
+<p>まず Pandas パッケージを読み込みましょう。
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> は <code class="docutils literal notranslate"><span class="pre">pd</span></code> という別名を与えて用いるのが一般的です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="csv">
+<h2>CSV ファイルの読み書き<a class="headerlink" href="#csv" title="Permalink to this heading">#</a></h2>
+<p>データセットは Google Colaboratory で用意されているサンプルデータを使用します。
+Google Colaboratory 以外で実行する場合は、<a class="reference external" href="https://download.mlcc.google.com/mledu-datasets/california_housing_train.csv">こちら</a>をダウンロードして、使用してください。</p>
+<p>Pandas では CSV ファイルを読み込むための <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> という関数が用意されています。
+こちらを使って CSV ファイルを読み込みます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データセットの読み込み</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data/california_housing_train.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># データセットの読み込み</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data/california_housing_train.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:211,</span> in <span class="ni">deprecate_kwarg.&lt;locals&gt;._deprecate_kwarg.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>         <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">211</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:331,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">325</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">327</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">_format_argument_list</span><span class="p">(</span><span class="n">allow_args</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">328</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:950,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">935</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">936</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">937</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">946</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">947</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">948</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">950</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:605,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">604</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">605</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">607</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1442,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1439</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1441</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1442</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/io/parsers/readers.py:1735,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1733</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1734</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1735</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1736</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1737</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1738</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1739</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1740</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1741</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1742</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1743</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1746</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/pandas/io/common.py:856,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">851</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">852</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">853</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">856</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">860</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">861</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">862</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">863</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;sample_data/california_housing_train.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code> という変数名は、<strong>データフレーム (data frame)</strong> という Pandas で中心的に用いられる<strong>データ構造 (data structure)</strong> を表すクラスの名前の頭文字に由来しています。
+<code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> 関数は、CSV ファイルの内容を <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> オブジェクトに読み込みます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dataframe">
+<h2>DataFrame の表示<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code> に読み込まれたデータの中身の確認してみましょう。
+Jupyter Notebook 上では、大きな DataFrame を表示しようとすると自動的に一部が省略されることがあります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-114.58</td>
+      <td>33.63</td>
+      <td>29.0</td>
+      <td>1387.0</td>
+      <td>236.0</td>
+      <td>671.0</td>
+      <td>239.0</td>
+      <td>3.3438</td>
+      <td>74000.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-114.58</td>
+      <td>33.61</td>
+      <td>25.0</td>
+      <td>2907.0</td>
+      <td>680.0</td>
+      <td>1841.0</td>
+      <td>633.0</td>
+      <td>2.6768</td>
+      <td>82400.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-114.59</td>
+      <td>34.83</td>
+      <td>41.0</td>
+      <td>812.0</td>
+      <td>168.0</td>
+      <td>375.0</td>
+      <td>158.0</td>
+      <td>1.7083</td>
+      <td>48500.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>-114.59</td>
+      <td>33.61</td>
+      <td>34.0</td>
+      <td>4789.0</td>
+      <td>1175.0</td>
+      <td>3134.0</td>
+      <td>1056.0</td>
+      <td>2.1782</td>
+      <td>58400.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-114.60</td>
+      <td>34.83</td>
+      <td>46.0</td>
+      <td>1497.0</td>
+      <td>309.0</td>
+      <td>787.0</td>
+      <td>271.0</td>
+      <td>2.1908</td>
+      <td>48100.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>-114.60</td>
+      <td>33.62</td>
+      <td>16.0</td>
+      <td>3741.0</td>
+      <td>801.0</td>
+      <td>2434.0</td>
+      <td>824.0</td>
+      <td>2.6797</td>
+      <td>86500.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>-114.60</td>
+      <td>33.60</td>
+      <td>21.0</td>
+      <td>1988.0</td>
+      <td>483.0</td>
+      <td>1182.0</td>
+      <td>437.0</td>
+      <td>1.6250</td>
+      <td>62000.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>-114.61</td>
+      <td>34.84</td>
+      <td>48.0</td>
+      <td>1291.0</td>
+      <td>248.0</td>
+      <td>580.0</td>
+      <td>211.0</td>
+      <td>2.1571</td>
+      <td>48600.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>-114.61</td>
+      <td>34.83</td>
+      <td>31.0</td>
+      <td>2478.0</td>
+      <td>464.0</td>
+      <td>1346.0</td>
+      <td>479.0</td>
+      <td>3.2120</td>
+      <td>70400.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>-114.63</td>
+      <td>32.76</td>
+      <td>15.0</td>
+      <td>1448.0</td>
+      <td>378.0</td>
+      <td>949.0</td>
+      <td>300.0</td>
+      <td>0.8585</td>
+      <td>45000.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>-114.65</td>
+      <td>34.89</td>
+      <td>17.0</td>
+      <td>2556.0</td>
+      <td>587.0</td>
+      <td>1005.0</td>
+      <td>401.0</td>
+      <td>1.6991</td>
+      <td>69100.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>-114.65</td>
+      <td>33.60</td>
+      <td>28.0</td>
+      <td>1678.0</td>
+      <td>322.0</td>
+      <td>666.0</td>
+      <td>256.0</td>
+      <td>2.9653</td>
+      <td>94900.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>-114.65</td>
+      <td>32.79</td>
+      <td>21.0</td>
+      <td>44.0</td>
+      <td>33.0</td>
+      <td>64.0</td>
+      <td>27.0</td>
+      <td>0.8571</td>
+      <td>25000.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>-114.66</td>
+      <td>32.74</td>
+      <td>17.0</td>
+      <td>1388.0</td>
+      <td>386.0</td>
+      <td>775.0</td>
+      <td>320.0</td>
+      <td>1.2049</td>
+      <td>44000.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>-114.67</td>
+      <td>33.92</td>
+      <td>17.0</td>
+      <td>97.0</td>
+      <td>24.0</td>
+      <td>29.0</td>
+      <td>15.0</td>
+      <td>1.2656</td>
+      <td>27500.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>-114.68</td>
+      <td>33.49</td>
+      <td>20.0</td>
+      <td>1491.0</td>
+      <td>360.0</td>
+      <td>1135.0</td>
+      <td>303.0</td>
+      <td>1.6395</td>
+      <td>44400.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>-114.73</td>
+      <td>33.43</td>
+      <td>24.0</td>
+      <td>796.0</td>
+      <td>243.0</td>
+      <td>227.0</td>
+      <td>139.0</td>
+      <td>0.8964</td>
+      <td>59200.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>-114.94</td>
+      <td>34.55</td>
+      <td>20.0</td>
+      <td>350.0</td>
+      <td>95.0</td>
+      <td>119.0</td>
+      <td>58.0</td>
+      <td>1.6250</td>
+      <td>50000.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>-114.98</td>
+      <td>33.82</td>
+      <td>15.0</td>
+      <td>644.0</td>
+      <td>129.0</td>
+      <td>137.0</td>
+      <td>52.0</td>
+      <td>3.2097</td>
+      <td>71300.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>-115.22</td>
+      <td>33.54</td>
+      <td>18.0</td>
+      <td>1706.0</td>
+      <td>397.0</td>
+      <td>3424.0</td>
+      <td>283.0</td>
+      <td>1.6250</td>
+      <td>53500.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>-115.32</td>
+      <td>32.82</td>
+      <td>34.0</td>
+      <td>591.0</td>
+      <td>139.0</td>
+      <td>327.0</td>
+      <td>89.0</td>
+      <td>3.6528</td>
+      <td>100000.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>-115.37</td>
+      <td>32.82</td>
+      <td>30.0</td>
+      <td>1602.0</td>
+      <td>322.0</td>
+      <td>1130.0</td>
+      <td>335.0</td>
+      <td>3.5735</td>
+      <td>71100.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>-115.37</td>
+      <td>32.82</td>
+      <td>14.0</td>
+      <td>1276.0</td>
+      <td>270.0</td>
+      <td>867.0</td>
+      <td>261.0</td>
+      <td>1.9375</td>
+      <td>80900.0</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>-115.37</td>
+      <td>32.81</td>
+      <td>32.0</td>
+      <td>741.0</td>
+      <td>191.0</td>
+      <td>623.0</td>
+      <td>169.0</td>
+      <td>1.7604</td>
+      <td>68600.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>-115.37</td>
+      <td>32.81</td>
+      <td>23.0</td>
+      <td>1458.0</td>
+      <td>294.0</td>
+      <td>866.0</td>
+      <td>275.0</td>
+      <td>2.3594</td>
+      <td>74300.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>16970</th>
+      <td>-124.17</td>
+      <td>40.80</td>
+      <td>52.0</td>
+      <td>1606.0</td>
+      <td>419.0</td>
+      <td>891.0</td>
+      <td>367.0</td>
+      <td>1.5850</td>
+      <td>75500.0</td>
+    </tr>
+    <tr>
+      <th>16971</th>
+      <td>-124.17</td>
+      <td>40.80</td>
+      <td>52.0</td>
+      <td>1557.0</td>
+      <td>344.0</td>
+      <td>758.0</td>
+      <td>319.0</td>
+      <td>1.8529</td>
+      <td>62500.0</td>
+    </tr>
+    <tr>
+      <th>16972</th>
+      <td>-124.17</td>
+      <td>40.79</td>
+      <td>43.0</td>
+      <td>2285.0</td>
+      <td>479.0</td>
+      <td>1169.0</td>
+      <td>482.0</td>
+      <td>1.9688</td>
+      <td>70500.0</td>
+    </tr>
+    <tr>
+      <th>16973</th>
+      <td>-124.17</td>
+      <td>40.78</td>
+      <td>39.0</td>
+      <td>1606.0</td>
+      <td>330.0</td>
+      <td>731.0</td>
+      <td>327.0</td>
+      <td>1.6369</td>
+      <td>68300.0</td>
+    </tr>
+    <tr>
+      <th>16974</th>
+      <td>-124.17</td>
+      <td>40.77</td>
+      <td>30.0</td>
+      <td>1895.0</td>
+      <td>366.0</td>
+      <td>990.0</td>
+      <td>359.0</td>
+      <td>2.2227</td>
+      <td>81300.0</td>
+    </tr>
+    <tr>
+      <th>16975</th>
+      <td>-124.17</td>
+      <td>40.76</td>
+      <td>26.0</td>
+      <td>1776.0</td>
+      <td>361.0</td>
+      <td>992.0</td>
+      <td>380.0</td>
+      <td>2.8056</td>
+      <td>82800.0</td>
+    </tr>
+    <tr>
+      <th>16976</th>
+      <td>-124.17</td>
+      <td>40.75</td>
+      <td>13.0</td>
+      <td>2171.0</td>
+      <td>339.0</td>
+      <td>951.0</td>
+      <td>353.0</td>
+      <td>4.8516</td>
+      <td>116100.0</td>
+    </tr>
+    <tr>
+      <th>16977</th>
+      <td>-124.17</td>
+      <td>40.62</td>
+      <td>32.0</td>
+      <td>1595.0</td>
+      <td>309.0</td>
+      <td>706.0</td>
+      <td>277.0</td>
+      <td>2.8958</td>
+      <td>86400.0</td>
+    </tr>
+    <tr>
+      <th>16978</th>
+      <td>-124.18</td>
+      <td>40.79</td>
+      <td>39.0</td>
+      <td>1836.0</td>
+      <td>352.0</td>
+      <td>883.0</td>
+      <td>337.0</td>
+      <td>1.7450</td>
+      <td>70500.0</td>
+    </tr>
+    <tr>
+      <th>16979</th>
+      <td>-124.18</td>
+      <td>40.78</td>
+      <td>37.0</td>
+      <td>1453.0</td>
+      <td>293.0</td>
+      <td>867.0</td>
+      <td>310.0</td>
+      <td>2.5536</td>
+      <td>70200.0</td>
+    </tr>
+    <tr>
+      <th>16980</th>
+      <td>-124.18</td>
+      <td>40.78</td>
+      <td>34.0</td>
+      <td>1592.0</td>
+      <td>364.0</td>
+      <td>950.0</td>
+      <td>317.0</td>
+      <td>2.1607</td>
+      <td>67000.0</td>
+    </tr>
+    <tr>
+      <th>16981</th>
+      <td>-124.18</td>
+      <td>40.78</td>
+      <td>33.0</td>
+      <td>1076.0</td>
+      <td>222.0</td>
+      <td>656.0</td>
+      <td>236.0</td>
+      <td>2.5096</td>
+      <td>72200.0</td>
+    </tr>
+    <tr>
+      <th>16982</th>
+      <td>-124.18</td>
+      <td>40.62</td>
+      <td>35.0</td>
+      <td>952.0</td>
+      <td>178.0</td>
+      <td>480.0</td>
+      <td>179.0</td>
+      <td>3.0536</td>
+      <td>107000.0</td>
+    </tr>
+    <tr>
+      <th>16983</th>
+      <td>-124.19</td>
+      <td>41.78</td>
+      <td>15.0</td>
+      <td>3140.0</td>
+      <td>714.0</td>
+      <td>1645.0</td>
+      <td>640.0</td>
+      <td>1.6654</td>
+      <td>74600.0</td>
+    </tr>
+    <tr>
+      <th>16984</th>
+      <td>-124.19</td>
+      <td>40.78</td>
+      <td>37.0</td>
+      <td>1371.0</td>
+      <td>319.0</td>
+      <td>640.0</td>
+      <td>260.0</td>
+      <td>1.8242</td>
+      <td>70000.0</td>
+    </tr>
+    <tr>
+      <th>16985</th>
+      <td>-124.19</td>
+      <td>40.77</td>
+      <td>30.0</td>
+      <td>2975.0</td>
+      <td>634.0</td>
+      <td>1367.0</td>
+      <td>583.0</td>
+      <td>2.4420</td>
+      <td>69000.0</td>
+    </tr>
+    <tr>
+      <th>16986</th>
+      <td>-124.19</td>
+      <td>40.73</td>
+      <td>21.0</td>
+      <td>5694.0</td>
+      <td>1056.0</td>
+      <td>2907.0</td>
+      <td>972.0</td>
+      <td>3.5363</td>
+      <td>90100.0</td>
+    </tr>
+    <tr>
+      <th>16987</th>
+      <td>-124.21</td>
+      <td>41.77</td>
+      <td>17.0</td>
+      <td>3461.0</td>
+      <td>722.0</td>
+      <td>1947.0</td>
+      <td>647.0</td>
+      <td>2.5795</td>
+      <td>68400.0</td>
+    </tr>
+    <tr>
+      <th>16988</th>
+      <td>-124.21</td>
+      <td>41.75</td>
+      <td>20.0</td>
+      <td>3810.0</td>
+      <td>787.0</td>
+      <td>1993.0</td>
+      <td>721.0</td>
+      <td>2.0074</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>16989</th>
+      <td>-124.21</td>
+      <td>40.75</td>
+      <td>32.0</td>
+      <td>1218.0</td>
+      <td>331.0</td>
+      <td>620.0</td>
+      <td>268.0</td>
+      <td>1.6528</td>
+      <td>58100.0</td>
+    </tr>
+    <tr>
+      <th>16990</th>
+      <td>-124.22</td>
+      <td>41.73</td>
+      <td>28.0</td>
+      <td>3003.0</td>
+      <td>699.0</td>
+      <td>1530.0</td>
+      <td>653.0</td>
+      <td>1.7038</td>
+      <td>78300.0</td>
+    </tr>
+    <tr>
+      <th>16991</th>
+      <td>-124.23</td>
+      <td>41.75</td>
+      <td>11.0</td>
+      <td>3159.0</td>
+      <td>616.0</td>
+      <td>1343.0</td>
+      <td>479.0</td>
+      <td>2.4805</td>
+      <td>73200.0</td>
+    </tr>
+    <tr>
+      <th>16992</th>
+      <td>-124.23</td>
+      <td>40.81</td>
+      <td>52.0</td>
+      <td>1112.0</td>
+      <td>209.0</td>
+      <td>544.0</td>
+      <td>172.0</td>
+      <td>3.3462</td>
+      <td>50800.0</td>
+    </tr>
+    <tr>
+      <th>16993</th>
+      <td>-124.23</td>
+      <td>40.54</td>
+      <td>52.0</td>
+      <td>2694.0</td>
+      <td>453.0</td>
+      <td>1152.0</td>
+      <td>435.0</td>
+      <td>3.0806</td>
+      <td>106700.0</td>
+    </tr>
+    <tr>
+      <th>16994</th>
+      <td>-124.25</td>
+      <td>40.28</td>
+      <td>32.0</td>
+      <td>1430.0</td>
+      <td>419.0</td>
+      <td>434.0</td>
+      <td>187.0</td>
+      <td>1.9417</td>
+      <td>76100.0</td>
+    </tr>
+    <tr>
+      <th>16995</th>
+      <td>-124.26</td>
+      <td>40.58</td>
+      <td>52.0</td>
+      <td>2217.0</td>
+      <td>394.0</td>
+      <td>907.0</td>
+      <td>369.0</td>
+      <td>2.3571</td>
+      <td>111400.0</td>
+    </tr>
+    <tr>
+      <th>16996</th>
+      <td>-124.27</td>
+      <td>40.69</td>
+      <td>36.0</td>
+      <td>2349.0</td>
+      <td>528.0</td>
+      <td>1194.0</td>
+      <td>465.0</td>
+      <td>2.5179</td>
+      <td>79000.0</td>
+    </tr>
+    <tr>
+      <th>16997</th>
+      <td>-124.30</td>
+      <td>41.84</td>
+      <td>17.0</td>
+      <td>2677.0</td>
+      <td>531.0</td>
+      <td>1244.0</td>
+      <td>456.0</td>
+      <td>3.0313</td>
+      <td>103600.0</td>
+    </tr>
+    <tr>
+      <th>16998</th>
+      <td>-124.30</td>
+      <td>41.80</td>
+      <td>19.0</td>
+      <td>2672.0</td>
+      <td>552.0</td>
+      <td>1298.0</td>
+      <td>478.0</td>
+      <td>1.9797</td>
+      <td>85800.0</td>
+    </tr>
+    <tr>
+      <th>16999</th>
+      <td>-124.35</td>
+      <td>40.54</td>
+      <td>52.0</td>
+      <td>1820.0</td>
+      <td>300.0</td>
+      <td>806.0</td>
+      <td>270.0</td>
+      <td>3.0147</td>
+      <td>94600.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>17000 rows × 9 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="id1">
+<h2>先頭の数件だけを表示<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>データを数件のみ確認したい場合は、データフレームがもつ <code class="docutils literal notranslate"><span class="pre">df.head()</span></code> メソッドを使用します。
+<code class="docutils literal notranslate"><span class="pre">df.head()</span></code> はデフォルトで先頭から 5 件のデータを表示しますが、<code class="docutils literal notranslate"><span class="pre">df.head(3)</span></code> のように引数に表示したいデータ件数を指定すると、指定された件数だけを表示することもできます。
+それでは、<code class="docutils literal notranslate"><span class="pre">df.head()</span></code> を実行してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>特定の列を抽出したい場合は、<code class="docutils literal notranslate"><span class="pre">df</span></code> に対し、Python の辞書オブジェクトに行うように <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使って取り出したい列の名前を指定します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -114.31
+1   -114.47
+2   -114.56
+Name: longitude, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>CSV ファイルの保存<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Pandas ではデータフレームオブジェクトの内容を CSV ファイルとして保存するための <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code> というメソッドが用意されています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;sample.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>sample.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample.csv
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>データフレームの形<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>データフレームオブジェクトの行数と列数を確認するには、<code class="docutils literal notranslate"><span class="pre">df.shape()</span></code> メソッドを用います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 形の確認</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(17000, 9)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>統計量の算出<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>データフレームには、中のデータに対し統計量を計算するためのメソッドも用意されています。
+代表的なものを紹介します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 平均</span>
+<span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude               -119.562108
+latitude                  35.625225
+housing_median_age        28.589353
+total_rooms             2643.664412
+total_bedrooms           539.410824
+population              1429.573941
+households               501.221941
+median_income              3.883578
+median_house_value    207300.912353
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 分散</span>
+<span class="n">df</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude             4.020692e+00
+latitude              4.568221e+00
+housing_median_age    1.584310e+02
+total_rooms           4.752169e+06
+total_bedrooms        1.776618e+05
+population            1.317566e+06
+households            1.478563e+05
+median_income         3.641061e+00
+median_house_value    1.345223e+10
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 各列の None, NaN, NaT のいずれでもない値の数</span>
+<span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude             17000
+latitude              17000
+housing_median_age    17000
+total_rooms           17000
+total_bedrooms        17000
+population            17000
+households            17000
+median_income         17000
+median_house_value    17000
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>ここで、データの特徴をおおまかに調べるために便利な <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> メソッドを実行してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの概要</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+      <td>17000.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>-119.562108</td>
+      <td>35.625225</td>
+      <td>28.589353</td>
+      <td>2643.664412</td>
+      <td>539.410824</td>
+      <td>1429.573941</td>
+      <td>501.221941</td>
+      <td>3.883578</td>
+      <td>207300.912353</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.005166</td>
+      <td>2.137340</td>
+      <td>12.586937</td>
+      <td>2179.947071</td>
+      <td>421.499452</td>
+      <td>1147.852959</td>
+      <td>384.520841</td>
+      <td>1.908157</td>
+      <td>115983.764387</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-124.350000</td>
+      <td>32.540000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+      <td>0.499900</td>
+      <td>14999.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-121.790000</td>
+      <td>33.930000</td>
+      <td>18.000000</td>
+      <td>1462.000000</td>
+      <td>297.000000</td>
+      <td>790.000000</td>
+      <td>282.000000</td>
+      <td>2.566375</td>
+      <td>119400.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-118.490000</td>
+      <td>34.250000</td>
+      <td>29.000000</td>
+      <td>2127.000000</td>
+      <td>434.000000</td>
+      <td>1167.000000</td>
+      <td>409.000000</td>
+      <td>3.544600</td>
+      <td>180400.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>-118.000000</td>
+      <td>37.720000</td>
+      <td>37.000000</td>
+      <td>3151.250000</td>
+      <td>648.250000</td>
+      <td>1721.000000</td>
+      <td>605.250000</td>
+      <td>4.767000</td>
+      <td>265000.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>-114.310000</td>
+      <td>41.950000</td>
+      <td>52.000000</td>
+      <td>37937.000000</td>
+      <td>6445.000000</td>
+      <td>35682.000000</td>
+      <td>6082.000000</td>
+      <td>15.000100</td>
+      <td>500001.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>また、もうひとつ便利なメソッドに相関係数を算出する <code class="docutils literal notranslate"><span class="pre">df.corr()</span></code> があります。
+入力変数間や入出力間の相関係数を確認することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 相関係数の算出</span>
+<span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>longitude</th>
+      <td>1.000000</td>
+      <td>-0.925208</td>
+      <td>-0.114250</td>
+      <td>0.047010</td>
+      <td>0.071802</td>
+      <td>0.101674</td>
+      <td>0.059628</td>
+      <td>-0.015485</td>
+      <td>-0.044982</td>
+    </tr>
+    <tr>
+      <th>latitude</th>
+      <td>-0.925208</td>
+      <td>1.000000</td>
+      <td>0.016454</td>
+      <td>-0.038773</td>
+      <td>-0.069373</td>
+      <td>-0.111261</td>
+      <td>-0.074902</td>
+      <td>-0.080303</td>
+      <td>-0.144917</td>
+    </tr>
+    <tr>
+      <th>housing_median_age</th>
+      <td>-0.114250</td>
+      <td>0.016454</td>
+      <td>1.000000</td>
+      <td>-0.360984</td>
+      <td>-0.320434</td>
+      <td>-0.295890</td>
+      <td>-0.302754</td>
+      <td>-0.115932</td>
+      <td>0.106758</td>
+    </tr>
+    <tr>
+      <th>total_rooms</th>
+      <td>0.047010</td>
+      <td>-0.038773</td>
+      <td>-0.360984</td>
+      <td>1.000000</td>
+      <td>0.928403</td>
+      <td>0.860170</td>
+      <td>0.919018</td>
+      <td>0.195383</td>
+      <td>0.130991</td>
+    </tr>
+    <tr>
+      <th>total_bedrooms</th>
+      <td>0.071802</td>
+      <td>-0.069373</td>
+      <td>-0.320434</td>
+      <td>0.928403</td>
+      <td>1.000000</td>
+      <td>0.881169</td>
+      <td>0.980920</td>
+      <td>-0.013495</td>
+      <td>0.045783</td>
+    </tr>
+    <tr>
+      <th>population</th>
+      <td>0.101674</td>
+      <td>-0.111261</td>
+      <td>-0.295890</td>
+      <td>0.860170</td>
+      <td>0.881169</td>
+      <td>1.000000</td>
+      <td>0.909247</td>
+      <td>-0.000638</td>
+      <td>-0.027850</td>
+    </tr>
+    <tr>
+      <th>households</th>
+      <td>0.059628</td>
+      <td>-0.074902</td>
+      <td>-0.302754</td>
+      <td>0.919018</td>
+      <td>0.980920</td>
+      <td>0.909247</td>
+      <td>1.000000</td>
+      <td>0.007644</td>
+      <td>0.061031</td>
+    </tr>
+    <tr>
+      <th>median_income</th>
+      <td>-0.015485</td>
+      <td>-0.080303</td>
+      <td>-0.115932</td>
+      <td>0.195383</td>
+      <td>-0.013495</td>
+      <td>-0.000638</td>
+      <td>0.007644</td>
+      <td>1.000000</td>
+      <td>0.691871</td>
+    </tr>
+    <tr>
+      <th>median_house_value</th>
+      <td>-0.044982</td>
+      <td>-0.144917</td>
+      <td>0.106758</td>
+      <td>0.130991</td>
+      <td>0.045783</td>
+      <td>-0.027850</td>
+      <td>0.061031</td>
+      <td>0.691871</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id5">
+<h2>並べ替え<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>データフレームのある列を抽出し、<code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code> メソッドを呼び出すことで値の<strong>並べ替え (sort)</strong> を行うことができます。
+なお、このメソッドは並べ替えが終わったあとの値でもとのデータフレーム内の値を置き換えることまでは行わず、結果を返します。
+そこで、別の変数で結果を受け取り、始めの 5 行を表示することで並べ替えが行われたことを確認してみましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code> は、デフォルトでは<strong>昇順 (ascending)</strong> に並べ替えを行います。昇順とは、だんだん値が大きくなっていくように並べ替えるときの並べ方のことで、逆にだんだん値が小さくなっていくように並べ替えるときは、<strong>降順 (descending)</strong> に並べると言います。</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.sort_values()</span></code> は並べ替えを行いたい列の名前を <code class="docutils literal notranslate"><span class="pre">by</span></code> という引数で受け取ります。また、デフォルトでは昇順に並べ替えを行います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># total_rooms 列の値を昇順に並べ替え</span>
+<span class="n">df_as</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_as</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2990</th>
+      <td>-117.79</td>
+      <td>35.21</td>
+      <td>4.0</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+      <td>2.3750</td>
+      <td>137500.0</td>
+    </tr>
+    <tr>
+      <th>16309</th>
+      <td>-122.50</td>
+      <td>37.79</td>
+      <td>52.0</td>
+      <td>8.0</td>
+      <td>1.0</td>
+      <td>13.0</td>
+      <td>1.0</td>
+      <td>15.0001</td>
+      <td>500001.0</td>
+    </tr>
+    <tr>
+      <th>8188</th>
+      <td>-118.44</td>
+      <td>34.28</td>
+      <td>46.0</td>
+      <td>11.0</td>
+      <td>11.0</td>
+      <td>24.0</td>
+      <td>13.0</td>
+      <td>2.8750</td>
+      <td>162500.0</td>
+    </tr>
+    <tr>
+      <th>15369</th>
+      <td>-122.29</td>
+      <td>37.81</td>
+      <td>46.0</td>
+      <td>12.0</td>
+      <td>4.0</td>
+      <td>18.0</td>
+      <td>7.0</td>
+      <td>0.4999</td>
+      <td>67500.0</td>
+    </tr>
+    <tr>
+      <th>15656</th>
+      <td>-122.37</td>
+      <td>37.60</td>
+      <td>26.0</td>
+      <td>15.0</td>
+      <td>3.0</td>
+      <td>11.0</td>
+      <td>3.0</td>
+      <td>5.0480</td>
+      <td>350000.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>降順に並べ替える場合は、<code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> という引数の指定を行います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># total_rooms の列の値を降順に並べ替え</span>
+<span class="n">df_de</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;total_rooms&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_de</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2871</th>
+      <td>-117.74</td>
+      <td>33.89</td>
+      <td>4.0</td>
+      <td>37937.0</td>
+      <td>5471.0</td>
+      <td>16122.0</td>
+      <td>5189.0</td>
+      <td>7.4947</td>
+      <td>366300.0</td>
+    </tr>
+    <tr>
+      <th>12772</th>
+      <td>-121.79</td>
+      <td>36.64</td>
+      <td>11.0</td>
+      <td>32627.0</td>
+      <td>6445.0</td>
+      <td>28566.0</td>
+      <td>6082.0</td>
+      <td>2.3087</td>
+      <td>118800.0</td>
+    </tr>
+    <tr>
+      <th>2969</th>
+      <td>-117.78</td>
+      <td>34.03</td>
+      <td>8.0</td>
+      <td>32054.0</td>
+      <td>5290.0</td>
+      <td>15507.0</td>
+      <td>5050.0</td>
+      <td>6.0191</td>
+      <td>253900.0</td>
+    </tr>
+    <tr>
+      <th>8881</th>
+      <td>-118.78</td>
+      <td>34.16</td>
+      <td>9.0</td>
+      <td>30405.0</td>
+      <td>4093.0</td>
+      <td>12873.0</td>
+      <td>3931.0</td>
+      <td>8.0137</td>
+      <td>399200.0</td>
+    </tr>
+    <tr>
+      <th>1116</th>
+      <td>-117.12</td>
+      <td>33.52</td>
+      <td>4.0</td>
+      <td>30401.0</td>
+      <td>4957.0</td>
+      <td>13251.0</td>
+      <td>4339.0</td>
+      <td>4.5841</td>
+      <td>212300.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id6">
+<h2>データの選択<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>着目したい要素や、行、列を選択する方法を紹介します。
+<a class="reference external" href="https://tutorials.chainer.org/ja/09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a>の章で行ったように、入力値 <code class="docutils literal notranslate"><span class="pre">x</span></code> と目標値 <code class="docutils literal notranslate"><span class="pre">t</span></code> が別の列として同じ配列に格納されている場合は、指定した列だけを取り出す操作を行って、結果を別の変数に代入する操作を行います。
+このように、特定の列の選択や列を範囲指定して選択する機能が Pandas のデータフレームにも用意されています。</p>
+<p>今回は最後の列 <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> と、それ以外の列をそれぞれ取り出して、別々の変数に格納してみましょう。</p>
+<p>列や行の選択を行う方法は複数あります。
+ここでは、整数インデックスを用いてデータの部分選択を行う <code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code> を紹介します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの確認</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df.iloc[行, 列]</span>
+<span class="c1"># 0 行目 longitude 列の選択</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-114.31
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 行目 latitude 列の選択</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34.4
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">iloc</span></code> には NumPy の ndarray の中の値を部分的に選択するのと同様のスライス表記を用いることができます。
+負のインデックスを使い、末尾の要素からの個数を用いて位置指定を行うこともできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、最後の列を選択</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭3件の表示</span>
+<span class="n">t</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    66900.0
+1    80100.0
+2    85700.0
+Name: median_house_value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>1 行だけ、もしくは 1 列だけ抽出した場合は、<strong>シリーズ (series)</strong> オブジェクトが返されます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、先頭の列から末尾の列のひとつ手前までを選択</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の3件の表示</span>
+<span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><span class="xref myst">NumPy 入門</span>で紹介したようなスライス記法を用いる際の先頭位置の省略も行えます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、先頭の列から末尾の列のひとつ手前までを選択</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の3件の表示</span>
+<span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>行の数、列の数両方を複数選択した場合、データフレームオブジェクトが返ります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>条件指定による要素の選択<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>次に値に対する条件を指定してデータの選択を行う方法を紹介します。</p>
+<p>簡単のため、まず <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> 列を選択し、返ってきたシリーズオブジェクトに対して、比較演算子を使って<strong>各要素に対する条件</strong>を指定し、条件を満たすかどうかを全要素に対して調べた結果を取得してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># median_house_value 列を選択し、全要素に対し 70000 より大きいかどうかを計算</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1     True
+2     True
+3     True
+4    False
+Name: median_house_value, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、比較演算子の片方の辺にデータフレームやシリーズをおくと、指定された条件を満たすかどうかを全ての要素に対して計算することができます。
+結果は、各要素が条件を満たすか、満たさないかを表す <code class="docutils literal notranslate"><span class="pre">True</span></code>、<code class="docutils literal notranslate"><span class="pre">False</span></code> が各要素の位置に格納されたデータフレームやシリーズとなります。
+これを<strong>マスク (mask)</strong> と呼ぶことがあります。</p>
+<p>そして、データフレームやシリーズも NumPy の ndarray と同様に、マスクを使って要素を選択することができます。
+上の <code class="docutils literal notranslate"><span class="pre">mask</span></code> を <code class="docutils literal notranslate"><span class="pre">df</span></code> に <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使って与えることで、指定した条件を満たす要素だけを取り出すことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df[mask] の先頭 5 件を表示</span>
+<span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-114.58</td>
+      <td>33.63</td>
+      <td>29.0</td>
+      <td>1387.0</td>
+      <td>236.0</td>
+      <td>671.0</td>
+      <td>239.0</td>
+      <td>3.3438</td>
+      <td>74000.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-114.58</td>
+      <td>33.61</td>
+      <td>25.0</td>
+      <td>2907.0</td>
+      <td>680.0</td>
+      <td>1841.0</td>
+      <td>633.0</td>
+      <td>2.6768</td>
+      <td>82400.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="id8">
+<h3>複数の条件指定による要素の選択<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>複数の条件を組み合わせて要素を選択することも出来ます。
+その場合は条件式を <code class="docutils literal notranslate"><span class="pre">()</span></code> でくくって用います。
+<strong>論理和 (or)</strong> は <code class="docutils literal notranslate"><span class="pre">|</span></code>、<strong>論理積 (and)</strong> は <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> を用いて表します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 70000 より小さい または 80000 より大きい</span>
+<span class="n">mask2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     True
+1     True
+2     True
+3    False
+4     True
+Name: median_house_value, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask2</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-114.58</td>
+      <td>33.61</td>
+      <td>25.0</td>
+      <td>2907.0</td>
+      <td>680.0</td>
+      <td>1841.0</td>
+      <td>633.0</td>
+      <td>2.6768</td>
+      <td>82400.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 70000 より大きい かつ 80000 より小さい</span>
+<span class="n">mask3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
+1    False
+2    False
+3     True
+4    False
+Name: median_house_value, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask3</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-114.58</td>
+      <td>33.63</td>
+      <td>29.0</td>
+      <td>1387.0</td>
+      <td>236.0</td>
+      <td>671.0</td>
+      <td>239.0</td>
+      <td>3.3438</td>
+      <td>74000.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>-114.61</td>
+      <td>34.83</td>
+      <td>31.0</td>
+      <td>2478.0</td>
+      <td>464.0</td>
+      <td>1346.0</td>
+      <td>479.0</td>
+      <td>3.2120</td>
+      <td>70400.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>-114.98</td>
+      <td>33.82</td>
+      <td>15.0</td>
+      <td>644.0</td>
+      <td>129.0</td>
+      <td>137.0</td>
+      <td>52.0</td>
+      <td>3.2097</td>
+      <td>71300.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>-115.37</td>
+      <td>32.82</td>
+      <td>30.0</td>
+      <td>1602.0</td>
+      <td>322.0</td>
+      <td>1130.0</td>
+      <td>335.0</td>
+      <td>3.5735</td>
+      <td>71100.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>条件に当てはまる要素を調べる操作と、条件に当てはまる要素の選択まで、1 行にまとめて書くこともできます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-114.58</td>
+      <td>33.63</td>
+      <td>29.0</td>
+      <td>1387.0</td>
+      <td>236.0</td>
+      <td>671.0</td>
+      <td>239.0</td>
+      <td>3.3438</td>
+      <td>74000.0</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>-114.61</td>
+      <td>34.83</td>
+      <td>31.0</td>
+      <td>2478.0</td>
+      <td>464.0</td>
+      <td>1346.0</td>
+      <td>479.0</td>
+      <td>3.2120</td>
+      <td>70400.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>-114.98</td>
+      <td>33.82</td>
+      <td>15.0</td>
+      <td>644.0</td>
+      <td>129.0</td>
+      <td>137.0</td>
+      <td>52.0</td>
+      <td>3.2097</td>
+      <td>71300.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>-115.37</td>
+      <td>32.82</td>
+      <td>30.0</td>
+      <td>1602.0</td>
+      <td>322.0</td>
+      <td>1130.0</td>
+      <td>335.0</td>
+      <td>3.5735</td>
+      <td>71100.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id9">
+<h3>条件指定による要素の置換<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>条件を指定して選択した要素に対し、値の書き換えを行うことができます。
+例えば、<code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> 列に対していくつかの条件を別々に調べ、それぞれの条件を満たしている場合に特定の値を持つような新しい列を <code class="docutils literal notranslate"><span class="pre">df</span></code> に追加してみます。
+<code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> が</p>
+<ul class="simple">
+<li><p>60000 より小さい場合は 0</p></li>
+<li><p>60000 以上 70000未満は 1</p></li>
+<li><p>70000 以上 80000未満は 2</p></li>
+<li><p>80000 以上は 3</p></li>
+</ul>
+<p>となる値を持つ <code class="docutils literal notranslate"><span class="pre">target</span></code> という列を追加します。</p>
+<p>まず、何も値の入っていない <code class="docutils literal notranslate"><span class="pre">target</span></code> という列を <code class="docutils literal notranslate"><span class="pre">df</span></code> に追加します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 新しい列 target を None で初期化</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">target</span></code> という列の全ての要素は <code class="docutils literal notranslate"><span class="pre">None</span></code> となっています。
+この値を、条件指定によって書き換えます。</p>
+<p>まず各条件に対応するマスクを作成します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">60000</span>
+<span class="n">mask2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">70000</span><span class="p">)</span>
+<span class="n">mask3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)</span>
+<span class="n">mask4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">80000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>行や列を整数インデックスで選択する場合は <code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code> を使用しましたが、<strong>列を名前で指定する</strong>場合には <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> を用います。
+それでは、上で計算したマスクと名前による列指定を組み合わせて、各条件を満たす行の <code class="docutils literal notranslate"><span class="pre">target</span></code> 列の値を書き換えます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask1</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask2</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask3</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask4</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>結果を確認してみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭から 5 番目までを表示</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>欠損値の除去・補間<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<p>欠損値を含むデータの場合、一部の行の値が欠損している列に <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (Not a Number)、<code class="docutils literal notranslate"><span class="pre">None</span></code>、<code class="docutils literal notranslate"><span class="pre">NaT</span></code> (Not a Time) などが含まれる場合があります。
+欠損値への対策としては、欠損値を含む行、または列を除去するか、欠損値を特定の値で補完するという方法が考えられます。</p>
+<p>まずは、欠損値の除去の方法を紹介します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を人為的に作成</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># (0, &#39;longitude&#39;) の要素が NaN になっていることを確認</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値のあるレコードを削除</span>
+<span class="n">df_dropna</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># 先頭から 3 件を表示</span>
+<span class="n">df_dropna</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-114.57</td>
+      <td>33.64</td>
+      <td>14.0</td>
+      <td>1501.0</td>
+      <td>337.0</td>
+      <td>515.0</td>
+      <td>226.0</td>
+      <td>3.1917</td>
+      <td>73400.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>上の結果と見比べると、<code class="docutils literal notranslate"><span class="pre">NaN</span></code> を含んでいた 0 行目のデータが取り除かれていることが分かります。</p>
+<p>次に、平均を使った欠損値の補完を行ってみましょう。
+まずは、補完に使用する平均値の計算を行います。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>longitude               -119.562417
+latitude                  35.625225
+housing_median_age        28.589353
+total_rooms             2643.664412
+total_bedrooms           539.410824
+population              1429.573941
+households               501.221941
+median_income              3.883578
+median_house_value    207300.912353
+target                     2.808412
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>計算した各列の値の平均が格納されている <code class="docutils literal notranslate"><span class="pre">mean</span></code> を、<code class="docutils literal notranslate"><span class="pre">df.fillna()</span></code> メソッドに渡すことで、<code class="docutils literal notranslate"><span class="pre">mean</span></code> を用いた欠損値の補完を行うことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を mean で補完</span>
+<span class="n">df_fillna</span> <span class="o">=</span>  <span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+
+<span class="c1"># 先頭から 3 件を表示</span>
+<span class="n">df_fillna</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-119.562417</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.470000</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.560000</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>0 行目のデータの <code class="docutils literal notranslate"><span class="pre">longitude</span></code> 列に、<code class="docutils literal notranslate"><span class="pre">mean</span></code> の <code class="docutils literal notranslate"><span class="pre">longitude</span></code> 行の値が表示されていることが分かります。</p>
+<p>今回は欠損値が 1 箇所にだけあるデータを用いましたが、<code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code> や <code class="docutils literal notranslate"><span class="pre">df.fillna()</span></code> は、対象の全ての欠損値に対して上記のような操作を行うメソッドです。</p>
+</section>
+<section id="ndarray">
+<h2>ndarray とデータフレームを相互に変換<a class="headerlink" href="#ndarray" title="Permalink to this heading">#</a></h2>
+<p>scikit-learn では、データフレームやシリーズをそのまま扱うことができます。
+しかし、Chainer を含む他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
+そこで、データフレームを NumPy の ndarray に変換する方法を紹介します。</p>
+<p>まず、<code class="docutils literal notranslate"><span class="pre">df</span></code> がデータフレームであることを確認します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>次に、<code class="docutils literal notranslate"><span class="pre">df</span></code> の <code class="docutils literal notranslate"><span class="pre">values</span></code> という属性の型を調べてみます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy の ndarray になっています。
+データフレームやシリーズは、<code class="docutils literal notranslate"><span class="pre">values</span></code> という属性に値を ndarray として格納しています。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[        nan,  3.4190e+01,  1.5000e+01, ...,  1.4936e+00,
+         6.6900e+04,  1.0000e+00],
+       [-1.1447e+02,  3.4400e+01,  1.9000e+01, ...,  1.8200e+00,
+         8.0100e+04,  3.0000e+00],
+       [-1.1456e+02,  3.3690e+01,  1.7000e+01, ...,  1.6509e+00,
+         8.5700e+04,  3.0000e+00],
+       ...,
+       [-1.2430e+02,  4.1840e+01,  1.7000e+01, ...,  3.0313e+00,
+         1.0360e+05,  3.0000e+00],
+       [-1.2430e+02,  4.1800e+01,  1.9000e+01, ...,  1.9797e+00,
+         8.5800e+04,  3.0000e+00],
+       [-1.2435e+02,  4.0540e+01,  5.2000e+01, ...,  3.0147e+00,
+         9.4600e+04,  3.0000e+00]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<p>逆に、Python のリストや ndarray からシリーズやデータフレームを作ることもできます。
+NumPy で乱数を要素にもつ ndarray を生成し、これをデータフレームに変換してみましょう。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> のインスタンス化の際に、<code class="docutils literal notranslate"><span class="pre">data</span></code> 引数に元にしたい ndarray を与えます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ndarray -&gt; pd.DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.235076</td>
+      <td>-0.025952</td>
+      <td>0.635551</td>
+      <td>-1.233459</td>
+      <td>1.875983</td>
+      <td>0.471026</td>
+      <td>-0.846990</td>
+      <td>-0.727128</td>
+      <td>0.535281</td>
+      <td>-0.662937</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.232096</td>
+      <td>0.327020</td>
+      <td>0.073412</td>
+      <td>-0.291659</td>
+      <td>-0.835771</td>
+      <td>-1.806214</td>
+      <td>-0.840970</td>
+      <td>-0.731787</td>
+      <td>-0.773722</td>
+      <td>-0.657064</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.540820</td>
+      <td>0.140009</td>
+      <td>1.351297</td>
+      <td>2.709533</td>
+      <td>0.469056</td>
+      <td>-0.573746</td>
+      <td>-0.135772</td>
+      <td>0.352596</td>
+      <td>0.233631</td>
+      <td>-0.658191</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.527199</td>
+      <td>-1.129577</td>
+      <td>0.240729</td>
+      <td>-0.352903</td>
+      <td>-0.052596</td>
+      <td>-0.013748</td>
+      <td>-0.025188</td>
+      <td>1.117134</td>
+      <td>-0.308465</td>
+      <td>-1.696524</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-1.171764</td>
+      <td>0.503813</td>
+      <td>2.424457</td>
+      <td>0.262115</td>
+      <td>2.149916</td>
+      <td>0.984207</td>
+      <td>-1.187516</td>
+      <td>1.079167</td>
+      <td>-0.717449</td>
+      <td>-0.347563</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0.278999</td>
+      <td>-0.892611</td>
+      <td>0.429661</td>
+      <td>-2.511540</td>
+      <td>0.536308</td>
+      <td>0.811684</td>
+      <td>1.774007</td>
+      <td>1.392216</td>
+      <td>1.726091</td>
+      <td>0.561226</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0.724094</td>
+      <td>0.804228</td>
+      <td>1.049159</td>
+      <td>0.348018</td>
+      <td>-2.106214</td>
+      <td>0.185539</td>
+      <td>-0.556945</td>
+      <td>-1.541576</td>
+      <td>-0.614728</td>
+      <td>0.809802</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>-0.773019</td>
+      <td>1.327983</td>
+      <td>0.802475</td>
+      <td>-1.562232</td>
+      <td>-0.046259</td>
+      <td>-0.536498</td>
+      <td>-1.331944</td>
+      <td>0.280377</td>
+      <td>-1.572351</td>
+      <td>1.142880</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1.388867</td>
+      <td>0.551502</td>
+      <td>-0.372442</td>
+      <td>-0.093690</td>
+      <td>1.388269</td>
+      <td>-1.969065</td>
+      <td>1.312570</td>
+      <td>1.141520</td>
+      <td>-1.110659</td>
+      <td>0.704427</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>-1.660362</td>
+      <td>0.081545</td>
+      <td>0.332048</td>
+      <td>-1.252397</td>
+      <td>0.525961</td>
+      <td>0.352583</td>
+      <td>1.480100</td>
+      <td>1.378975</td>
+      <td>-1.596351</td>
+      <td>-0.642919</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id11">
+<h2>グラフの描画<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p>データフレームオブジェクトから直接可視化のための機能を呼び出すことができます。
+<a class="reference external" href="https://tutorials.chainer.org/ja/12_Introduction_to_Matplotlib.html">次の章</a>で紹介する Matplotlib というグラフ描画ライブラリを <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code> 機能を用いて利用することができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># グラフの描画</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x121ee8cc0&gt;
+</pre></div>
+</div>
+<img alt="../_images/37f8325f7596f3f7e0f8ba3b7f639d327458f55fb4748155e1116adec5d4abec.png" src="../_images/37f8325f7596f3f7e0f8ba3b7f639d327458f55fb4748155e1116adec5d4abec.png" />
+</div>
+</div>
+<p>Matplotlib の使い方は、次章で説明します。</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ja-edited"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="08_Introduction_to_NumPy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">NumPy 入門</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="12_Introduction_to_Matplotlib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matplotlib 入門</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">CSV ファイルの読み書き</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame の表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">先頭の数件だけを表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">CSV ファイルの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">データフレームの形</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">統計量の算出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">並べ替え</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">データの選択</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">条件指定による要素の選択</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">複数の条件指定による要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">条件指定による要素の置換</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">欠損値の除去・補間</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarray">ndarray とデータフレームを相互に変換</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">グラフの描画</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PlayGround
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
