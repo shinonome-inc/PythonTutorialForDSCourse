@@ -634,8 +634,6 @@ array[0] = 10
 
 # + [markdown] colab_type="text" id="6aq_3yNZv9c6"
 # `tuple` のように中身が変更できない性質のことを**イミュータブル (immutable)**であると言います。反対に、`list` のように中身が変更できる性質のことを**ミュータブル (mutable)**であると言います
-#
-# タプルも Chainer でデータセットを扱うときなどに頻出する型です。その性質と取り扱い方を覚えておきましょう。
 
 # + [markdown] colab_type="text" id="nV8Lp5jLNO66"
 # ### 辞書

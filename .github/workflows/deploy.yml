@@ -30,6 +30,10 @@ jobs:
       - name: Build the book
         run: |
           jupyter-book build .
+      
+      - name: toggle NAVIGATION_WITH_KEYS
+        run: |
+          sed -ie 's/NAVIGATION_WITH_KEYS: true/NAVIGATION_WITH_KEYS: false/' _build/html/_static/documentation_options.js
 
       # Deploy the book's HTML to gh-pages branch
       - name: GitHub Pages action

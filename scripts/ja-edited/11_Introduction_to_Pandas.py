@@ -170,35 +170,27 @@ df_de.head()
 # + [markdown] colab_type="text" id="33kVroZ235bY"
 # ## データの選択
 #
-# 着目したい要素や、行、列を選択する方法を紹介します。
-# [scikit-learn 入門](https://tutorials.chainer.org/ja/09_Introduction_to_Scikit-learn.html)の章で行ったように、入力値 `x` と目標値 `t` が別の列として同じ配列に格納されている場合は、指定した列だけを取り出す操作を行って、結果を別の変数に代入する操作を行います。
-# このように、特定の列の選択や列を範囲指定して選択する機能が Pandas のデータフレームにも用意されています。
-#
-# 今回は最後の列 `median_house_value` と、それ以外の列をそれぞれ取り出して、別々の変数に格納してみましょう。
-#
-# 列や行の選択を行う方法は複数あります。
-# ここでは、整数インデックスを用いてデータの部分選択を行う `df.iloc[]` を紹介します。
+# 着目したい要素や、行、列を選択する方法として、ここでは、行名や列名を用いてデータの部分選択を行う `df.loc[]` を紹介します。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 139} colab_type="code" id="e7WrVEj2zAhh" outputId="c44c0998-bcfe-49c9-b03b-cd3ceba9b7d7"
 # データの確認
 df.head(3)
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="UFTSn1GEzF77" outputId="ea04ca7f-5a1e-4846-8776-2bb3f91af285"
-# df.iloc[行, 列]
+# df.loc[行名, 列名]
 # 0 行目 longitude 列の選択
-df.iloc[0, 0]
+df.loc[0, "longitude"]
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="2U1AiMzizJ0U" outputId="dc6094e3-e4a4-4534-f467-2e71836d691d"
 # 1 行目 latitude 列の選択
-df.iloc[1, 1]
+df.loc[1, "latitude"]
 
 # + [markdown] colab_type="text" id="ZPpt5xaHzacL"
-# `iloc` には NumPy の ndarray の中の値を部分的に選択するのと同様のスライス表記を用いることができます。
-# 負のインデックスを使い、末尾の要素からの個数を用いて位置指定を行うこともできます。
+# `loc` は NumPy の ndarray の中の値を部分的に選択するのと同様のスライス表記を用いることができます。
 
 # + colab={} colab_type="code" id="HU4q_YwrzMuU"
-# すべての行の、最後の列を選択
-t = df.iloc[:, -1]
+# すべての行を選択
+t = df.loc[:, "housing_median_age"]
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 88} colab_type="code" id="NKR5jcDp0L2B" outputId="c47f3575-f3d9-4ed2-cb99-2cd7fe9d123f"
 # 先頭3件の表示
@@ -210,32 +202,6 @@ type(t)
 
 # + [markdown] colab_type="text" id="7TzrpxIL4F-D"
 # 1 行だけ、もしくは 1 列だけ抽出した場合は、**シリーズ (series)** オブジェクトが返されます。
-
-# + colab={} colab_type="code" id="0jN1f_720Q15"
-# すべての行の、先頭の列から末尾の列のひとつ手前までを選択
-x = df.iloc[:, 0:-1]
-# -
-
-# 先頭の3件の表示
-x.head(3)
-
-# + [markdown] colab_type="text" id="aiH3wkgD0Z08"
-# [NumPy 入門](08_Introduction_to_NumPy_ja.ipynb)で紹介したようなスライス記法を用いる際の先頭位置の省略も行えます。
-
-# + colab={} colab_type="code" id="9M3-hDef0RAc"
-# すべての行の、先頭の列から末尾の列のひとつ手前までを選択
-x = df.iloc[:, :-1]
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 139} colab_type="code" id="yLWcPbBs0l16" outputId="0ab8e02c-7579-49dc-f8c8-948a66e0023c"
-# 先頭の3件の表示
-x.head(3)
-# -
-
-# 行の数、列の数両方を複数選択した場合、データフレームオブジェクトが返ります。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="r2bo3Yyp4aeN" outputId="a43559d7-7ed6-4421-8244-2e08170aa216"
-# 型の確認
-type(x)
 
 # + [markdown] colab_type="text" id="zeCTdqHL7q5i"
 # ## 条件指定による要素の選択
@@ -260,7 +226,7 @@ mask.head()
 # 上の `mask` を `df` に `[]` を使って与えることで、指定した条件を満たす要素だけを取り出すことができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="ET6N9DZi6VSV" outputId="70a034b4-0c14-4f93-d605-b006c5523ed7"
-# df[mask] の先頭 5 件を表示
+# df[mask] の先頭 5 行を表示
 df[mask].head()
 
 # + [markdown] colab_type="text" id="sRw6qcbi7U8t"
@@ -279,22 +245,17 @@ mask2.head()
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="spv0H36u9mjf" outputId="aa5197a5-9356-429b-d687-f8f4fff0923c"
 df[mask2].head()
+# -
+
+# このように複雑な条件で要素を選択する際は `query` メソッドを使用すると簡潔に書くことができます。
+
+# 70000 より小さい または 80000 より大きい
+df.query("median_house_value < 70000 | 80000 < median_house_value")
+
 
 # + colab={} colab_type="code" id="1El4-CLU7UPA"
 # 70000 より大きい かつ 80000 より小さい
-mask3 = (df['median_house_value'] > 70000) & (df['median_house_value'] < 80000)
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 124} colab_type="code" id="EDxNGNDp6VOl" outputId="07199cac-7d17-4b2c-9b85-534704636d09"
-mask3.head()
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="tD0geZQw9lt5" outputId="07ce72fb-b71a-472f-b98b-f46f1e010a9d"
-df[mask3].head()
-
-# + [markdown] colab_type="text" id="fbPB_J8H9ayc"
-# 条件に当てはまる要素を調べる操作と、条件に当てはまる要素の選択まで、1 行にまとめて書くこともできます。
-
-# + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="lNcH1ii_6N2O" outputId="d5bd3b32-2123-48e3-c889-4ca6eaea9599"
-df[(df['median_house_value'] > 70000) & (df['median_house_value'] < 80000)].head()
+df.query("70000 < median_house_value < 80000")
 
 # + [markdown] colab_type="text" id="vUdEP78l-JeI"
 # ### 条件指定による要素の置換
@@ -323,16 +284,15 @@ df.head()
 # `target` という列の全ての要素は `None` となっています。
 # この値を、条件指定によって書き換えます。
 #
-# まず各条件に対応するマスクを作成します。
+# まず各条件に対応するマスクを作成します。選択まではせずに、マスクだけ作成する場合は、`query` ではなく `eval` が使用できます。
 
 # + colab={} colab_type="code" id="l3DK9ZtI6NsT"
-mask1 = df['median_house_value'] < 60000
-mask2 = (df['median_house_value'] >= 60000) & (df['median_house_value'] < 70000)
-mask3 = (df['median_house_value'] >= 70000) & (df['median_house_value'] < 80000)
-mask4 = df['median_house_value'] >= 80000
+mask1 = df.eval("median_house_value < 60000")
+mask2 = df.eval("60000 <= median_house_value < 70000")
+mask3 = df.eval("70000 <= median_house_value < 80000")
+mask4 = df.eval("80000 <= median_house_value")
 
 # + [markdown] colab_type="text" id="wVdng5KDB5o1"
-# 行や列を整数インデックスで選択する場合は `df.iloc[]` を使用しましたが、**列を名前で指定する**場合には `df.loc[]` を用います。
 # それでは、上で計算したマスクと名前による列指定を組み合わせて、各条件を満たす行の `target` 列の値を書き換えます。
 
 # + colab={} colab_type="code" id="KK5Hw7fv6Nou"
@@ -358,7 +318,7 @@ df.head()
 
 # + colab={} colab_type="code" id="aoE0QNhuDRyQ"
 # 欠損値を人為的に作成
-df.iloc[0, 0] = None
+df.loc[0, "longitude"] = None
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="qZgx5pchDRua" outputId="24908301-5d06-4d7c-ad9b-0367afb0c25d"
 # (0, 'longitude') の要素が NaN になっていることを確認
@@ -400,7 +360,7 @@ df_fillna.head(3)
 # ## ndarray とデータフレームを相互に変換
 #
 # scikit-learn では、データフレームやシリーズをそのまま扱うことができます。
-# しかし、Chainer を含む他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
+# しかし、他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
 # そこで、データフレームを NumPy の ndarray に変換する方法を紹介します。
 #
 # まず、`df` がデータフレームであることを確認します。
@@ -447,7 +407,7 @@ df
 # ## グラフの描画
 #
 # データフレームオブジェクトから直接可視化のための機能を呼び出すことができます。
-# [次の章](https://tutorials.chainer.org/ja/12_Introduction_to_Matplotlib.html)で紹介する Matplotlib というグラフ描画ライブラリを `df.plot()` 機能を用いて利用することができます。
+# [次の章](https://shinonome.io/PythonTutorialForDSCourse/ja-edited/12_Introduction_to_Matplotlib.html)で紹介する Matplotlib というグラフ描画ライブラリを `df.plot()` 機能を用いて利用することができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 364} colab_type="code" id="G23DsfMIIx7Z" outputId="f36a0f94-68b5-494c-f58a-b95263dbc365"
 # グラフの描画

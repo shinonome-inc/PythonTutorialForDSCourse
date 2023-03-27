@@ -15,13 +15,15 @@
 # + [markdown] colab_type="text" id="3-ewqmV8hszX"
 # # NumPy 入門
 #
-# 本章では、Python で数値計算を高速に行うためのライブラリ（[注釈1](#note1)）である NumPy の使い方を学びます。
-# 本章の目標は、[単回帰分析と重回帰分析](https://tutorials.chainer.org/ja/07_Regression_Analysis.html)の章で学んだ重回帰分析を行うアルゴリズムを**NumPy を用いて実装すること**です。
+# 本章では、Python で数値計算を高速に行うためのライブラリ [^ライブラリ] である NumPy の使い方を学びます。
+# 本章の目標は、[単回帰分析と重回帰分析](https://tutorials.chainer.org/ja/07_Regression_Analysis.html) で解説されている重回帰分析を行うアルゴリズムを**NumPy を用いて実装すること**です。
 #
-# NumPy による**多次元配列（multidimensional array）**の扱い方を知ることは、他の様々なライブラリを利用する際に役立ちます。
-# 例えば、様々な機械学習手法を統一的なインターフェースで利用できる **scikit-learn** や、ニューラルネットワークの記述・学習を行うためのフレームワークである **Chainer** は、NumPy に慣れておくことでとても使いやすくなります。
+# NumPy による **多次元配列（multidimensional array）** の扱い方を知ることは、他の様々なライブラリを利用する際に役立ちます。
+# 例えば、様々な機械学習手法を統一的なインターフェースで利用できる **scikit-learn** や、ニューラルネットワークの記述・学習を行うためのフレームワークである **PyTorch** は、NumPy に慣れておくことでとても使いやすくなります。
 #
 # それでは、まず NumPy の基礎的な使用方法を説明します。
+#
+# [^ライブラリ]: ライブラリとは、汎用性の高い複数の関数やクラスなどを再利用可能な形でひとまとまりにしたもので、Python の世界では**パッケージ**とも呼ばれます。また、Python で関数やクラスの定義、文などが書かれたファイルのことを**モジュール**と呼び、パッケージはモジュールが集まったものです。
 
 # + [markdown] colab_type="text" id="iPmvXIQThszZ"
 # ## NumPy を使う準備
@@ -48,7 +50,7 @@ import numpy as np
 # + [markdown] colab_type="text" id="SB5_Yx1qXAcN"
 # ## 多次元配列を定義する
 #
-# ベクトル・行列・テンソルなどは、プログラミング上は多次元配列により表現でき、NumPy では ndarray というクラスで多次元配列を表現します（[注釈2](#note2)）。早速、これを用いてベクトルを定義してみましょう。
+# ベクトル・行列・テンソルなどは、プログラミング上は多次元配列により表現でき、NumPy では ndarray というクラスで多次元配列を表現します。早速、これを用いてベクトルを定義してみましょう。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="HTartJBpvinm" outputId="0731ea56-3ac2-4ec5-c073-69a029d6d2c3"
 # ベクトルの定義
@@ -76,7 +78,7 @@ a.ndim
 
 # + [markdown] colab_type="text" id="ALEfYmAuhsz1"
 # これは、`len(a.shape)` と同じ値になります。
-# 今、`a` という ndarray は 1 次元配列なので、`a.shape` は要素数が 1 のタプルで、`ndim` の値は 1 でした（[注釈3](#note3)）。
+# 今、`a` という ndarray は 1 次元配列なので、`a.shape` は要素数が 1 のタプルで、`ndim` の値は 1 でした。
 
 # + [markdown] colab_type="text" id="oQcB5yZvhsz2"
 # では次に、$3 \times 3$ 行列を定義してみましょう。
@@ -395,7 +397,7 @@ c
 # + [markdown] colab_type="text" id="9dns4SENhs2T"
 # 形が同じ行列同士の場合と同様に計算することができました。
 #
-# これは NumPy が自動的に**ブロードキャスト（broadcast）**と呼ばれる操作を行っているためです。
+# これは NumPy が自動的に **ブロードキャスト（broadcast）** と呼ばれる操作を行っているためです。
 # これについて次節で説明します。
 
 # + [markdown] colab_type="text" id="zD5qR1Dvhs2V"
@@ -442,10 +444,10 @@ c
 #
 # **形の異なる配列同士の計算がブロードキャストによって可能になるためにはルールがあります。**
 #
-# それは、**「2 つの配列の各次元が同じ大きさになっているか、どちらかが 1 であること」**です。
+# それは、 **「2 つの配列の各次元が同じ大きさになっているか、どちらかが 1 であること」** です。
 # このルールを満たさない場合、NumPy は "ValueError: operands could not be broadcast together with shapes (1 つ目の配列の形) (2 つ目の配列の形)" というエラーを出します。
 #
-# ブロードキャストされた配列の各次元のサイズ（[注釈4](#note4)）は、入力された配列のその次元のサイズの中で最大の値と同じになっています。
+# ブロードキャストされた配列の各次元のサイズは、入力された配列のその次元のサイズの中で最大の値と同じになっています。
 # 入力された配列は、各次元のサイズが入力のうち大きい方のサイズと同じになるようブロードキャストされ、その拡張されたサイズで計算されます。
 #
 # もう少し具体例を見てみましょう。
@@ -469,7 +471,7 @@ print('\n(a + b).shape:', c.shape)
 
 # + [markdown] colab_type="text" id="o90A_pvhhs2u"
 # `a` の形は `(2, 1, 3)` で、`b` の形は `(3, 1)` でした。
-# この 2 つの配列の**末尾次元 (trailing dimension)**（[注釈5](#note5)） はそれぞれ 3 と 1 なので、ルールにあった「次元が同じサイズであるか、どちらかが 1 であること」を満たしています。
+# この 2 つの配列の**末尾次元 (trailing dimension)** はそれぞれ 3 と 1 なので、ルールにあった「次元が同じサイズであるか、どちらかが 1 であること」を満たしています。
 #
 # 次に、各配列の第 2 次元に注目してみましょう。
 # それぞれ 1 と 3 です。
@@ -670,7 +672,7 @@ np.array([
 # + [markdown] colab_type="text" id="rulZyy5osZxR"
 # ## NumPy を用いた重回帰分析
 #
-# [単回帰分析と重回帰分析](https://tutorials.chainer.org/ja/07_Regression_Analysis.html)の章で説明した重回帰分析を NumPy を用いて行いましょう。
+# [単回帰分析と重回帰分析](https://tutorials.chainer.org/ja/07_Regression_Analysis.html) で解説されている重回帰分析を NumPy を用いて行いましょう。
 #
 # 4 つのデータをまとめた、以下のようなデザイン行列が与えられたとします。
 
@@ -755,10 +757,10 @@ w = np.dot(xx_inv, xt)
 w
 
 # + [markdown] colab_type="text" id="XsIpR4_ehs43"
-# **以上の計算は、以下のように 1 行で行うこともできます。**
+# **以上の計算は、行列積の演算子 `@` を用いて 1 行で書くこともできます。**
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="SXPsTsIxhs43" outputId="c862c977-b762-480d-bcd1-cece5355ff10"
-w_ = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(t)
+w_ = np.linalg.inv(X.T @ X) @ X.T @ t
 
 w_
 
@@ -772,46 +774,3 @@ w_
 
 # + [markdown] colab_type="text" id="SxZkwFz8hs45"
 # 数式を NumPy による配列の計算に落とし込むことに慣れていくには少し時間がかかりますが、慣れると少ない量のコードで記述できるだけでなく、高速に計算が行なえるため、大きな恩恵があります。
-
-# + [markdown] colab_type="text" id="ky_Jm7KjyEsx"
-# <hr />
-#
-# <div class="alert alert-info">
-# **注釈 1**
-#
-# ライブラリとは、汎用性の高い複数の関数やクラスなどを再利用可能な形でひとまとまりにしたもので、Python の世界では**パッケージ**とも呼ばれます。また、Python で関数やクラスの定義、文などが書かれたファイルのことを**モジュール**と呼び、パッケージはモジュールが集まったものです。
-#
-# [▲上へ戻る](#ref_note1)
-# </div>
-#
-# <div class="alert alert-info">
-# **注釈 2**
-#
-# NumPy には matrix というクラスも存在しますが、本チュートリアルでは基本的に多次元配列を表す ndarray をベクトルや行列を表すために用います。
-#
-# [▲上へ戻る](#ref_note2)
-# </div>
-#
-# <div class="alert alert-info">
-# **注釈 3**
-#
-# これは、その多次元配列が表すテンソルの**階数（rank、以下ランク）**と対応します。
-#
-# [▲上へ戻る](#ref_note3)
-# </div>
-#
-# <div class="alert alert-info">
-# **注釈 4**
-#     
-# 「次元のサイズ」と言った場合はその次元の大きさを意味し、配列の `size` 属性とは異なるものを指しています。
-#
-# [▲上へ戻る](#ref_note4)
-# </div>
-#
-# <div class="alert alert-info">
-# **注釈 5**
-#     
-# 末尾次元（trailing dimension）とは、その配列の形を表すタプルの一番最後の値のことを指します。
-#
-# [▲上へ戻る](#ref_note5)
-# </div>

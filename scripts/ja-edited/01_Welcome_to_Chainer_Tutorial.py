@@ -130,7 +130,7 @@ print('Hello world!')
 # 上のセルに書き込まれているのは Python のコードで、与えられた文字列を表示する関数である `print()` に、`'Hello world!'` という文字列を渡しています。
 # これを今実行したため、その結果が下に表示されています。
 #
-# プログラミング言語の Python については、[次の章](https://tutorials.chainer.org/ja/02_Basics_of_Python.html) でより詳しく解説します。
+# プログラミング言語の Python については、[次の章](https://shinonome.io/PythonTutorialForDSCourse/ja-edited/02_01_Basics_of_Python_variable.html) でより詳しく解説します。
 
 # + [markdown] colab_type="text" id="f7vtQ2SmBlpx"
 # ### テキストセル
