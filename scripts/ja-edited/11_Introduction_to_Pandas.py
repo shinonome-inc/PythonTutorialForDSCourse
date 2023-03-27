@@ -177,7 +177,7 @@ df_de.head()
 df.head(3)
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 35} colab_type="code" id="UFTSn1GEzF77" outputId="ea04ca7f-5a1e-4846-8776-2bb3f91af285"
-# df.iloc[行名, 列名]
+# df.loc[行名, 列名]
 # 0 行目 longitude 列の選択
 df.loc[0, "longitude"]
 
@@ -293,7 +293,6 @@ mask3 = df.eval("70000 <= median_house_value < 80000")
 mask4 = df.eval("80000 <= median_house_value")
 
 # + [markdown] colab_type="text" id="wVdng5KDB5o1"
-# 行や列を整数インデックスで選択する場合は `df.iloc[]` を使用しましたが、**列を名前で指定する**場合には `df.loc[]` を用います。
 # それでは、上で計算したマスクと名前による列指定を組み合わせて、各条件を満たす行の `target` 列の値を書き換えます。
 
 # + colab={} colab_type="code" id="KK5Hw7fv6Nou"
@@ -319,7 +318,7 @@ df.head()
 
 # + colab={} colab_type="code" id="aoE0QNhuDRyQ"
 # 欠損値を人為的に作成
-df.iloc[0, 0] = None
+df.loc[0, "longitude"] = None
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 200} colab_type="code" id="qZgx5pchDRua" outputId="24908301-5d06-4d7c-ad9b-0367afb0c25d"
 # (0, 'longitude') の要素が NaN になっていることを確認
