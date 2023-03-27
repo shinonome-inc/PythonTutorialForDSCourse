@@ -15,7 +15,7 @@
 # + [markdown] colab_type="text" id="XfmMtuxKYRoO"
 # # Pandas確認課題
 #
-# このPandas確認問題は、データサイエンス100本ノックの問題で最低限必要な問題を抜粋したものですが、[Introduction_to_Pandas](./11_Introduction_to_Pandas.ipynb) に掲載されていない機能が必要な問題もあります。
+# このPandas確認課題は、データサイエンス100本ノックの問題で最低限必要な問題を抜粋したものですが、[Introduction_to_Pandas](./11_Introduction_to_Pandas.ipynb) に掲載されていない機能が必要な問題もあります。
 # 初めて触るライブラリを調べながら使うというのはよくある光景です。この課題では皆さんにもそれに挑戦していただきます。  
 # ヒントとして検索キーワードなどを載せておくので、自力で調べながら解いてみましょう。  
 #

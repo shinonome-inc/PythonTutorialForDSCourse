@@ -400,7 +400,7 @@ df_fillna.head(3)
 # ## ndarray とデータフレームを相互に変換
 #
 # scikit-learn では、データフレームやシリーズをそのまま扱うことができます。
-# しかし、Chainer を含む他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
+# しかし、他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
 # そこで、データフレームを NumPy の ndarray に変換する方法を紹介します。
 #
 # まず、`df` がデータフレームであることを確認します。
@@ -447,7 +447,7 @@ df
 # ## グラフの描画
 #
 # データフレームオブジェクトから直接可視化のための機能を呼び出すことができます。
-# [次の章](https://tutorials.chainer.org/ja/12_Introduction_to_Matplotlib.html)で紹介する Matplotlib というグラフ描画ライブラリを `df.plot()` 機能を用いて利用することができます。
+# [次の章](https://shinonome.io/PythonTutorialForDSCourse/ja-edited/12_Introduction_to_Matplotlib.html)で紹介する Matplotlib というグラフ描画ライブラリを `df.plot()` 機能を用いて利用することができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 364} colab_type="code" id="G23DsfMIIx7Z" outputId="f36a0f94-68b5-494c-f58a-b95263dbc365"
 # グラフの描画

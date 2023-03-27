@@ -9,6 +9,7 @@ chapters:
   - file: ja-edited/02_02_Basics_of_Python_control.ipynb
   - file: exercise/02_02_Basics_of_Python_control.md
   - file: ja-edited/02_03_Basics_of_Python_function.ipynb
+  - file: exercise/02_03_Basics_of_Python_function.md
   - file: ja-edited/08_Introduction_to_NumPy.ipynb
   - file: ja-edited/11_Introduction_to_Pandas.ipynb
   - file: ja-edited/12_Introduction_to_Matplotlib.ipynb
