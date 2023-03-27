@@ -341,18 +341,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory">Google Colaboratory の基本</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab">Colab を開く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-in-colab">Open in Colab ボタン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab">教材を Colab で開く</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Colab の基本的な使い方</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">コードセル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">テキストセル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Colab の基本的な使い方</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">コードセル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">テキストセル</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab-google-drive">Colab から Google Drive を使う</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu">GPU を使用する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Colab の便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Colab の便利なショートカット</a></li>
 </ul>
 </li>
 </ul>
@@ -368,22 +366,17 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>はじめに<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>このチュートリアルは、機械学習やディープラーニングの仕組みや使い方を理解したい<strong>大学学部生</strong>以上の方に向けて書かれたオンライン学習資料です</p>
-<p>機械学習の勉強を進めるために必要な数学の知識から、Python というプログラミング言語を用いたコーディングの基本、機械学習・ディープラーニングの基礎的な理論、画像認識や自然言語処理などに機械学習を応用する方法に至るまで、幅広いトピックを解説しています。</p>
-<p>機械学習を学び始めようとすると、ある程度、線形代数や確率統計といった数学の知識から、何らかのプログラミング言語が使えることなどが必要となってきます。
-しかし、そういった数学やプログラミングの全てに精通していなければ機械学習について学び始められないかというと、必ずしもそうではありません。</p>
-<p>本チュートリアルでは、機械学習やディープラーニングに興味を持った方が、まず必要になる最低限の数学とプログラミングの知識から学び始められるように、資料を充実させています。</p>
-<p>そのため、できる限りこのサイト以外の教科書や資料を探さなくても、<strong>このサイトだけで機械学習・ディープラーニングに入門できる</strong>ことを目指して、作られています。初学者の方が「何から学び始めればいいのか」と迷うことなく学習を始められることを目指したサイトです。</p>
-<p>また、本チュートリアルの特徴として、資料の中に登場するコードが、Google Colaboratory というサービスを利用することで<strong>そのままブラウザ上で実行できるようになっている</strong>という点があります。</p>
-<p>ブラウザだけでコードを書き、実行して、結果を確認することができれば、説明に使われたサンプルコードを実行して結果を確かめるために、手元のコンピュータで環境構築を行う必要がなくなります。</p>
-<p>本章ではまず、この <strong>Google Colaboratory</strong> というサービスの利用方法を説明します。</p>
-<section id="id2">
-<h2>必要なもの<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>本教材は <a class="reference external" href="https://tutorials.chainer.org/ja/">Chainer チュートリアル</a> をベースに作成されています。</p>
 <ul class="simple">
+<li><p>必要なもの</p>
+<ul>
 <li><p>Google アカウント（お持ちでない場合は、こちらからお作りください：<a class="reference external" href="https://accounts.google.com/signup">Google アカウントの作成</a>）</p></li>
-<li><p>ウェブブラウザ（ Google Colaboratory はほとんどの主要なブラウザで動作します。PC 版の Chrome と Firefox では動作が検証されています。）</p></li>
+<li><p>ウェブブラウザ（Google Colaboratory はほとんどの主要なブラウザで動作します。PC 版の Chrome と Firefox では動作が検証されています。）</p></li>
+<li><p>GitHub アカウント（課題の提出に使用します。）</p></li>
+<li><p>VSCode などのエディタ（課題のプログラムの実装に使用します。）</p></li>
 </ul>
-</section>
+</li>
+</ul>
 <section id="google-colaboratory">
 <h2>Google Colaboratory の基本<a class="headerlink" href="#google-colaboratory" title="Permalink to this heading">#</a></h2>
 <p>Google Colaboratory（以下 Colab ）は、クラウド上で <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a>  環境を提供する Google のウェブサービスです。Jupyter Notebook はブラウザ上で主に以下のようなことが可能なオープンソースのウェブアプリケーションであり、データ分析の現場や研究、教育などで広く用いられています。</p>
@@ -395,41 +388,27 @@ document.write(`
 学びはじめのうちは、数分から数時間程度で終わる処理がほとんどであるため、気にする必要はありませんが、本格的に使っていく場合は有料のクラウドサービスを利用するなどして、環境を整えるようにしましょう。</p>
 <p>以降では、その基本的な使い方を説明します。</p>
 <section id="colab">
-<h3>Colab を開く<a class="headerlink" href="#colab" title="Permalink to this heading">#</a></h3>
-<p>まずは以下のURLにアクセスして、ブラウザで Colab を開いてください。</p>
-<p><a class="reference external" href="https://colab.research.google.com/">https://colab.research.google.com/</a></p>
-<p>「Colaboratory へようこそ」というタイトルの Jupyter Notebook が表示されます。</p>
-<p>次に、タイトルの下にある 「ファイル」 から、「Python 3 の新しいノートブック」 を選択し、まっさらな Jupyter Notebook を作成しましょう。</p>
-<p><img alt="create new notebook" src="../_images/01_create_new_notebook.png" /></p>
-<p>Google アカウントにまだログインしていなかった場合は、以下のようなメッセージが表示されます。</p>
-<p><img alt="please login" src="../_images/01_02.png" /></p>
-<p>その場合は、「ログイン」 をクリックして、Google アカウントでログインしてください。</p>
-<p>ログインが完了すると、以下のような画面が表示され、準備完了です。
-もうすでに Python を使ったプログラミングを開始する準備が整っています。</p>
-<p><img alt="new python3 notebook" src="../_images/01_03.png" /></p>
-</section>
-<section id="open-in-colab">
-<h3>Open in Colab ボタン<a class="headerlink" href="#open-in-colab" title="Permalink to this heading">#</a></h3>
-<p>このチュートリアルの一部の章には、<code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">in</span> <span class="pre">Colab</span></code> と書かれた以下のようなボタンがページ上部に設置されています。</p>
-<p><a class="reference external" href="https://colab.research.google.com/github/chainer/tutorials/blob/master/ja/01_Welcome_to_Chainer_Tutorial_ja.ipynb"><img alt="open in colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
-<p>このボタンを押すと、ブラウザで見ている資料が、Colab 上で  Jupyter Notebook として開かれます。
+<h3>教材を Colab で開く<a class="headerlink" href="#colab" title="Permalink to this heading">#</a></h3>
+<p>このチュートリアルの右上のロケット 🚀 のボタンにカーソルを重ねると、「<code class="docutils literal notranslate"><span class="pre">Colab</span></code>」というリンクが表示されます。</p>
+<p><img alt="colab" src="../_images/colab_button.png" /></p>
+<p>このリンクをクリックすると、ブラウザで見ている資料が、Colab 上で  Jupyter Notebook として開かれます。
 すると、チュートリアルの中で説明に用いられているコードを、<strong>実際に実行して結果を確認することができます。</strong></p>
-<p>それでは、早速上のボタンか、このページの上部に配置されている <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">in</span> <span class="pre">Colab</span></code> ボタンを押して、このページを Colab で開いてください。<br />
+<p>それでは、早速このページの右上に配置されている <code class="docutils literal notranslate"><span class="pre">Colab</span></code> ボタンを押して、このページを Colab で開いてみましょう。<br />
 すると、<code class="docutils literal notranslate"><span class="pre">Playground</span> <span class="pre">モード</span></code> という編集不可な状態でノートブックが Colab 上で開かれます。
 そこで、下図の位置にある <code class="docutils literal notranslate"><span class="pre">ドライブにコピー</span></code> というボタンを押して、自分の Google Drive 上にこのノートブックをコピーしてください。
 このボタンを押すと、コピーされたノートブックが自動的に開き、以降は内容に編集を加えたり、コードを実行したりすることができます。</p>
 <p><img alt="copy to mydrive" src="../_images/01_04.png" /></p>
 <p>この</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">in</span> <span class="pre">Colab</span></code> から Colab へ移動</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Colab</span></code> ボタンから Colab へ移動</p></li>
 <li><p>自分のドライブへノートブックをコピーする</p></li>
 <li><p>コードを実行しながら解説を読んでいく</p></li>
 </ol>
 <p>という手順が、本チュートリアルサイトのおすすめの利用方法です。</p>
 </section>
 </section>
-<section id="id3">
-<h2>Colab の基本的な使い方<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h2>Colab の基本的な使い方<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>Colab 上の Jupyter Notebook を以降、単に<strong>ノートブック</strong>と呼びます。</p>
 <p>ノートブックは、複数の<strong>セル</strong>と呼ばれるブロックを持つことができます。
 新しいノートブックを作った直後では、何も書かれていないセルが一つだけ存在している状態になっています。
@@ -437,8 +416,8 @@ document.write(`
 <p>セルには、<strong>コードセル</strong>と<strong>テキストセル</strong>の 2 種類があります。
 <strong>コードセル</strong> は Python のコードを書き込み、実行するためのセルであり、<strong>テキストセル</strong>は、Markdown 形式で文章を書くためのセルです。</p>
 <p>それぞれのセルタイプについてもう少し詳しく説明をします。</p>
-<section id="id4">
-<h3>コードセル<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>コードセル<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>コードセルは、Python のコードを書き込み、実行することができるセルです。
 実行するには、コードセルを選択した状態で、<code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> を押します。
 試しに、下のセルを選択して、<code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> を押してみてください。</p>
@@ -459,8 +438,8 @@ document.write(`
 これを今実行したため、その結果が下に表示されています。</p>
 <p>プログラミング言語の Python については、<a class="reference external" href="https://shinonome.io/PythonTutorialForDSCourse/ja-edited/02_01_Basics_of_Python_variable.html">次の章</a> でより詳しく解説します。</p>
 </section>
-<section id="id5">
-<h3>テキストセル<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3>テキストセル<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>テキストセルでは、Markdown 形式で記述された文章を扱います。
 試しに、このセルを<strong>ダブルクリック</strong>してみてください。
 テキストセルが編集モードになり、Markdown 形式で文章を装飾するための、先程までは表示されていなかった記号が見えるようになります。</p>
@@ -527,8 +506,8 @@ Jupyter Notebook では、コードセル中で <code class="docutils literal no
 <p><img alt="GPUの設定" src="../_images/01_08.png" /></p>
 <p>これで Colab 上で GPU を使用できるようになりました。</p>
 </section>
-<section id="id6">
-<h3>Colab の便利なショートカット<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>Colab の便利なショートカット<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>Colab を使用中に、セルのタイプの変更やセルの複製・追加などの操作をする場合は、メニューから該当する項目を選ぶ方法以外に、キーボードショートカットを利用する方法もあります。</p>
 <p>下記によく使う<strong>ショートカットキー</strong>をまとめておきます。
 多くのショートカットキーは<strong>二段階</strong>になっており、まず <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">M</span></code> を押してから、それぞれの機能によって異なるコマンドを入力する形になっています。</p>
@@ -629,18 +608,16 @@ Python では、<code class="docutils literal notranslate"><span class="pre">#</
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">必要なもの</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colaboratory">Google Colaboratory の基本</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab">Colab を開く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-in-colab">Open in Colab ボタン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab">教材を Colab で開く</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Colab の基本的な使い方</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">コードセル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">テキストセル</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Colab の基本的な使い方</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">コードセル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">テキストセル</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#colab-google-drive">Colab から Google Drive を使う</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu">GPU を使用する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Colab の便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Colab の便利なショートカット</a></li>
 </ul>
 </li>
 </ul>

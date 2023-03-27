@@ -582,10 +582,10 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.86442844, 0.8450032 , 0.10353401, 0.90162629, 0.93687872],
-       [0.63707028, 0.87230882, 0.19527465, 0.31974276, 0.62600455],
-       [0.28243394, 0.74583531, 0.53667886, 0.45658574, 0.84533644],
-       [0.28010687, 0.65173869, 0.47536904, 0.81149683, 0.45811517]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.90912372, 0.7590086 , 0.15575111, 0.50583183, 0.01539695],
+       [0.05511298, 0.19426965, 0.68915528, 0.57237172, 0.67529389],
+       [0.646106  , 0.28280382, 0.53734501, 0.06161646, 0.59230825],
+       [0.42981379, 0.64058802, 0.48022475, 0.09998002, 0.07724366]])
 </pre></div>
 </div>
 </div>
@@ -623,7 +623,7 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.845003200958272
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7590086004818302
 </pre></div>
 </div>
 </div>
@@ -646,8 +646,8 @@ ndarray はさらに、カンマ区切りで複数の次元に対するスライ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.87230882, 0.19527465, 0.31974276],
-       [0.74583531, 0.53667886, 0.45658574]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.19426965, 0.68915528, 0.57237172],
+       [0.28280382, 0.53734501, 0.06161646]])
 </pre></div>
 </div>
 </div>
@@ -679,10 +679,10 @@ Shape of center: (2, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.86442844, 0.8450032 , 0.10353401, 0.90162629, 0.93687872],
-       [0.63707028, 0.        , 0.        , 0.        , 0.62600455],
-       [0.28243394, 0.        , 0.        , 0.        , 0.84533644],
-       [0.28010687, 0.65173869, 0.47536904, 0.81149683, 0.45811517]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.90912372, 0.7590086 , 0.15575111, 0.50583183, 0.01539695],
+       [0.05511298, 0.        , 0.        , 0.        , 0.67529389],
+       [0.646106  , 0.        , 0.        , 0.        , 0.59230825],
+       [0.42981379, 0.64058802, 0.48022475, 0.09998002, 0.07724366]])
 </pre></div>
 </div>
 </div>
@@ -1117,27 +1117,27 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:
- [[[9 8 5]]
+ [[[3 0 6]]
 
- [[9 0 8]]]
+ [[0 7 4]]]
 
 a.shape: (2, 1, 3)
 
 b:
- [[3]
- [3]
- [6]]
+ [[4]
+ [1]
+ [5]]
 
 b.shape: (3, 1)
 
 a + b:
- [[[12 11  8]
-  [12 11  8]
-  [15 14 11]]
+ [[[ 7  4 10]
+  [ 4  1  7]
+  [ 8  5 11]]
 
- [[12  3 11]
-  [12  3 11]
-  [15  6 14]]]
+ [[ 4 11  8]
+  [ 1  8  5]
+  [ 5 12  9]]]
 
 (a + b).shape: (2, 3, 3)
 </pre></div>
@@ -1189,9 +1189,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3],
-       [3],
-       [6]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4],
+       [1],
+       [5]])
 </pre></div>
 </div>
 </div>
@@ -1203,9 +1203,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[3],
-        [3],
-        [6]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[4],
+        [1],
+        [5]]])
 </pre></div>
 </div>
 </div>
@@ -1217,11 +1217,11 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[3]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[4]],
 
-       [[3]],
+       [[1]],
 
-       [[6]]])
+       [[5]]])
 </pre></div>
 </div>
 </div>
@@ -1259,7 +1259,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.77 µs ± 14.8 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.8 µs ± 38.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1289,7 +1289,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.22 µs ± 0.519 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.23 µs ± 8.92 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1407,14 +1407,14 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[8, 9, 0, 7, 2, 8, 4, 9, 9, 1],
-       [1, 7, 0, 0, 9, 0, 4, 7, 0, 4],
-       [5, 3, 1, 9, 4, 0, 2, 4, 3, 7],
-       [6, 7, 9, 1, 7, 7, 4, 8, 5, 8],
-       [4, 9, 8, 2, 4, 6, 6, 7, 2, 0],
-       [1, 2, 0, 9, 0, 6, 9, 4, 5, 2],
-       [4, 8, 7, 9, 4, 8, 7, 0, 1, 6],
-       [1, 7, 4, 5, 6, 9, 3, 1, 6, 9]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 0, 2, 5, 5, 0, 2, 8, 4, 3],
+       [9, 9, 9, 7, 4, 1, 5, 3, 3, 0],
+       [6, 0, 9, 4, 9, 7, 5, 3, 1, 1],
+       [9, 2, 8, 8, 4, 8, 9, 4, 8, 4],
+       [1, 2, 3, 6, 5, 5, 1, 7, 2, 0],
+       [5, 9, 3, 9, 6, 9, 4, 3, 5, 7],
+       [4, 7, 7, 6, 7, 3, 4, 1, 7, 0],
+       [1, 7, 2, 0, 5, 9, 8, 5, 5, 8]])
 </pre></div>
 </div>
 </div>
@@ -1427,7 +1427,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.75
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.8125
 </pre></div>
 </div>
 </div>
@@ -1440,7 +1440,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.4625
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.42734375
 </pre></div>
 </div>
 </div>
@@ -1453,7 +1453,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.076117683054405
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.9029887616041505
 </pre></div>
 </div>
 </div>
@@ -1494,7 +1494,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.7, 3.2, 3.8, 6.2, 4.8, 3.8, 5.4, 5.1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.8, 5. , 4.5, 6.4, 3.2, 6. , 4.6, 5. ])
 </pre></div>
 </div>
 </div>
@@ -1517,7 +1517,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.7, 3.2, 3.8, 6.2, 4.8, 3.8, 5.4, 5.1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.8, 5. , 4.5, 6.4, 3.2, 6. , 4.6, 5. ])
 </pre></div>
 </div>
 </div>
