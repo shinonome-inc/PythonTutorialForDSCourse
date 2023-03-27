@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>【確認課題】Python 入門 &#8212; データコース教材</title>
+    <title>【確認課題】Matplotlib &#8212; データコース教材</title>
   
   
   
@@ -61,13 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'exercise/02_01_Basics_of_Python_variable';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercise/matplotlib_quiz';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="制御構文" href="../ja-edited/02_02_Basics_of_Python_control.html" />
-    <link rel="prev" title="Python 入門" href="../ja-edited/02_01_Basics_of_Python_variable.html" />
+    <link rel="next" title="機械学習に使われる数学" href="../ja-edited/03_Basic_Math_for_Machine_Learning.html" />
+    <link rel="prev" title="Matplotlib 入門" href="../ja-edited/12_Introduction_to_Matplotlib.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_01_Basics_of_Python_variable.html">Python 入門</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">【確認課題】Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_02_Basics_of_Python_control.html">制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_03_Basics_of_Python_function.html">関数</a></li>
@@ -164,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/11_Introduction_to_Pandas.html">Pandas 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_quiz.html">【確認課題】Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">【確認課題】Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ja-edited/09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
 </ul>
@@ -213,6 +211,37 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/shinonome-inc/PythonTutorialForDSCourse/blob/main/./exercise/matplotlib_quiz.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
@@ -221,7 +250,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/exercise/02_01_Basics_of_Python_variable.md" target="_blank"
+      <li><a href="../_sources/exercise/matplotlib_quiz.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -231,7 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -303,7 +332,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>【確認課題】Python 入門</h1>
+    <h1>【確認課題】Matplotlib</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -313,14 +342,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">問 1. 計算</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">補足</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">問 2. 文字列</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">補足</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1問目</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2問目</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3問目</a></li>
 </ul>
             </nav>
         </div>
@@ -332,54 +356,106 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="python">
-<h1>【確認課題】Python 入門<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
+<h1>【確認課題】Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#使うライブラリ</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>japanize-matplotlib
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+<span class="n">japanize_matplotlib</span><span class="o">.</span><span class="n">japanize</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting japanize-matplotlib
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading japanize-matplotlib-1.1.3.tar.gz (4.1 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/4.1 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.1/4.1 MB</span> <span class=" -Color -Color-Red">3.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:02</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.5/4.1 MB</span> <span class=" -Color -Color-Red">6.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.9/4.1 MB</span> <span class=" -Color -Color-Red">8.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/4.1 MB</span> <span class=" -Color -Color-Red">9.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.9/4.1 MB</span> <span class=" -Color -Color-Red">11.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.6/4.1 MB</span> <span class=" -Color -Color-Red">12.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━ <span class=" -Color -Color-Green">3.5/4.1 MB</span> <span class=" -Color -Color-Red">14.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.1/4.1 MB</span> <span class=" -Color -Color-Red">14.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l-
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> done
+?25hRequirement already satisfied: matplotlib in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from japanize-matplotlib) (3.7.1)
+Requirement already satisfied: importlib-resources&gt;=3.2.0 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (5.12.0)
+Requirement already satisfied: numpy&gt;=1.20 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (1.24.2)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (1.4.4)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (4.39.2)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (3.0.9)
+Requirement already satisfied: packaging&gt;=20.0 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (23.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (9.4.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (1.0.7)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (2.8.2)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from matplotlib-&gt;japanize-matplotlib) (0.11.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: zipp&gt;=3.1.0 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from importlib-resources&gt;=3.2.0-&gt;matplotlib-&gt;japanize-matplotlib) (3.15.0)
+Requirement already satisfied: six&gt;=1.5 in /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;japanize-matplotlib) (1.16.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: japanize-matplotlib
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for japanize-matplotlib (setup.py) ... ?25l-
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> \
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> done
+?25h  Created wheel for japanize-matplotlib: filename=japanize_matplotlib-1.1.3-py3-none-any.whl size=4120274 sha256=4f234e9cac15d40174930f7019bcbcdaf375fd23bfeafdbe542973d9bae02398
+  Stored in directory: /home/runner/.cache/pip/wheels/4f/ca/96/4cc5e192421cceb077fbf4ffec533382edd416fd3fa0af0bbd
+Successfully built japanize-matplotlib
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: japanize-matplotlib
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed japanize-matplotlib-1.1.3
+</pre></div>
+</div>
+</div>
+</div>
 <section id="id1">
-<h2>問 1. 計算<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>提出ファイル：<code class="docutils literal notranslate"><span class="pre">quadratic_formula.py</span></code></p>
-<p>2 次方程式 <span class="math notranslate nohighlight">\(ax^2+bx+c=0\)</span> の解 <span class="math notranslate nohighlight">\(x\)</span> は、下式で求めることができます:</p>
-<p><span class="math notranslate nohighlight">\(x = \dfrac{-b\pm \sqrt{b^2 - 4ac}}{2a}\)</span></p>
-<p>この解の公式を実装して、次の 2 次方程式の解が得られるかを確認しましょう。</p>
-<p>(1) <span class="math notranslate nohighlight">\(x^2-6x+9=0\)</span> の解は <span class="math notranslate nohighlight">\(3\)</span><br />
-(2) <span class="math notranslate nohighlight">\(x^2+2x-8=0\)</span> の解は <span class="math notranslate nohighlight">\(2\)</span> と <span class="math notranslate nohighlight">\(-4\)</span><br />
-(3) <span class="math notranslate nohighlight">\(8x^2-6x-35=0\)</span> の解は <span class="math notranslate nohighlight">\(5/2\)</span> と <span class="math notranslate nohighlight">\(-7/4\)</span><br />
-(4) <span class="math notranslate nohighlight">\(x^2+1=0\)</span> の解は <span class="math notranslate nohighlight">\(j\)</span> と <span class="math notranslate nohighlight">\(-j\)</span>   ( <span class="math notranslate nohighlight">\(j\)</span> は虚数単位)</p>
-<!-- (x-3)^2 -->
-<!-- (x-2)(x+4) -->
-<!-- (2x-5)(4x+7) -->
-<!-- (x+j)(x-j) -->
+<h2>1問目<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>使うcsvはhist_data.csvです。下にコードを書いてください。</p>
+<p><img alt="問1" src="../_images/plot_1.png" /></p>
+</section>
 <section id="id2">
-<h3>補足<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>ルート（ <span class="math notranslate nohighlight">\(\sqrt{a}\)</span> ）は、2 分の 1 乗（ <span class="math notranslate nohighlight">\(a^{1/2}\)</span> ）として計算できます。</p></li>
-</ul>
+<h2>2問目<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>使うcsvはscatter_data.csvです。下にコードを書いてください。</p>
+<p><img alt="問2" src="../_images/plot_2.png" /></p>
 </section>
-</section>
-<hr class="docutils" />
 <section id="id3">
-<h2>問 2. 文字列<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>提出ファイル：<code class="docutils literal notranslate"><span class="pre">pi.py</span></code></p>
-<p><code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">I</span> <span class="pre">want</span> <span class="pre">a</span> <span class="pre">drink,</span> <span class="pre">alcoholic</span></code> の英単語の文字数を並べると 314159 になり、円周率の数字の並びと同じになります。</p>
-<p>この問題で実装するのは、24 単語からなる下の英文:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">How</span> <span class="n">I</span> <span class="n">want</span> <span class="n">a</span> <span class="n">drink</span><span class="p">,</span> <span class="n">alcoholic</span> <span class="n">of</span> <span class="n">course</span><span class="p">,</span> <span class="n">after</span> <span class="n">the</span> <span class="n">heavy</span> <span class="n">chapters</span> <span class="n">involving</span>
-<span class="n">quantum</span> <span class="n">mechanics</span><span class="o">.</span> <span class="n">All</span> <span class="n">of</span> <span class="n">thy</span> <span class="n">geometry</span><span class="p">,</span> <span class="n">Herr</span> <span class="n">Planck</span><span class="p">,</span> <span class="ow">is</span> <span class="n">fairly</span> <span class="n">hard</span><span class="o">.</span>
-</pre></div>
-</div>
-<p>の文字数を並べた文字列 (str 型) を出力するプログラムです。
-実行結果は円周率 24 桁目までの <code class="docutils literal notranslate"><span class="pre">314159265358979323846264</span></code> になるはずです。</p>
-<section id="id4">
-<h3>補足<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<ul>
-<li><p>求めるのは「英単語の文字数」なので記号は無視する必要があります。</p></li>
-<li><p>ヒント。下のコードのように <code class="docutils literal notranslate"><span class="pre">list,</span> <span class="pre">map,</span> <span class="pre">len</span></code> 関数を用いると、与えられたリストの各要素の文字数を得ることができます。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;bc&quot;</span><span class="p">,</span> <span class="s2">&quot;def&quot;</span><span class="p">]))</span>
-<span class="go">[1, 2, 3]</span>
-</pre></div>
-</div>
-<p>つまり、区切って文字を数えてくっつければ解けそう…？</p>
-</li>
-</ul>
-</section>
+<h2>3問目<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>使うcsvはline_data.csvです。下に2つの画像を表示するコードを書いてください。</p>
+<p><img alt="問3_1" src="../_images/plot_3_1.png" /></p>
+<p><img alt="問3_2" src="../_images/plot_3_2.png" /></p>
 </section>
 </section>
 
@@ -412,20 +488,20 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../ja-edited/02_01_Basics_of_Python_variable.html"
+       href="../ja-edited/12_Introduction_to_Matplotlib.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Python 入門</p>
+        <p class="prev-next-title">Matplotlib 入門</p>
       </div>
     </a>
     <a class="right-next"
-       href="../ja-edited/02_02_Basics_of_Python_control.html"
+       href="../ja-edited/03_Basic_Math_for_Machine_Learning.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">制御構文</p>
+        <p class="prev-next-title">機械学習に使われる数学</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -444,14 +520,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">問 1. 計算</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">補足</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">問 2. 文字列</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">補足</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1問目</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2問目</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3問目</a></li>
 </ul>
   </nav></div>
 

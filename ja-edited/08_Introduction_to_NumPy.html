@@ -66,8 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/08_Introduction_to_NumPy';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pandas 入門" href="11_Introduction_to_Pandas.html" />
-    <link rel="prev" title="関数" href="02_03_Basics_of_Python_function.html" />
+    <link rel="next" title="【確認課題】Numpy" href="../exercise/numpy_quiz.html" />
+    <link rel="prev" title="【確認課題】関数" href="../exercise/02_03_Basics_of_Python_function.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,16 +154,19 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_03_Basics_of_Python_function.html">【確認課題】関数</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/numpy_quiz.html">【確認課題】Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/pandas_quiz.html">【確認課題】Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
 </ul>
 
     </div>
@@ -341,20 +344,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">NumPy を使う準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多次元配列を定義する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">多次元配列の要素を選択する</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数による要素の選択</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">スライスによる要素の選択</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">整数配列による要素の選択</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">NumPy を使う準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">多次元配列を定義する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">多次元配列の要素を選択する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">整数による要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">スライスによる要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">整数配列による要素の選択</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarray">ndarray のデータ型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">多次元配列を用いた計算</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ブロードキャスト</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">行列積</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">基本的な統計量の求め方</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">NumPy を用いた重回帰分析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">多次元配列を用いた計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ブロードキャスト</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">行列積</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">基本的な統計量の求め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">NumPy を用いた重回帰分析</a></li>
 </ul>
             </nav>
         </div>
@@ -368,13 +371,13 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1>NumPy 入門<a class="headerlink" href="#numpy" title="Permalink to this heading">#</a></h1>
-<p>本章では、Python で数値計算を高速に行うためのライブラリ（<span class="xref myst">注釈1</span>）である NumPy の使い方を学びます。
-本章の目標は、<a class="reference external" href="https://tutorials.chainer.org/ja/07_Regression_Analysis.html">単回帰分析と重回帰分析</a>の章で学んだ重回帰分析を行うアルゴリズムを<strong>NumPy を用いて実装すること</strong>です。</p>
-<p>NumPy による**多次元配列（multidimensional array）**の扱い方を知ることは、他の様々なライブラリを利用する際に役立ちます。
-例えば、様々な機械学習手法を統一的なインターフェースで利用できる <strong>scikit-learn</strong> や、ニューラルネットワークの記述・学習を行うためのフレームワークである <strong>Chainer</strong> は、NumPy に慣れておくことでとても使いやすくなります。</p>
+<p>本章では、Python で数値計算を高速に行うためのライブラリ <a class="footnote-reference brackets" href="#id13" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> である NumPy の使い方を学びます。
+本章の目標は、<a class="reference external" href="https://tutorials.chainer.org/ja/07_Regression_Analysis.html">単回帰分析と重回帰分析</a> で解説されている重回帰分析を行うアルゴリズムを<strong>NumPy を用いて実装すること</strong>です。</p>
+<p>NumPy による <strong>多次元配列（multidimensional array）</strong> の扱い方を知ることは、他の様々なライブラリを利用する際に役立ちます。
+例えば、様々な機械学習手法を統一的なインターフェースで利用できる <strong>scikit-learn</strong> や、ニューラルネットワークの記述・学習を行うためのフレームワークである <strong>PyTorch</strong> は、NumPy に慣れておくことでとても使いやすくなります。</p>
 <p>それでは、まず NumPy の基礎的な使用方法を説明します。</p>
-<section id="id1">
-<h2>NumPy を使う準備<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h2>NumPy を使う準備<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>NumPy は Google Colaboratory（以下 Colab）上のノートブックにはデフォルトでインストールされているため、ここではインストールの方法は説明しません。自分のコンピュータに NumPy をインストールしたい場合は、こちらを参照してください。：<a class="reference external" href="https://scipy.org/install.html">Installing packages</a></p>
 <p>Colab 上ではインストール作業は必要ないものの、ノートブックを開いた時点ではまだ <code class="docutils literal notranslate"><span class="pre">numpy</span></code> モジュールが読み込まれていません。
 ライブラリの機能を利用するには、そのライブラリが提供するモジュールを読み込む必要があります。</p>
@@ -394,9 +397,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id2">
-<h2>多次元配列を定義する<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>ベクトル・行列・テンソルなどは、プログラミング上は多次元配列により表現でき、NumPy では ndarray というクラスで多次元配列を表現します（<span class="xref myst">注釈2</span>）。早速、これを用いてベクトルを定義してみましょう。</p>
+<section id="id3">
+<h2>多次元配列を定義する<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>ベクトル・行列・テンソルなどは、プログラミング上は多次元配列により表現でき、NumPy では ndarray というクラスで多次元配列を表現します。早速、これを用いてベクトルを定義してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ベクトルの定義</span>
@@ -444,7 +447,7 @@ ndarray の形は、要素が整数のタプルで表され、要素数はその
 </div>
 </div>
 <p>これは、<code class="docutils literal notranslate"><span class="pre">len(a.shape)</span></code> と同じ値になります。
-今、<code class="docutils literal notranslate"><span class="pre">a</span></code> という ndarray は 1 次元配列なので、<code class="docutils literal notranslate"><span class="pre">a.shape</span></code> は要素数が 1 のタプルで、<code class="docutils literal notranslate"><span class="pre">ndim</span></code> の値は 1 でした（<span class="xref myst">注釈3</span>）。</p>
+今、<code class="docutils literal notranslate"><span class="pre">a</span></code> という ndarray は 1 次元配列なので、<code class="docutils literal notranslate"><span class="pre">a.shape</span></code> は要素数が 1 のタプルで、<code class="docutils literal notranslate"><span class="pre">ndim</span></code> の値は 1 でした。</p>
 <p>では次に、<span class="math notranslate nohighlight">\(3 \times 3\)</span> 行列を定義してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,10 +582,10 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.46326909, 0.48879582, 0.88922118, 0.53004069, 0.44157952],
-       [0.41044732, 0.78219892, 0.7577483 , 0.73843053, 0.42830024],
-       [0.47920303, 0.20592533, 0.60530721, 0.85008725, 0.99207763],
-       [0.88300361, 0.62181486, 0.87395596, 0.5042912 , 0.7495314 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.71000791, 0.55382376, 0.44737036, 0.05514053, 0.73223296],
+       [0.76068496, 0.8996913 , 0.55150757, 0.37681428, 0.25451348],
+       [0.90748494, 0.12264194, 0.55157419, 0.97355679, 0.67367735],
+       [0.74828535, 0.78623571, 0.69909895, 0.28525748, 0.62705385]])
 </pre></div>
 </div>
 </div>
@@ -603,13 +606,13 @@ Rank: 2
 </div>
 </div>
 </section>
-<section id="id3">
-<h2>多次元配列の要素を選択する<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h2>多次元配列の要素を選択する<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>前節では NumPy を使って多次元配列を定義するいくつかの方法を紹介しました。
 本節では、作成した ndarray のうちの特定の要素を選択して、値を取り出す方法を紹介します。
 最もよく行われる方法は <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使った<strong>添字表記 （subscription）</strong> による要素の選択です。</p>
-<section id="id4">
-<h3>整数による要素の選択<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3>整数による要素の選択<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>例えば、上で作成した <code class="docutils literal notranslate"><span class="pre">e</span></code> という <span class="math notranslate nohighlight">\(4 \times 5\)</span> 行列を表す多次元配列から、1 行 2 列目の値を取り出すには、以下のようにします。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -620,7 +623,7 @@ Rank: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.488795822321174
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.553823759875425
 </pre></div>
 </div>
 </div>
@@ -629,8 +632,8 @@ Rank: 2
 これは、NumPy の ndarray の要素は Python リストと同じく、添字が 0 から始まる<strong>ゼロベースインデックス （zero-based index）</strong> が採用されているためです。
 つまり、この行列の i 行 j 列目の値は、<code class="docutils literal notranslate"><span class="pre">[i</span> <span class="pre">-</span> <span class="pre">1,</span> <span class="pre">j</span> <span class="pre">-</span> <span class="pre">1]</span></code> で取り出すことができます。</p>
 </section>
-<section id="id5">
-<h3>スライスによる要素の選択<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>スライスによる要素の選択<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>NumPy の ndarray に対しても、Python のリストと同様に<strong>スライス表記 （slicing）</strong> を用いて選択したい要素を範囲指定することができます。
 ndarray はさらに、カンマ区切りで複数の次元に対するスライスを指定できます。</p>
 <div class="cell docutils container">
@@ -643,8 +646,8 @@ ndarray はさらに、カンマ区切りで複数の次元に対するスライ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.78219892, 0.7577483 , 0.73843053],
-       [0.20592533, 0.60530721, 0.85008725]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.8996913 , 0.55150757, 0.37681428],
+       [0.12264194, 0.55157419, 0.97355679]])
 </pre></div>
 </div>
 </div>
@@ -676,17 +679,17 @@ Shape of center: (2, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.46326909, 0.48879582, 0.88922118, 0.53004069, 0.44157952],
-       [0.41044732, 0.        , 0.        , 0.        , 0.42830024],
-       [0.47920303, 0.        , 0.        , 0.        , 0.99207763],
-       [0.88300361, 0.62181486, 0.87395596, 0.5042912 , 0.7495314 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.71000791, 0.55382376, 0.44737036, 0.05514053, 0.73223296],
+       [0.76068496, 0.        , 0.        , 0.        , 0.25451348],
+       [0.90748494, 0.        , 0.        , 0.        , 0.67367735],
+       [0.74828535, 0.78623571, 0.69909895, 0.28525748, 0.62705385]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id6">
-<h3>整数配列による要素の選択<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>整数配列による要素の選択<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>ndarray の <code class="docutils literal notranslate"><span class="pre">[]</span></code> には、整数やスライスの他に、整数配列を渡すこともできます。
 整数配列とは、ここでは整数を要素とする Python リストまたは ndarray のことを指しています。</p>
 <p>具体例を示します。
@@ -855,8 +858,8 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 </div>
 </section>
-<section id="id7">
-<h2>多次元配列を用いた計算<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2>多次元配列を用いた計算<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>ndarray を使って行列やベクトルを定義して、それらを用いていくつかの計算を行ってみましょう。</p>
 <p>ndarray として定義されたベクトルや行列同士の<strong>要素ごとの加減乗除</strong>は、Python の数値同士の四則演算に用いられる <code class="docutils literal notranslate"><span class="pre">+</span></code>、<code class="docutils literal notranslate"><span class="pre">-</span></code>、<code class="docutils literal notranslate"><span class="pre">*</span></code>、<code class="docutils literal notranslate"><span class="pre">/</span></code> という記号を使って行えます。</p>
 <p>それでは、同じ形の行列を 2 つ定義し、それらの<strong>要素ごとの</strong>加減乗除を実行してみましょう。</p>
@@ -1025,11 +1028,11 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 </div>
 <p>形が同じ行列同士の場合と同様に計算することができました。</p>
-<p>これは NumPy が自動的に**ブロードキャスト（broadcast）**と呼ばれる操作を行っているためです。
+<p>これは NumPy が自動的に <strong>ブロードキャスト（broadcast）</strong> と呼ばれる操作を行っているためです。
 これについて次節で説明します。</p>
 </section>
-<section id="id8">
-<h2>ブロードキャスト<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h2>ブロードキャスト<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>行列同士の要素ごとの四則演算は、通常は行列の形が同じでなければ定義できません。
 しかし、前節の最後では <span class="math notranslate nohighlight">\(3 \times 3\)</span> 行列に 3 次元ベクトルを足す計算が実行できました。</p>
 <p>これが要素ごとの計算と同じように実行できる理由は、NumPy が自動的に 3 次元ベクトル <code class="docutils literal notranslate"><span class="pre">b</span></code> を 3 つ並べてできる <span class="math notranslate nohighlight">\(3 \times 3\)</span> 行列を想定し、<code class="docutils literal notranslate"><span class="pre">a</span></code> と同じ形に揃える操作を暗黙に行っているからです。
@@ -1087,9 +1090,9 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">2</span></code> という計算が、<code class="docutils literal notranslate"><span class="pre">c</span></code> の 3 つの要素の<strong>どの要素に対する計算なのか</strong>が明示されていないため、NumPy はこれを<strong>全ての要素に対して行うという意味</strong>だと解釈して、スカラの 2 を <code class="docutils literal notranslate"><span class="pre">a</span></code> の要素数 3 だけ引き伸ばしてから掛けてくれます。</p>
 <p><strong>形の異なる配列同士の計算がブロードキャストによって可能になるためにはルールがあります。</strong></p>
-<p>それは、**「2 つの配列の各次元が同じ大きさになっているか、どちらかが 1 であること」**です。
+<p>それは、 <strong>「2 つの配列の各次元が同じ大きさになっているか、どちらかが 1 であること」</strong> です。
 このルールを満たさない場合、NumPy は “ValueError: operands could not be broadcast together with shapes (1 つ目の配列の形) (2 つ目の配列の形)” というエラーを出します。</p>
-<p>ブロードキャストされた配列の各次元のサイズ（<span class="xref myst">注釈4</span>）は、入力された配列のその次元のサイズの中で最大の値と同じになっています。
+<p>ブロードキャストされた配列の各次元のサイズは、入力された配列のその次元のサイズの中で最大の値と同じになっています。
 入力された配列は、各次元のサイズが入力のうち大きい方のサイズと同じになるようブロードキャストされ、その拡張されたサイズで計算されます。</p>
 <p>もう少し具体例を見てみましょう。
 以下のような 2 つの配列 <code class="docutils literal notranslate"><span class="pre">a</span></code> と <code class="docutils literal notranslate"><span class="pre">b</span></code> を定義し、足します。</p>
@@ -1114,27 +1117,27 @@ float_ 型についても同様で、プラットフォームによって float6
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a:
- [[[6 6 3]]
+ [[[6 4 3]]
 
- [[5 7 6]]]
+ [[9 8 3]]]
 
 a.shape: (2, 1, 3)
 
 b:
- [[9]
- [1]
- [0]]
+ [[6]
+ [0]
+ [1]]
 
 b.shape: (3, 1)
 
 a + b:
- [[[15 15 12]
-  [ 7  7  4]
-  [ 6  6  3]]
+ [[[12 10  9]
+  [ 6  4  3]
+  [ 7  5  4]]
 
- [[14 16 15]
-  [ 6  8  7]
-  [ 5  7  6]]]
+ [[15 14  9]
+  [ 9  8  3]
+  [10  9  4]]]
 
 (a + b).shape: (2, 3, 3)
 </pre></div>
@@ -1142,7 +1145,7 @@ a + b:
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">a</span></code> の形は <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">1,</span> <span class="pre">3)</span></code> で、<code class="docutils literal notranslate"><span class="pre">b</span></code> の形は <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code> でした。
-この 2 つの配列の<strong>末尾次元 (trailing dimension)</strong>（<span class="xref myst">注釈5</span>） はそれぞれ 3 と 1 なので、ルールにあった「次元が同じサイズであるか、どちらかが 1 であること」を満たしています。</p>
+この 2 つの配列の<strong>末尾次元 (trailing dimension)</strong> はそれぞれ 3 と 1 なので、ルールにあった「次元が同じサイズであるか、どちらかが 1 であること」を満たしています。</p>
 <p>次に、各配列の第 2 次元に注目してみましょう。
 それぞれ 1 と 3 です。
 これもルールを満たしています。</p>
@@ -1186,9 +1189,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9],
-       [1],
-       [0]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6],
+       [0],
+       [1]])
 </pre></div>
 </div>
 </div>
@@ -1200,9 +1203,9 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[9],
-        [1],
-        [0]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[6],
+        [0],
+        [1]]])
 </pre></div>
 </div>
 </div>
@@ -1214,11 +1217,11 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[9]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[6]],
 
-       [[1]],
+       [[0]],
 
-       [[0]]])
+       [[1]]])
 </pre></div>
 </div>
 </div>
@@ -1256,7 +1259,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.67 µs ± 45.1 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.73 µs ± 20 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1286,7 +1289,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.43 µs ± 2.68 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.44 µs ± 3.86 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1311,8 +1314,8 @@ Added new axis to the middle: (3, 1, 1)
 しかし、実行時間が数倍短くなっています。</p>
 <p>このように、ブロードキャストを理解して活用することで、記述が簡単になるだけでなく、実行速度という点においても有利になります。</p>
 </section>
-<section id="id9">
-<h2>行列積<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>行列積<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p>行列の要素ごとの積は <code class="docutils literal notranslate"><span class="pre">*</span></code> を用いて計算できました。
 一方、通常の行列同士の積（行列積）の計算は、<code class="docutils literal notranslate"><span class="pre">*</span></code> ではなく、別の方法で行います。
 方法は 2 種類あります。</p>
@@ -1391,8 +1394,8 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 </section>
-<section id="id10">
-<h2>基本的な統計量の求め方<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2>基本的な統計量の求め方<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>本節では、多次元配列に含まれる値の平均・分散・標準偏差・最大値・最小値といった統計値を計算する方法を紹介します。
 <span class="math notranslate nohighlight">\(8 \times 10\)</span> の行列を作成し、この中に含まれる値全体に渡るこれらの統計値を計算してみましょう。</p>
 <div class="cell docutils container">
@@ -1404,14 +1407,14 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 3, 1, 8, 6, 3, 8, 7, 6, 1],
-       [2, 1, 5, 7, 3, 5, 0, 3, 0, 6],
-       [1, 5, 4, 6, 1, 3, 0, 9, 1, 7],
-       [1, 1, 0, 3, 9, 7, 3, 8, 8, 1],
-       [4, 0, 0, 2, 7, 2, 6, 5, 9, 6],
-       [9, 6, 1, 4, 4, 6, 1, 2, 2, 2],
-       [3, 5, 6, 9, 1, 3, 1, 6, 5, 3],
-       [3, 0, 9, 9, 5, 8, 1, 9, 0, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 6, 2, 3, 6, 6, 1, 4, 8, 1],
+       [4, 8, 0, 3, 2, 8, 9, 3, 7, 0],
+       [1, 9, 2, 5, 2, 7, 4, 7, 8, 8],
+       [3, 8, 3, 5, 2, 2, 3, 8, 8, 6],
+       [0, 9, 5, 7, 4, 1, 6, 1, 2, 3],
+       [5, 4, 9, 3, 3, 6, 6, 6, 0, 6],
+       [0, 8, 4, 7, 9, 2, 7, 5, 2, 9],
+       [0, 0, 8, 6, 4, 0, 1, 8, 3, 1]])
 </pre></div>
 </div>
 </div>
@@ -1424,7 +1427,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.1625
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.4375
 </pre></div>
 </div>
 </div>
@@ -1437,7 +1440,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.661093750000001
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.09609375
 </pre></div>
 </div>
 </div>
@@ -1450,7 +1453,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.942973623735014
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.845363553221275
 </pre></div>
 </div>
 </div>
@@ -1491,7 +1494,7 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.2, 3.2, 3.7, 4.1, 4.1, 3.7, 4.2, 5.1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4. , 4.4, 5.3, 4.8, 3.8, 4.8, 5.3, 3.1])
 </pre></div>
 </div>
 </div>
@@ -1514,15 +1517,15 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.2, 3.2, 3.7, 4.1, 4.1, 3.7, 4.2, 5.1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4. , 4.4, 5.3, 4.8, 3.8, 4.8, 5.3, 3.1])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id11">
-<h2>NumPy を用いた重回帰分析<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://tutorials.chainer.org/ja/07_Regression_Analysis.html">単回帰分析と重回帰分析</a>の章で説明した重回帰分析を NumPy を用いて行いましょう。</p>
+<section id="id12">
+<h2>NumPy を用いた重回帰分析<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://tutorials.chainer.org/ja/07_Regression_Analysis.html">単回帰分析と重回帰分析</a> で解説されている重回帰分析を NumPy を用いて行いましょう。</p>
 <p>4 つのデータをまとめた、以下のようなデザイン行列が与えられたとします。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1662,10 +1665,10 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 </div>
-<p><strong>以上の計算は、以下のように 1 行で行うこともできます。</strong></p>
+<p><strong>以上の計算は、行列積の演算子 <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> を用いて 1 行で書くこともできます。</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">w_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">X</span><span class="p">)</span> <span class="o">@</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">t</span>
 
 <span class="n">w_</span>
 </pre></div>
@@ -1693,32 +1696,12 @@ Added new axis to the middle: (3, 1, 1)
 </div>
 </div>
 <p>数式を NumPy による配列の計算に落とし込むことに慣れていくには少し時間がかかりますが、慣れると少ない量のコードで記述できるだけでなく、高速に計算が行なえるため、大きな恩恵があります。</p>
-<hr />
-<div class="alert alert-info">
-**注釈 1**
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id13" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>ライブラリとは、汎用性の高い複数の関数やクラスなどを再利用可能な形でひとまとまりにしたもので、Python の世界では<strong>パッケージ</strong>とも呼ばれます。また、Python で関数やクラスの定義、文などが書かれたファイルのことを<strong>モジュール</strong>と呼び、パッケージはモジュールが集まったものです。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div>
-<div class="alert alert-info">
-**注釈 2**
-<p>NumPy には matrix というクラスも存在しますが、本チュートリアルでは基本的に多次元配列を表す ndarray をベクトルや行列を表すために用います。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div>
-<div class="alert alert-info">
-**注釈 3**
-<p>これは、その多次元配列が表すテンソルの**階数（rank、以下ランク）**と対応します。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div>
-<div class="alert alert-info">
-**注釈 4**
-<p>「次元のサイズ」と言った場合はその次元の大きさを意味し、配列の <code class="docutils literal notranslate"><span class="pre">size</span></code> 属性とは異なるものを指しています。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div>
-<div class="alert alert-info">
-**注釈 5**
-<p>末尾次元（trailing dimension）とは、その配列の形を表すタプルの一番最後の値のことを指します。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div></section>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1750,20 +1733,20 @@ Added new axis to the middle: (3, 1, 1)
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02_03_Basics_of_Python_function.html"
+       href="../exercise/02_03_Basics_of_Python_function.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">関数</p>
+        <p class="prev-next-title">【確認課題】関数</p>
       </div>
     </a>
     <a class="right-next"
-       href="11_Introduction_to_Pandas.html"
+       href="../exercise/numpy_quiz.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pandas 入門</p>
+        <p class="prev-next-title">【確認課題】Numpy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1782,20 +1765,20 @@ Added new axis to the middle: (3, 1, 1)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">NumPy を使う準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多次元配列を定義する</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">多次元配列の要素を選択する</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">整数による要素の選択</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">スライスによる要素の選択</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">整数配列による要素の選択</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">NumPy を使う準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">多次元配列を定義する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">多次元配列の要素を選択する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">整数による要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">スライスによる要素の選択</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">整数配列による要素の選択</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ndarray">ndarray のデータ型</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">多次元配列を用いた計算</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ブロードキャスト</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">行列積</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">基本的な統計量の求め方</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">NumPy を用いた重回帰分析</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">多次元配列を用いた計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ブロードキャスト</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">行列積</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">基本的な統計量の求め方</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">NumPy を用いた重回帰分析</a></li>
 </ul>
   </nav></div>
 

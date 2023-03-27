@@ -66,7 +66,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/09_Introduction_to_Scikit-learn';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="クラス" href="99_Basics_of_Python_class.html" />
     <link rel="prev" title="機械学習に使われる数学" href="03_Basic_Math_for_Machine_Learning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -154,16 +153,19 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_03_Basics_of_Python_function.html">【確認課題】関数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/numpy_quiz.html">【確認課題】Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/pandas_quiz.html">【確認課題】Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">scikit-learn 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
 </ul>
 
     </div>
@@ -375,7 +377,7 @@ document.write(`
 <p>scikit-learn は Python のオープンソース機械学習ライブラリです。<br />
 様々な機械学習の手法が統一的なインターフェースで利用できるようになっています。
 scikit-learn では NumPy の ndarray でデータやパラメータを取り扱うため、他のライブラリとの連携もしやすくなっています。</p>
-<p>本章では、この scikit-learn というライブラリを用いて、<strong>データを使ってモデルを訓練し、評価するという一連の流れを解説</strong>し、Chainer を使ったディープラーニングの解説に入る前に、共通する重要な項目について説明します。</p>
+<p>本章では、この scikit-learn というライブラリを用いて、<strong>データを使ってモデルを訓練し、評価するという一連の流れを解説します</strong>。</p>
 <p>機械学習の様々な手法を用いる際には、<strong>データを使ってモデルを訓練する</strong>までに、以下の <strong>5 つのステップ</strong>がよく共通して現れます。</p>
 <ul class="simple">
 <li><p>Step 1：<strong>データセットの準備</strong></p></li>
@@ -384,8 +386,7 @@ scikit-learn では NumPy の ndarray でデータやパラメータを取り扱
 <li><p>Step 4：<strong>最適化手法を選択する</strong></p></li>
 <li><p>Step 5：<strong>モデルを訓練する</strong></p></li>
 </ul>
-<p>前章では、<strong>ステップ 2</strong> → <strong>ステップ 3</strong> → <strong>ステップ 4 &amp; 5</strong> という <strong>3 ステップ</strong>に分けて説明を行いましたが、この 5 つのステップに分けて考える方法は、後の章で解説する <strong>Chainer を用いたニューラルネットワークの訓練においても共通しています。</strong>
-また、上記の 5 つが完了した後には、通常、訓練済みモデルによるテストデータを用いた精度検証を行いますが、この点も共通しています。</p>
+<p>上記の 5 つが完了した後には、通常、訓練済みモデルによるテストデータを用いた精度検証を行います。</p>
 <p>本章では、これらの 5 つのステップ + テストデータでの精度検証までを、scikit-learn の機能を使って簡潔に紹介します。</p>
 <section id="id1">
 <h2>scikit-learn を用いた重回帰分析<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -567,7 +568,7 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 <h4>データセットの分割<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
 <p>ここで、まずこのデータセットを 2 つに分割します。
 それは、モデルの訓練に用いるためのデータと、訓練後のモデルのパフォーマンスをテストするために用いるデータは、異なるものになっている必要があるためです。
-これは、<a class="reference external" href="https://tutorials.chainer.org/ja/03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a>の章で少しだけ触れた汎化性能というものに関わる重要なことです。</p>
+これは、<a class="reference external" href="https://shinonome.io/PythonTutorialForDSCourse/ja-edited/03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a>の章で少しだけ触れた汎化性能というものに関わる重要なことです。</p>
 <p>ここで、例え話を使ってなぜデータセットを分割する必要があるかを説明します。
 例えば、大学受験の準備のために 10 年分の過去問を購入し、一部を<strong>勉強のため</strong>に、一部を<strong>勉強の成果をはかる</strong>ために使用したいとします。
 10 年分という限られた数の問題を使って、結果にある程度の信頼のおけるような方法で実力をチェックするには、下記の 2 つのうちどちらの方法がより良いでしょうか。</p>
@@ -1032,15 +1033,6 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">機械学習に使われる数学</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="99_Basics_of_Python_class.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">クラス</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="scikit-learn 入門" href="09_Introduction_to_Scikit-learn.html" />
-    <link rel="prev" title="Matplotlib 入門" href="12_Introduction_to_Matplotlib.html" />
+    <link rel="prev" title="【確認課題】Matplotlib" href="../exercise/matplotlib_quiz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,16 +154,19 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_03_Basics_of_Python_function.html">【確認課題】関数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/numpy_quiz.html">【確認課題】Numpy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/pandas_quiz.html">【確認課題】Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">機械学習に使われる数学</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
 </ul>
 
     </div>
@@ -346,12 +349,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">直線による近似</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">目的関数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二乗誤差関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">目的関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">二乗誤差関数</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">目的関数の最適化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">機械学習で使われる数学</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">目的関数の最適化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">機械学習で使われる数学</a></li>
 </ul>
             </nav>
         </div>
@@ -403,14 +406,14 @@ f(x) = wx + b
 <p>式 <span class="math notranslate nohighlight">\((2.1)\)</span> で表される直線は、<span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> が決まると、どのような直線になるかが決定されます。
 つまり、この <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値をうまく決定して、赤い点の集まりにできるだけ沿うような直線を見つけることができれば、新しい <span class="math notranslate nohighlight">\(x\)</span> が与えられたときに、<span class="math notranslate nohighlight">\(t\)</span> の値がどのような値になりそうかを予測することができそうです。
 このとき、未知のデータに対しても精度良く予測が行えることを<strong>汎化性能 (generalizability)</strong> が高いと言います。</p>
-<p>また、パラメータ <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> によって特徴づけられた直線の式  <span class="math notranslate nohighlight">\((2.1)\)</span> のような、パラメータを使って何らかの計算を行うことで、与えられたデータの特徴や関係性を表すものを、以降簡単に<strong>モデル (model)</strong> と呼ぶことにします（<span class="xref myst">注釈1</span>）。</p>
+<p>また、パラメータ <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> によって特徴づけられた直線の式  <span class="math notranslate nohighlight">\((2.1)\)</span> のような、パラメータを使って何らかの計算を行うことで、与えられたデータの特徴や関係性を表すものを、以降簡単に<strong>モデル (model)</strong> と呼ぶことにします<a class="footnote-reference brackets" href="#id11" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>。</p>
 <p>それでは、<span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(t\)</span> の関係をよく表すモデルのパラメータ <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> は、どうやって決定すればよいのでしょうか。
 先程のように、人が赤い点の集まりを目で見て <span class="math notranslate nohighlight">\(x\)</span> と <span class="math notranslate nohighlight">\(t\)</span> の関係に当たりをつけ、最適な <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> の値を人手で探り当てるのは、赤い点がもし 3 次元空間や、4 次元、5 次元…といった人間には想像することが難しい高次元空間に散らばっていたら、目で見ることもできないため、困難になります。
 そこで、コンピュータにこれらの赤い点のデータを与えて、自動的に最適な <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> を探させようというのが、機械学習で行われる代表的な処理のひとつです。</p>
 </section>
 </section>
-<section id="id5">
-<h2>目的関数<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2>目的関数<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>コンピュータに良いパラメータを自動的に見つけてもらうためには、<strong>何が良いパラメータなのか</strong>という指標を定義する必要があります。
 そのような指標を表す関数を<strong>目的関数 (objective function)</strong> と呼びます。</p>
 <p>ここで、上の直線の例に戻って考えてみましょう。
@@ -423,8 +426,8 @@ f(x) = wx + b
 このとき、直線の式ではなく、実際の赤い点の持つ <span class="math notranslate nohighlight">\(t\)</span> の値は、この式が予測したい目標の値なので、<strong>目標値 (target value)</strong> と呼びます。</p>
 <p>目的関数は多くの場合、モデルの予測値と目標値を受け取って、その間の差異を測って返すような関数です。
 差異は小さければ小さいほどモデルの予測が当たっていることを意味するため、この場合は目的関数の値を最小にするパラメータを見つけ出すのが目的になります。</p>
-<section id="id6">
-<h3>二乗誤差関数<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>二乗誤差関数<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>目的関数の具体例を挙げます。
 例えば、適当に赤い点を 1 つ選び、その <span class="math notranslate nohighlight">\(x\)</span> 座標が <span class="math notranslate nohighlight">\(100\)</span> で、 <span class="math notranslate nohighlight">\(t\)</span> 座標が <span class="math notranslate nohighlight">\(40\)</span> だったとします。
 この値を、<span class="math notranslate nohighlight">\(x_1 = 100, t_1 = 40\)</span> のようにおいてみます。
@@ -449,39 +452,37 @@ L = \frac{1}{200} \sum_{n=1}^{200} (t_n - y_n)^2
 <p><span class="math notranslate nohighlight">\(\sum\)</span> という記号は、<strong>総和</strong>を表します。
 上の式は、<span class="math notranslate nohighlight">\((t_n - y_n)^2\)</span> の値を、<span class="math notranslate nohighlight">\(n = 1\)</span> から順番に <span class="math notranslate nohighlight">\(n = 2, n = 3, \dots, n = 200\)</span> まで計算していき、全てを足し合わせ、<span class="math notranslate nohighlight">\(200\)</span> で割る、ということを意味します。</p>
 <p>これは、<strong>平均二乗誤差 (mean squared error)</strong> と呼ばれ、連続値を予測する回帰問題などでよく用いられる代表的な目的関数の 1 つです。
-この関数は、予測値と目標値がすべての <span class="math notranslate nohighlight">\(n\)</span> において完全に一致するときだけ <span class="math notranslate nohighlight">\(0\)</span> になり、それ以外では必ず正の値をとります（<span class="xref myst">注釈2</span>）。
+この関数は、予測値と目標値がすべての <span class="math notranslate nohighlight">\(n\)</span> において完全に一致するときだけ <span class="math notranslate nohighlight">\(0\)</span> になり、それ以外では必ず正の値をとります<a class="footnote-reference brackets" href="#id12" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>。
 よって、この目的関数の値を最小にする <span class="math notranslate nohighlight">\(w\)</span> と <span class="math notranslate nohighlight">\(b\)</span> が、求めたい最適なパラメータです。
 「良いパラメータとは何か」が定量的に定義できたので、次はコンピュータに解を探索させる方法を考えます。</p>
 </section>
 </section>
-<section id="id7">
-<h2>目的関数の最適化<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h2>目的関数の最適化<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>ある関数を最小にする入力変数の値を求めることを最適化といいます。この最適化をコンピュータで自動的に行うには、どうすれば良いのでしょうか。
 例えば、以下のような関数があるとします。
 横軸が入力の値、縦軸が出力の値です。</p>
 <p><img alt="quadric" src="../_images/01_quadric.png" /></p>
 <p>このとき、関数に適当な値をまず入力してみて、得られた値を使ってその値が小さくなりそうな方向に入力を少し動かす、ということを繰り返し行って、関数が最小値をとる入力値を探索する、という方法があります。</p>
 </section>
-<section id="id8">
-<h2>機械学習で使われる数学<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>機械学習で使われる数学<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p>このような最適化を行うのに必要になるのが<strong>微分 (differential)</strong> の知識です。
-なぜなら、「入力をどちらに動かせば出力が小さな値になりそうか」ということを知るためには、対象の関数を微分する必要があるからです。詳細は次章で説明します。</p>
+なぜなら、「入力をどちらに動かせば出力が小さな値になりそうか」ということを知るためには、対象の関数を微分する必要があるからです。詳細は <a class="reference external" href="https://tutorials.chainer.org/ja/04_Basics_of_Differential.html">Chainer チュートリアル『4. 微分の基礎』</a> を参照してください。</p>
 <p>また、初めにあげた赤い点の集まりに最もよく沿うような直線を求める問題では、1 つの値を入力して 1 つの値が出力される関数を考えていましたが、複数の値を同時に扱いたいときに必要になるのが、<strong>線形代数 (linear algebra)</strong> の知識です。</p>
 <p>さらに、赤い点がもし本当は直線上にぴったり沿うようなデータであったのに、観測時に何らかの理由でノイズが乗ってしまったがために直線の周辺にばらついて出てきているのだとしたら、そのノイズがどの程度の範囲で値のズレを発生させるものなのか、見当をつけておきたくなるかもしれません。
 そういったときに必要になるのが、<strong>確率(probability)・統計 (statistics)</strong> の知識です。</p>
-<p>この 3 つについて、機械学習の学習に必要となる最低限の知識に絞って以降の 3 章で解説を行います。</p>
-<p>それでは、次章はまず微分についてです。</p>
-<hr />
-<div class="alert alert-info">
-**注釈 1**
+<p>機械学習を手法レベルから理解するためには、この 3 つの知識が必要になります。</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id11" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">1</a><span class="fn-bracket">]</span></span>
 <p>「モデル」という言葉が何を表すべきかについては、様々な考え方があり、機械学習の分野だけに限ってみても、完全に統一的な意味で用いられている訳ではありません。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div>
-<div class="alert alert-info">
-**注釈 2**
+</aside>
+<aside class="footnote brackets" id="id12" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">2</a><span class="fn-bracket">]</span></span>
 <p>平均二乗誤差の各項は二乗された値なので、必ず正になり、それらを足し合わせているので、全体としても正になります。</p>
-<p><span class="xref myst">▲上へ戻る</span></p>
-</div></section>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -513,12 +514,12 @@ L = \frac{1}{200} \sum_{n=1}^{200} (t_n - y_n)^2
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="12_Introduction_to_Matplotlib.html"
+       href="../exercise/matplotlib_quiz.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Matplotlib 入門</p>
+        <p class="prev-next-title">【確認課題】Matplotlib</p>
       </div>
     </a>
     <a class="right-next"
@@ -550,12 +551,12 @@ L = \frac{1}{200} \sum_{n=1}^{200} (t_n - y_n)^2
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">直線による近似</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">目的関数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二乗誤差関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">目的関数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">二乗誤差関数</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">目的関数の最適化</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">機械学習で使われる数学</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">目的関数の最適化</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">機械学習で使われる数学</a></li>
 </ul>
   </nav></div>
 

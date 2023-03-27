@@ -64,8 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ja-edited/11_Introduction_to_Pandas';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Matplotlib 入門" href="12_Introduction_to_Matplotlib.html" />
-    <link rel="prev" title="NumPy 入門" href="08_Introduction_to_NumPy.html" />
+    <link rel="next" title="【確認課題】Pandas" href="../exercise/pandas_quiz.html" />
+    <link rel="prev" title="【確認課題】Numpy" href="../exercise/numpy_quiz.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,16 +152,19 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">Python 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">Python 入門 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">制御構文</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">制御構文 確認課題</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/02_03_Basics_of_Python_function.html">【確認課題】関数</a></li>
 <li class="toctree-l1"><a class="reference internal" href="08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/numpy_quiz.html">【確認課題】Numpy</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pandas 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/pandas_quiz.html">【確認課題】Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exercise/matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
 <li class="toctree-l1"><a class="reference internal" href="09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
-<li class="toctree-l1"><a class="reference internal" href="99_Basics_of_Python_class.html">クラス</a></li>
 </ul>
 
     </div>
@@ -601,306 +604,6 @@ Jupyter Notebook 上では、大きな DataFrame を表示しようとすると�
       <td>65500.0</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>-114.58</td>
-      <td>33.63</td>
-      <td>29.0</td>
-      <td>1387.0</td>
-      <td>236.0</td>
-      <td>671.0</td>
-      <td>239.0</td>
-      <td>3.3438</td>
-      <td>74000.0</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>-114.58</td>
-      <td>33.61</td>
-      <td>25.0</td>
-      <td>2907.0</td>
-      <td>680.0</td>
-      <td>1841.0</td>
-      <td>633.0</td>
-      <td>2.6768</td>
-      <td>82400.0</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>-114.59</td>
-      <td>34.83</td>
-      <td>41.0</td>
-      <td>812.0</td>
-      <td>168.0</td>
-      <td>375.0</td>
-      <td>158.0</td>
-      <td>1.7083</td>
-      <td>48500.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>-114.59</td>
-      <td>33.61</td>
-      <td>34.0</td>
-      <td>4789.0</td>
-      <td>1175.0</td>
-      <td>3134.0</td>
-      <td>1056.0</td>
-      <td>2.1782</td>
-      <td>58400.0</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>-114.60</td>
-      <td>34.83</td>
-      <td>46.0</td>
-      <td>1497.0</td>
-      <td>309.0</td>
-      <td>787.0</td>
-      <td>271.0</td>
-      <td>2.1908</td>
-      <td>48100.0</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>-114.60</td>
-      <td>33.62</td>
-      <td>16.0</td>
-      <td>3741.0</td>
-      <td>801.0</td>
-      <td>2434.0</td>
-      <td>824.0</td>
-      <td>2.6797</td>
-      <td>86500.0</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>-114.60</td>
-      <td>33.60</td>
-      <td>21.0</td>
-      <td>1988.0</td>
-      <td>483.0</td>
-      <td>1182.0</td>
-      <td>437.0</td>
-      <td>1.6250</td>
-      <td>62000.0</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>-114.61</td>
-      <td>34.84</td>
-      <td>48.0</td>
-      <td>1291.0</td>
-      <td>248.0</td>
-      <td>580.0</td>
-      <td>211.0</td>
-      <td>2.1571</td>
-      <td>48600.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>-114.61</td>
-      <td>34.83</td>
-      <td>31.0</td>
-      <td>2478.0</td>
-      <td>464.0</td>
-      <td>1346.0</td>
-      <td>479.0</td>
-      <td>3.2120</td>
-      <td>70400.0</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>-114.63</td>
-      <td>32.76</td>
-      <td>15.0</td>
-      <td>1448.0</td>
-      <td>378.0</td>
-      <td>949.0</td>
-      <td>300.0</td>
-      <td>0.8585</td>
-      <td>45000.0</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>-114.65</td>
-      <td>34.89</td>
-      <td>17.0</td>
-      <td>2556.0</td>
-      <td>587.0</td>
-      <td>1005.0</td>
-      <td>401.0</td>
-      <td>1.6991</td>
-      <td>69100.0</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>-114.65</td>
-      <td>33.60</td>
-      <td>28.0</td>
-      <td>1678.0</td>
-      <td>322.0</td>
-      <td>666.0</td>
-      <td>256.0</td>
-      <td>2.9653</td>
-      <td>94900.0</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>-114.65</td>
-      <td>32.79</td>
-      <td>21.0</td>
-      <td>44.0</td>
-      <td>33.0</td>
-      <td>64.0</td>
-      <td>27.0</td>
-      <td>0.8571</td>
-      <td>25000.0</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>-114.66</td>
-      <td>32.74</td>
-      <td>17.0</td>
-      <td>1388.0</td>
-      <td>386.0</td>
-      <td>775.0</td>
-      <td>320.0</td>
-      <td>1.2049</td>
-      <td>44000.0</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>-114.67</td>
-      <td>33.92</td>
-      <td>17.0</td>
-      <td>97.0</td>
-      <td>24.0</td>
-      <td>29.0</td>
-      <td>15.0</td>
-      <td>1.2656</td>
-      <td>27500.0</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>-114.68</td>
-      <td>33.49</td>
-      <td>20.0</td>
-      <td>1491.0</td>
-      <td>360.0</td>
-      <td>1135.0</td>
-      <td>303.0</td>
-      <td>1.6395</td>
-      <td>44400.0</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>-114.73</td>
-      <td>33.43</td>
-      <td>24.0</td>
-      <td>796.0</td>
-      <td>243.0</td>
-      <td>227.0</td>
-      <td>139.0</td>
-      <td>0.8964</td>
-      <td>59200.0</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>-114.94</td>
-      <td>34.55</td>
-      <td>20.0</td>
-      <td>350.0</td>
-      <td>95.0</td>
-      <td>119.0</td>
-      <td>58.0</td>
-      <td>1.6250</td>
-      <td>50000.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>-114.98</td>
-      <td>33.82</td>
-      <td>15.0</td>
-      <td>644.0</td>
-      <td>129.0</td>
-      <td>137.0</td>
-      <td>52.0</td>
-      <td>3.2097</td>
-      <td>71300.0</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>-115.22</td>
-      <td>33.54</td>
-      <td>18.0</td>
-      <td>1706.0</td>
-      <td>397.0</td>
-      <td>3424.0</td>
-      <td>283.0</td>
-      <td>1.6250</td>
-      <td>53500.0</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>-115.32</td>
-      <td>32.82</td>
-      <td>34.0</td>
-      <td>591.0</td>
-      <td>139.0</td>
-      <td>327.0</td>
-      <td>89.0</td>
-      <td>3.6528</td>
-      <td>100000.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>-115.37</td>
-      <td>32.82</td>
-      <td>30.0</td>
-      <td>1602.0</td>
-      <td>322.0</td>
-      <td>1130.0</td>
-      <td>335.0</td>
-      <td>3.5735</td>
-      <td>71100.0</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>-115.37</td>
-      <td>32.82</td>
-      <td>14.0</td>
-      <td>1276.0</td>
-      <td>270.0</td>
-      <td>867.0</td>
-      <td>261.0</td>
-      <td>1.9375</td>
-      <td>80900.0</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>-115.37</td>
-      <td>32.81</td>
-      <td>32.0</td>
-      <td>741.0</td>
-      <td>191.0</td>
-      <td>623.0</td>
-      <td>169.0</td>
-      <td>1.7604</td>
-      <td>68600.0</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>-115.37</td>
-      <td>32.81</td>
-      <td>23.0</td>
-      <td>1458.0</td>
-      <td>294.0</td>
-      <td>866.0</td>
-      <td>275.0</td>
-      <td>2.3594</td>
-      <td>74300.0</td>
-    </tr>
-    <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
@@ -911,306 +614,6 @@ Jupyter Notebook 上では、大きな DataFrame を表示しようとすると�
       <td>...</td>
       <td>...</td>
       <td>...</td>
-    </tr>
-    <tr>
-      <th>16970</th>
-      <td>-124.17</td>
-      <td>40.80</td>
-      <td>52.0</td>
-      <td>1606.0</td>
-      <td>419.0</td>
-      <td>891.0</td>
-      <td>367.0</td>
-      <td>1.5850</td>
-      <td>75500.0</td>
-    </tr>
-    <tr>
-      <th>16971</th>
-      <td>-124.17</td>
-      <td>40.80</td>
-      <td>52.0</td>
-      <td>1557.0</td>
-      <td>344.0</td>
-      <td>758.0</td>
-      <td>319.0</td>
-      <td>1.8529</td>
-      <td>62500.0</td>
-    </tr>
-    <tr>
-      <th>16972</th>
-      <td>-124.17</td>
-      <td>40.79</td>
-      <td>43.0</td>
-      <td>2285.0</td>
-      <td>479.0</td>
-      <td>1169.0</td>
-      <td>482.0</td>
-      <td>1.9688</td>
-      <td>70500.0</td>
-    </tr>
-    <tr>
-      <th>16973</th>
-      <td>-124.17</td>
-      <td>40.78</td>
-      <td>39.0</td>
-      <td>1606.0</td>
-      <td>330.0</td>
-      <td>731.0</td>
-      <td>327.0</td>
-      <td>1.6369</td>
-      <td>68300.0</td>
-    </tr>
-    <tr>
-      <th>16974</th>
-      <td>-124.17</td>
-      <td>40.77</td>
-      <td>30.0</td>
-      <td>1895.0</td>
-      <td>366.0</td>
-      <td>990.0</td>
-      <td>359.0</td>
-      <td>2.2227</td>
-      <td>81300.0</td>
-    </tr>
-    <tr>
-      <th>16975</th>
-      <td>-124.17</td>
-      <td>40.76</td>
-      <td>26.0</td>
-      <td>1776.0</td>
-      <td>361.0</td>
-      <td>992.0</td>
-      <td>380.0</td>
-      <td>2.8056</td>
-      <td>82800.0</td>
-    </tr>
-    <tr>
-      <th>16976</th>
-      <td>-124.17</td>
-      <td>40.75</td>
-      <td>13.0</td>
-      <td>2171.0</td>
-      <td>339.0</td>
-      <td>951.0</td>
-      <td>353.0</td>
-      <td>4.8516</td>
-      <td>116100.0</td>
-    </tr>
-    <tr>
-      <th>16977</th>
-      <td>-124.17</td>
-      <td>40.62</td>
-      <td>32.0</td>
-      <td>1595.0</td>
-      <td>309.0</td>
-      <td>706.0</td>
-      <td>277.0</td>
-      <td>2.8958</td>
-      <td>86400.0</td>
-    </tr>
-    <tr>
-      <th>16978</th>
-      <td>-124.18</td>
-      <td>40.79</td>
-      <td>39.0</td>
-      <td>1836.0</td>
-      <td>352.0</td>
-      <td>883.0</td>
-      <td>337.0</td>
-      <td>1.7450</td>
-      <td>70500.0</td>
-    </tr>
-    <tr>
-      <th>16979</th>
-      <td>-124.18</td>
-      <td>40.78</td>
-      <td>37.0</td>
-      <td>1453.0</td>
-      <td>293.0</td>
-      <td>867.0</td>
-      <td>310.0</td>
-      <td>2.5536</td>
-      <td>70200.0</td>
-    </tr>
-    <tr>
-      <th>16980</th>
-      <td>-124.18</td>
-      <td>40.78</td>
-      <td>34.0</td>
-      <td>1592.0</td>
-      <td>364.0</td>
-      <td>950.0</td>
-      <td>317.0</td>
-      <td>2.1607</td>
-      <td>67000.0</td>
-    </tr>
-    <tr>
-      <th>16981</th>
-      <td>-124.18</td>
-      <td>40.78</td>
-      <td>33.0</td>
-      <td>1076.0</td>
-      <td>222.0</td>
-      <td>656.0</td>
-      <td>236.0</td>
-      <td>2.5096</td>
-      <td>72200.0</td>
-    </tr>
-    <tr>
-      <th>16982</th>
-      <td>-124.18</td>
-      <td>40.62</td>
-      <td>35.0</td>
-      <td>952.0</td>
-      <td>178.0</td>
-      <td>480.0</td>
-      <td>179.0</td>
-      <td>3.0536</td>
-      <td>107000.0</td>
-    </tr>
-    <tr>
-      <th>16983</th>
-      <td>-124.19</td>
-      <td>41.78</td>
-      <td>15.0</td>
-      <td>3140.0</td>
-      <td>714.0</td>
-      <td>1645.0</td>
-      <td>640.0</td>
-      <td>1.6654</td>
-      <td>74600.0</td>
-    </tr>
-    <tr>
-      <th>16984</th>
-      <td>-124.19</td>
-      <td>40.78</td>
-      <td>37.0</td>
-      <td>1371.0</td>
-      <td>319.0</td>
-      <td>640.0</td>
-      <td>260.0</td>
-      <td>1.8242</td>
-      <td>70000.0</td>
-    </tr>
-    <tr>
-      <th>16985</th>
-      <td>-124.19</td>
-      <td>40.77</td>
-      <td>30.0</td>
-      <td>2975.0</td>
-      <td>634.0</td>
-      <td>1367.0</td>
-      <td>583.0</td>
-      <td>2.4420</td>
-      <td>69000.0</td>
-    </tr>
-    <tr>
-      <th>16986</th>
-      <td>-124.19</td>
-      <td>40.73</td>
-      <td>21.0</td>
-      <td>5694.0</td>
-      <td>1056.0</td>
-      <td>2907.0</td>
-      <td>972.0</td>
-      <td>3.5363</td>
-      <td>90100.0</td>
-    </tr>
-    <tr>
-      <th>16987</th>
-      <td>-124.21</td>
-      <td>41.77</td>
-      <td>17.0</td>
-      <td>3461.0</td>
-      <td>722.0</td>
-      <td>1947.0</td>
-      <td>647.0</td>
-      <td>2.5795</td>
-      <td>68400.0</td>
-    </tr>
-    <tr>
-      <th>16988</th>
-      <td>-124.21</td>
-      <td>41.75</td>
-      <td>20.0</td>
-      <td>3810.0</td>
-      <td>787.0</td>
-      <td>1993.0</td>
-      <td>721.0</td>
-      <td>2.0074</td>
-      <td>66900.0</td>
-    </tr>
-    <tr>
-      <th>16989</th>
-      <td>-124.21</td>
-      <td>40.75</td>
-      <td>32.0</td>
-      <td>1218.0</td>
-      <td>331.0</td>
-      <td>620.0</td>
-      <td>268.0</td>
-      <td>1.6528</td>
-      <td>58100.0</td>
-    </tr>
-    <tr>
-      <th>16990</th>
-      <td>-124.22</td>
-      <td>41.73</td>
-      <td>28.0</td>
-      <td>3003.0</td>
-      <td>699.0</td>
-      <td>1530.0</td>
-      <td>653.0</td>
-      <td>1.7038</td>
-      <td>78300.0</td>
-    </tr>
-    <tr>
-      <th>16991</th>
-      <td>-124.23</td>
-      <td>41.75</td>
-      <td>11.0</td>
-      <td>3159.0</td>
-      <td>616.0</td>
-      <td>1343.0</td>
-      <td>479.0</td>
-      <td>2.4805</td>
-      <td>73200.0</td>
-    </tr>
-    <tr>
-      <th>16992</th>
-      <td>-124.23</td>
-      <td>40.81</td>
-      <td>52.0</td>
-      <td>1112.0</td>
-      <td>209.0</td>
-      <td>544.0</td>
-      <td>172.0</td>
-      <td>3.3462</td>
-      <td>50800.0</td>
-    </tr>
-    <tr>
-      <th>16993</th>
-      <td>-124.23</td>
-      <td>40.54</td>
-      <td>52.0</td>
-      <td>2694.0</td>
-      <td>453.0</td>
-      <td>1152.0</td>
-      <td>435.0</td>
-      <td>3.0806</td>
-      <td>106700.0</td>
-    </tr>
-    <tr>
-      <th>16994</th>
-      <td>-124.25</td>
-      <td>40.28</td>
-      <td>32.0</td>
-      <td>1430.0</td>
-      <td>419.0</td>
-      <td>434.0</td>
-      <td>187.0</td>
-      <td>1.9417</td>
-      <td>76100.0</td>
     </tr>
     <tr>
       <th>16995</th>
@@ -2109,12 +1512,7 @@ dtype: int64
 </section>
 <section id="id6">
 <h2>データの選択<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>着目したい要素や、行、列を選択する方法を紹介します。
-<a class="reference external" href="https://tutorials.chainer.org/ja/09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a>の章で行ったように、入力値 <code class="docutils literal notranslate"><span class="pre">x</span></code> と目標値 <code class="docutils literal notranslate"><span class="pre">t</span></code> が別の列として同じ配列に格納されている場合は、指定した列だけを取り出す操作を行って、結果を別の変数に代入する操作を行います。
-このように、特定の列の選択や列を範囲指定して選択する機能が Pandas のデータフレームにも用意されています。</p>
-<p>今回は最後の列 <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code> と、それ以外の列をそれぞれ取り出して、別々の変数に格納してみましょう。</p>
-<p>列や行の選択を行う方法は複数あります。
-ここでは、整数インデックスを用いてデータの部分選択を行う <code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code> を紹介します。</p>
+<p>着目したい要素や、行、列を選択する方法として、ここでは、行名や列名を用いてデータの部分選択を行う <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> を紹介します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの確認</span>
@@ -2195,9 +1593,9 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df.iloc[行, 列]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df.loc[行名, 列名]</span>
 <span class="c1"># 0 行目 longitude 列の選択</span>
-<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2210,7 +1608,7 @@ dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1 行目 latitude 列の選択</span>
-<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2220,12 +1618,11 @@ dtype: int64
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">iloc</span></code> には NumPy の ndarray の中の値を部分的に選択するのと同様のスライス表記を用いることができます。
-負のインデックスを使い、末尾の要素からの個数を用いて位置指定を行うこともできます。</p>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code> は NumPy の ndarray の中の値を部分的に選択するのと同様のスライス表記を用いることができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、最後の列を選択</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行を選択</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;housing_median_age&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2238,10 +1635,10 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    66900.0
-1    80100.0
-2    85700.0
-Name: median_house_value, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    15.0
+1    19.0
+2    17.0
+Name: housing_median_age, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2260,185 +1657,6 @@ Name: median_house_value, dtype: float64
 </div>
 </div>
 <p>1 行だけ、もしくは 1 列だけ抽出した場合は、<strong>シリーズ (series)</strong> オブジェクトが返されます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、先頭の列から末尾の列のひとつ手前までを選択</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の3件の表示</span>
-<span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>total_rooms</th>
-      <th>total_bedrooms</th>
-      <th>population</th>
-      <th>households</th>
-      <th>median_income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-114.31</td>
-      <td>34.19</td>
-      <td>15.0</td>
-      <td>5612.0</td>
-      <td>1283.0</td>
-      <td>1015.0</td>
-      <td>472.0</td>
-      <td>1.4936</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-114.47</td>
-      <td>34.40</td>
-      <td>19.0</td>
-      <td>7650.0</td>
-      <td>1901.0</td>
-      <td>1129.0</td>
-      <td>463.0</td>
-      <td>1.8200</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-114.56</td>
-      <td>33.69</td>
-      <td>17.0</td>
-      <td>720.0</td>
-      <td>174.0</td>
-      <td>333.0</td>
-      <td>117.0</td>
-      <td>1.6509</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><span class="xref myst">NumPy 入門</span>で紹介したようなスライス記法を用いる際の先頭位置の省略も行えます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># すべての行の、先頭の列から末尾の列のひとつ手前までを選択</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 先頭の3件の表示</span>
-<span class="n">x</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>total_rooms</th>
-      <th>total_bedrooms</th>
-      <th>population</th>
-      <th>households</th>
-      <th>median_income</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>-114.31</td>
-      <td>34.19</td>
-      <td>15.0</td>
-      <td>5612.0</td>
-      <td>1283.0</td>
-      <td>1015.0</td>
-      <td>472.0</td>
-      <td>1.4936</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>-114.47</td>
-      <td>34.40</td>
-      <td>19.0</td>
-      <td>7650.0</td>
-      <td>1901.0</td>
-      <td>1129.0</td>
-      <td>463.0</td>
-      <td>1.8200</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>-114.56</td>
-      <td>33.69</td>
-      <td>17.0</td>
-      <td>720.0</td>
-      <td>174.0</td>
-      <td>333.0</td>
-      <td>117.0</td>
-      <td>1.6509</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>行の数、列の数両方を複数選択した場合、データフレームオブジェクトが返ります。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 型の確認</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="id7">
 <h2>条件指定による要素の選択<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
@@ -2476,7 +1694,7 @@ Name: median_house_value, dtype: bool
 上の <code class="docutils literal notranslate"><span class="pre">mask</span></code> を <code class="docutils literal notranslate"><span class="pre">df</span></code> に <code class="docutils literal notranslate"><span class="pre">[]</span></code> を使って与えることで、指定した条件を満たす要素だけを取り出すことができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df[mask] の先頭 5 件を表示</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df[mask] の先頭 5 行を表示</span>
 <span class="n">df</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2707,34 +1925,186 @@ Name: median_house_value, dtype: bool
 </table>
 </div></div></div>
 </div>
+<p>このように複雑な条件で要素を選択する際は <code class="docutils literal notranslate"><span class="pre">query</span></code> メソッドを使用すると簡潔に書くことができます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 70000 より小さい または 80000 より大きい</span>
+<span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;median_house_value &lt; 70000 | 80000 &lt; median_house_value&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>longitude</th>
+      <th>latitude</th>
+      <th>housing_median_age</th>
+      <th>total_rooms</th>
+      <th>total_bedrooms</th>
+      <th>population</th>
+      <th>households</th>
+      <th>median_income</th>
+      <th>median_house_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-114.31</td>
+      <td>34.19</td>
+      <td>15.0</td>
+      <td>5612.0</td>
+      <td>1283.0</td>
+      <td>1015.0</td>
+      <td>472.0</td>
+      <td>1.4936</td>
+      <td>66900.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-114.47</td>
+      <td>34.40</td>
+      <td>19.0</td>
+      <td>7650.0</td>
+      <td>1901.0</td>
+      <td>1129.0</td>
+      <td>463.0</td>
+      <td>1.8200</td>
+      <td>80100.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-114.56</td>
+      <td>33.69</td>
+      <td>17.0</td>
+      <td>720.0</td>
+      <td>174.0</td>
+      <td>333.0</td>
+      <td>117.0</td>
+      <td>1.6509</td>
+      <td>85700.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-114.57</td>
+      <td>33.57</td>
+      <td>20.0</td>
+      <td>1454.0</td>
+      <td>326.0</td>
+      <td>624.0</td>
+      <td>262.0</td>
+      <td>1.9250</td>
+      <td>65500.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>-114.58</td>
+      <td>33.61</td>
+      <td>25.0</td>
+      <td>2907.0</td>
+      <td>680.0</td>
+      <td>1841.0</td>
+      <td>633.0</td>
+      <td>2.6768</td>
+      <td>82400.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>16993</th>
+      <td>-124.23</td>
+      <td>40.54</td>
+      <td>52.0</td>
+      <td>2694.0</td>
+      <td>453.0</td>
+      <td>1152.0</td>
+      <td>435.0</td>
+      <td>3.0806</td>
+      <td>106700.0</td>
+    </tr>
+    <tr>
+      <th>16995</th>
+      <td>-124.26</td>
+      <td>40.58</td>
+      <td>52.0</td>
+      <td>2217.0</td>
+      <td>394.0</td>
+      <td>907.0</td>
+      <td>369.0</td>
+      <td>2.3571</td>
+      <td>111400.0</td>
+    </tr>
+    <tr>
+      <th>16997</th>
+      <td>-124.30</td>
+      <td>41.84</td>
+      <td>17.0</td>
+      <td>2677.0</td>
+      <td>531.0</td>
+      <td>1244.0</td>
+      <td>456.0</td>
+      <td>3.0313</td>
+      <td>103600.0</td>
+    </tr>
+    <tr>
+      <th>16998</th>
+      <td>-124.30</td>
+      <td>41.80</td>
+      <td>19.0</td>
+      <td>2672.0</td>
+      <td>552.0</td>
+      <td>1298.0</td>
+      <td>478.0</td>
+      <td>1.9797</td>
+      <td>85800.0</td>
+    </tr>
+    <tr>
+      <th>16999</th>
+      <td>-124.35</td>
+      <td>40.54</td>
+      <td>52.0</td>
+      <td>1820.0</td>
+      <td>300.0</td>
+      <td>806.0</td>
+      <td>270.0</td>
+      <td>3.0147</td>
+      <td>94600.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>16495 rows × 9 columns</p>
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 70000 より大きい かつ 80000 より小さい</span>
-<span class="n">mask3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask3</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    False
-1    False
-2    False
-3     True
-4    False
-Name: median_house_value, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">mask3</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;70000 &lt; median_house_value &lt; 80000&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2829,110 +2199,81 @@ Name: median_house_value, dtype: bool
       <td>3.5735</td>
       <td>71100.0</td>
     </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>条件に当てはまる要素を調べる操作と、条件に当てはまる要素の選択まで、1 行にまとめて書くこともできます。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>longitude</th>
-      <th>latitude</th>
-      <th>housing_median_age</th>
-      <th>total_rooms</th>
-      <th>total_bedrooms</th>
-      <th>population</th>
-      <th>households</th>
-      <th>median_income</th>
-      <th>median_house_value</th>
-    </tr>
-  </thead>
-  <tbody>
     <tr>
-      <th>3</th>
-      <td>-114.57</td>
-      <td>33.64</td>
-      <td>14.0</td>
-      <td>1501.0</td>
-      <td>337.0</td>
-      <td>515.0</td>
-      <td>226.0</td>
-      <td>3.1917</td>
-      <td>73400.0</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>-114.58</td>
-      <td>33.63</td>
-      <td>29.0</td>
-      <td>1387.0</td>
-      <td>236.0</td>
-      <td>671.0</td>
-      <td>239.0</td>
-      <td>3.3438</td>
-      <td>74000.0</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>-114.61</td>
-      <td>34.83</td>
-      <td>31.0</td>
-      <td>2478.0</td>
-      <td>464.0</td>
-      <td>1346.0</td>
-      <td>479.0</td>
-      <td>3.2120</td>
-      <td>70400.0</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>-114.98</td>
-      <td>33.82</td>
+      <th>16983</th>
+      <td>-124.19</td>
+      <td>41.78</td>
       <td>15.0</td>
-      <td>644.0</td>
-      <td>129.0</td>
-      <td>137.0</td>
-      <td>52.0</td>
-      <td>3.2097</td>
-      <td>71300.0</td>
+      <td>3140.0</td>
+      <td>714.0</td>
+      <td>1645.0</td>
+      <td>640.0</td>
+      <td>1.6654</td>
+      <td>74600.0</td>
     </tr>
     <tr>
-      <th>26</th>
-      <td>-115.37</td>
-      <td>32.82</td>
-      <td>30.0</td>
-      <td>1602.0</td>
-      <td>322.0</td>
-      <td>1130.0</td>
-      <td>335.0</td>
-      <td>3.5735</td>
-      <td>71100.0</td>
+      <th>16990</th>
+      <td>-124.22</td>
+      <td>41.73</td>
+      <td>28.0</td>
+      <td>3003.0</td>
+      <td>699.0</td>
+      <td>1530.0</td>
+      <td>653.0</td>
+      <td>1.7038</td>
+      <td>78300.0</td>
+    </tr>
+    <tr>
+      <th>16991</th>
+      <td>-124.23</td>
+      <td>41.75</td>
+      <td>11.0</td>
+      <td>3159.0</td>
+      <td>616.0</td>
+      <td>1343.0</td>
+      <td>479.0</td>
+      <td>2.4805</td>
+      <td>73200.0</td>
+    </tr>
+    <tr>
+      <th>16994</th>
+      <td>-124.25</td>
+      <td>40.28</td>
+      <td>32.0</td>
+      <td>1430.0</td>
+      <td>419.0</td>
+      <td>434.0</td>
+      <td>187.0</td>
+      <td>1.9417</td>
+      <td>76100.0</td>
+    </tr>
+    <tr>
+      <th>16996</th>
+      <td>-124.27</td>
+      <td>40.69</td>
+      <td>36.0</td>
+      <td>2349.0</td>
+      <td>528.0</td>
+      <td>1194.0</td>
+      <td>465.0</td>
+      <td>2.5179</td>
+      <td>79000.0</td>
     </tr>
   </tbody>
 </table>
+<p>488 rows × 9 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -3066,19 +2407,18 @@ Name: median_house_value, dtype: bool
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">target</span></code> という列の全ての要素は <code class="docutils literal notranslate"><span class="pre">None</span></code> となっています。
 この値を、条件指定によって書き換えます。</p>
-<p>まず各条件に対応するマスクを作成します。</p>
+<p>まず各条件に対応するマスクを作成します。選択まではせずに、マスクだけ作成する場合は、<code class="docutils literal notranslate"><span class="pre">query</span></code> ではなく <code class="docutils literal notranslate"><span class="pre">eval</span></code> が使用できます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">60000</span>
-<span class="n">mask2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">60000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">70000</span><span class="p">)</span>
-<span class="n">mask3</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">70000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">80000</span><span class="p">)</span>
-<span class="n">mask4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;median_house_value&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">80000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;median_house_value &lt; 60000&quot;</span><span class="p">)</span>
+<span class="n">mask2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;60000 &lt;= median_house_value &lt; 70000&quot;</span><span class="p">)</span>
+<span class="n">mask3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;70000 &lt;= median_house_value &lt; 80000&quot;</span><span class="p">)</span>
+<span class="n">mask4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">&quot;80000 &lt;= median_house_value&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>行や列を整数インデックスで選択する場合は <code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code> を使用しましたが、<strong>列を名前で指定する</strong>場合には <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> を用います。
-それでは、上で計算したマスクと名前による列指定を組み合わせて、各条件を満たす行の <code class="docutils literal notranslate"><span class="pre">target</span></code> 列の値を書き換えます。</p>
+<p>それでは、上で計算したマスクと名前による列指定を組み合わせて、各条件を満たす行の <code class="docutils literal notranslate"><span class="pre">target</span></code> 列の値を書き換えます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask1</span><span class="p">,</span> <span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -3140,7 +2480,7 @@ Name: median_house_value, dtype: bool
       <td>472.0</td>
       <td>1.4936</td>
       <td>66900.0</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -3153,7 +2493,7 @@ Name: median_house_value, dtype: bool
       <td>463.0</td>
       <td>1.8200</td>
       <td>80100.0</td>
-      <td>3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -3166,7 +2506,7 @@ Name: median_house_value, dtype: bool
       <td>117.0</td>
       <td>1.6509</td>
       <td>85700.0</td>
-      <td>3</td>
+      <td>3.0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -3179,7 +2519,7 @@ Name: median_house_value, dtype: bool
       <td>226.0</td>
       <td>3.1917</td>
       <td>73400.0</td>
-      <td>2</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -3192,7 +2532,7 @@ Name: median_house_value, dtype: bool
       <td>262.0</td>
       <td>1.9250</td>
       <td>65500.0</td>
-      <td>1</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -3208,7 +2548,7 @@ Name: median_house_value, dtype: bool
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 欠損値を人為的に作成</span>
-<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;longitude&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -3498,7 +2838,7 @@ dtype: float64
 <section id="ndarray">
 <h2>ndarray とデータフレームを相互に変換<a class="headerlink" href="#ndarray" title="Permalink to this heading">#</a></h2>
 <p>scikit-learn では、データフレームやシリーズをそのまま扱うことができます。
-しかし、Chainer を含む他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
+しかし、他のライブラリやフレームワークではそのままでは扱うことができない場合もあります。
 そこで、データフレームを NumPy の ndarray に変換する方法を紹介します。</p>
 <p>まず、<code class="docutils literal notranslate"><span class="pre">df</span></code> がデータフレームであることを確認します。</p>
 <div class="cell docutils container">
@@ -3762,7 +3102,7 @@ NumPy で乱数を要素にもつ ndarray を生成し、これをデータフ�
 <section id="id11">
 <h2>グラフの描画<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>データフレームオブジェクトから直接可視化のための機能を呼び出すことができます。
-<a class="reference external" href="https://tutorials.chainer.org/ja/12_Introduction_to_Matplotlib.html">次の章</a>で紹介する Matplotlib というグラフ描画ライブラリを <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code> 機能を用いて利用することができます。</p>
+<a class="reference external" href="https://shinonome.io/PythonTutorialForDSCourse/ja-edited/12_Introduction_to_Matplotlib.html">次の章</a>で紹介する Matplotlib というグラフ描画ライブラリを <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code> 機能を用いて利用することができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># グラフの描画</span>
@@ -3810,20 +3150,20 @@ NumPy で乱数を要素にもつ ndarray を生成し、これをデータフ�
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="08_Introduction_to_NumPy.html"
+       href="../exercise/numpy_quiz.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">NumPy 入門</p>
+        <p class="prev-next-title">【確認課題】Numpy</p>
       </div>
     </a>
     <a class="right-next"
-       href="12_Introduction_to_Matplotlib.html"
+       href="../exercise/pandas_quiz.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Matplotlib 入門</p>
+        <p class="prev-next-title">【確認課題】Pandas</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

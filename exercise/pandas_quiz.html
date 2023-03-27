@@ -1,0 +1,678 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>【確認課題】Pandas &#8212; データコース教材</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'exercise/pandas_quiz';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Matplotlib 入門" href="../ja-edited/12_Introduction_to_Matplotlib.html" />
+    <link rel="prev" title="Pandas 入門" href="../ja-edited/11_Introduction_to_Pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../ja-edited/01_Welcome_to_Chainer_Tutorial.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">データコース教材</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../ja-edited/01_Welcome_to_Chainer_Tutorial.html">
+                    はじめに
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_01_Basics_of_Python_variable.html">Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_01_Basics_of_Python_variable.html">【確認課題】Python 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_02_Basics_of_Python_control.html">制御構文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_02_Basics_of_Python_control.html">【確認課題】制御構文</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/02_03_Basics_of_Python_function.html">関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_03_Basics_of_Python_function.html">【確認課題】関数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/08_Introduction_to_NumPy.html">NumPy 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_quiz.html">【確認課題】Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/11_Introduction_to_Pandas.html">Pandas 入門</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">【確認課題】Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/12_Introduction_to_Matplotlib.html">Matplotlib 入門</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib_quiz.html">【確認課題】Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/03_Basic_Math_for_Machine_Learning.html">機械学習に使われる数学</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ja-edited/09_Introduction_to_Scikit-learn.html">scikit-learn 入門</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/shinonome-inc/PythonTutorialForDSCourse/blob/main/./exercise/pandas_quiz.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/exercise/pandas_quiz.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>【確認課題】Pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">必要モジュールのインポート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの読み込み</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">問1. 条件抽出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">問2. ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">問3. 全件数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">問4. ユニーク件数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">問5. 〇〇ごとに集計</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">問6. DataFrameの結合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">問7. 時系列データ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">問8. 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">問9. 欠損数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">問10. 欠損値の除去</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">問11. 欠損値の穴埋め</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">余談</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<h1>【確認課題】Pandas<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<p>このPandas確認課題は、データサイエンス100本ノックの問題で最低限必要な問題を抜粋したものですが、<span class="xref myst">Introduction_to_Pandas</span> に掲載されていない機能が必要な問題もあります。
+初めて触るライブラリを調べながら使うというのはよくある光景です。この課題では皆さんにもそれに挑戦していただきます。<br />
+ヒントとして検索キーワードなどを載せておくので、自力で調べながら解いてみましょう。</p>
+<section id="id1">
+<h2>必要モジュールのインポート<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>この問題で使うモジュールをインポートします．</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>データの読み込み<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_customer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/docker/work/data/customer.csv&#39;</span><span class="p">)</span>
+<span class="n">df_product</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/docker/work/data/product.csv&#39;</span><span class="p">)</span>
+<span class="n">df_receipt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/The-Japan-DataScientist-Society/100knocks-preprocess/master/docker/work/data/receipt.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>問1. 条件抽出<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-006: レシート明細データフレーム「df_receipt」から売上日（sales_ymd）、顧客ID（customer_id）、商品コード（product_cd）、売上数量（quantity）、売上金額（amount）の順に列を指定し、以下の条件を満たすデータを抽出せよ。</p>
+<ul class="simple">
+<li><p>顧客ID（customer_id）が”CS018205000001”</p></li>
+<li><p>売上金額（amount）が1,000以上または売上数量（quantity）が5以上</p></li>
+</ul>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2>問2. ソート<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-18: 顧客データフレーム（df_customer）を生年月日（birth_day）で若い順にソートし、先頭5件を全項目表示せよ。</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>問3. 全件数<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-021: レシート明細データフレーム（df_receipt）に対し、件数をカウントせよ。</p>
+</div></blockquote>
+</section>
+<section id="id6">
+<h2>問4. ユニーク件数<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-022: レシート明細データフレーム（df_receipt）の顧客ID（customer_id）に対し、ユニーク件数をカウントせよ。</p>
+</div></blockquote>
+<details>
+<summary>ヒント</summary>
+「ユニーク」というのはそのまま検索に使える単語です。  
+</details></section>
+<hr class="docutils" />
+<section id="id7">
+<h2>問5. 〇〇ごとに集計<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-035: レシート明細データフレーム（df_receipt）に対し、顧客ID（customer_id）ごとに売上金額（amount）を合計して全顧客の平均を求め、平均以上に買い物をしている顧客を抽出せよ。ただし、顧客IDが”Z”から始まるのものは非会員を表すため、除外して計算すること。なお、データは先頭5件だけ表示せよ。</p>
+</div></blockquote>
+<p>会員のみを抽出する方法は、例えば以下の2通りの方法があります。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_receipt_only_member</span> <span class="o">=</span> <span class="n">df_receipt</span><span class="p">[</span><span class="o">~</span><span class="n">df_receipt</span><span class="p">[</span><span class="s2">&quot;customer_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)]</span>
+<span class="n">df_receipt_only_member</span> <span class="o">=</span> <span class="n">df_receipt</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;not customer_id.str.startswith(&#39;Z&#39;)&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary>ヒント1</summary>
+「pandas 要素ごと 集計」 などで今回使える機能に関する記事が見つかります。
+</details><details>
+<summary>ヒント2</summary>
+メソッド名は "groupby" です。
+</details></section>
+<hr class="docutils" />
+<section id="dataframe">
+<h2>問6. DataFrameの結合<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-038: 顧客データフレーム（df_customer）とレシート明細データフレーム（df_receipt）から、各顧客ごとの売上金額合計を求めよ。ただし、買い物の実績がない顧客については売上金額を0として表示させること。また、顧客は性別コード（gender_cd）が女性（1）であるものを対象とし、非会員（顧客IDが’Z’から始まるもの）は除外すること。なお、結果は先頭5件だけ表示せよ。</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_customer_only_member</span> <span class="o">=</span> <span class="n">df_customer</span><span class="p">[</span><span class="o">~</span><span class="n">df_customer</span><span class="p">[</span><span class="s2">&quot;customer_id&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)]</span>
+<span class="n">df_customer_only_member</span> <span class="o">=</span> <span class="n">df_customer</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;not customer_id.str.startswith(&#39;Z&#39;)&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;python&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary>ヒント1</summary>
+タイトル通り 「pandas DataFrame 結合」などと調べれば必要な機能に関する記事が見つかります。  
+</details>
+<details>
+<summary>ヒント2</summary>
+"merge", "join"という似たメソッドがあります。  
+今回の場合"merge"が便利でしょう。
+</details></section>
+<hr class="docutils" />
+<section id="id8">
+<h2>問7. 時系列データ<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-046: 顧客データフレーム（df_customer）の申し込み日（application_date）はYYYYMMD形式の文字列型でデータを保有している。これを日付型（dateやdatetime）に変換し、顧客ID（customer_id）とともに抽出せよ。なお、データは先頭5件を表示せよ。</p>
+</div></blockquote>
+<details>
+<summary>ヒント1</summary>
+「pandas datetime」などで該当の機能が見つかるかと思います。
+</details>
+<details>
+<summary>ヒント2</summary>
+"pd.to_datetime"というメソッドが使えるでしょう。このメソッドを適用する際ですが、for文を使わずに実装しましょう。</section>
+<hr class="docutils" />
+<section id="id9">
+<h2>問8. 関数<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-061: レシート明細データフレーム（df_receipt）の売上金額（amount）を顧客ID（customer_id）ごとに合計し、合計した売上金額を常用対数化（底=10）して顧客ID、売上金額合計とともに表示せよ。ただし、顧客IDが”Z”から始まるのものは非会員を表すため、除外して計算すること。なお、結果は先頭5件を表示せよ。</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="id10">
+<h2>問9. 欠損数<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-079: 商品データフレーム（df_product）の各項目に対し、欠損数を確認せよ。</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>問10. 欠損値の除去<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-080: 商品データフレーム（df_product）のいずれかの項目に欠損が発生しているレコードを全て削除した新たなdf_product_1を作成せよ。なお、削除前後の件数を表示させ、前設問で確認した件数だけ減少していることも確認すること。</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df_product</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_product_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_product</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_product_1</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;df_product_1&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="id12">
+<h2>問11. 欠損値の穴埋め<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>P-081: 単価（unit_price）と原価（unit_cost）の欠損値について、それぞれの平均値で補完した新たなdf_product_2を作成せよ。なお、平均値について1円未満は四捨五入とせよ。補完実施後、各項目について欠損が生じていないことも確認すること。</p>
+</div></blockquote>
+<section id="id13">
+<h3>余談<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p>ChatGPTやBing AIに聞けば大抵のことは教えてくれます。<br />
+何回か入力文章を吟味しないといけないこともありますが、知らないことを調べる場合は自分で検索するよりも早いです。<br />
+ただ、ChatGPTなどは嘘をつく場合があるので、自分でソースを参照する姿勢は必要です。</p>
+<p>これはBingAIの回答例です。</p>
+<p><img alt="BingAIの回答例" src="../_images/BingAI.png" /></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./exercise"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ja-edited/11_Introduction_to_Pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas 入門</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../ja-edited/12_Introduction_to_Matplotlib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Matplotlib 入門</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">必要モジュールのインポート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">データの読み込み</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">問1. 条件抽出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">問2. ソート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">問3. 全件数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">問4. ユニーク件数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">問5. 〇〇ごとに集計</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">問6. DataFrameの結合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">問7. 時系列データ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">問8. 関数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">問9. 欠損数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">問10. 欠損値の除去</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">問11. 欠損値の穴埋め</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">余談</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PlayGround
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
