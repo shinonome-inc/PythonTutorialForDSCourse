@@ -14,8 +14,9 @@
 # # 【確認課題】Matplotlib
 
 # + colab={"base_uri": "https://localhost:8080/"} id="oA__biOqYxYz" outputId="861c2ef1-7ff1-43b7-962f-21eeaedc5955"
-#使うライブラリ
-# !pip install japanize-matplotlib
+# 使うライブラリ
+# # !pip install japanize-matplotlib
+
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
