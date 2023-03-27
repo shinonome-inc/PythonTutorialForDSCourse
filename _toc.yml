@@ -11,8 +11,10 @@ chapters:
   - file: ja-edited/02_03_Basics_of_Python_function.ipynb
   - file: exercise/02_03_Basics_of_Python_function.md
   - file: ja-edited/08_Introduction_to_NumPy.ipynb
+  - file: exercise/numpy_quiz.ipynb
   - file: ja-edited/11_Introduction_to_Pandas.ipynb
+  - file: exercise/pandas_quiz.ipynb
   - file: ja-edited/12_Introduction_to_Matplotlib.ipynb
+  - file: exercise/matplotlib_quiz.ipynb
   - file: ja-edited/03_Basic_Math_for_Machine_Learning.ipynb
   - file: ja-edited/09_Introduction_to_Scikit-learn.ipynb
-  - file: ja-edited/99_Basics_of_Python_class.ipynb
