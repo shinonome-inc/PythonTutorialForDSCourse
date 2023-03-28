@@ -18,3 +18,4 @@ chapters:
   - file: exercise/matplotlib_quiz.ipynb
   - file: ja-edited/03_Basic_Math_for_Machine_Learning.ipynb
   - file: ja-edited/09_Introduction_to_Scikit-learn.ipynb
+  - file: exercise/sklearn_quiz.ipynb
