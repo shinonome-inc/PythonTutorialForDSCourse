@@ -71,7 +71,7 @@ data_url = "http://lib.stat.cmu.edu/datasets/boston"
 df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
 # -
 
-# 読み込んだデータセットそれぞれに入力値と目標値を並べた ndarray が格納されています。
+# 読み込んだデータフレームそれぞれに入力値と目標値を並べたデータが格納されています。
 # これらを取り出して、それぞれ `x` と `t` という変数に格納しておきましょう。
 
 x = np.hstack([df.values[::2, :], df.values[1::2, :2]])
