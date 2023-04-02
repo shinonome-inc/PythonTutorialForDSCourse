@@ -62,19 +62,20 @@
 # | MEDV | 物件価格の中央値 |
 #
 # このデータセットを用いて、最後の MEDV 以外の 13 個の指標から、MEDV を予測する回帰問題に取り組んでみましょう。
-# このデータセットは、scikit-learn の `load_boston()` という関数を呼び出すことで読み込むことができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 89} colab_type="code" id="v7s7ivnO1eWA" outputId="3134bcd1-1e5b-4a65-8f20-3b0c201e7c43"
-from sklearn.datasets import load_boston
+import pandas as pd
+import numpy as np
 
-dataset = load_boston()
+data_url = "http://lib.stat.cmu.edu/datasets/boston"
+df = pd.read_csv(data_url, sep="\s+", skiprows=22, header=None)
 # -
 
-# 読み込んだデータセットは、`data` という属性と `target` という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。
+# 読み込んだデータセットそれぞれに入力値と目標値を並べた ndarray が格納されています。
 # これらを取り出して、それぞれ `x` と `t` という変数に格納しておきましょう。
 
-x = dataset.data
-t = dataset.target
+x = np.hstack([df.values[::2, :], df.values[1::2, :2]])
+t = df.values[1::2, 2]
 
 # 入力値が格納されている `x` は、506 個の 13 次元ベクトルを並べたものになっています。
 # 形を確認してみましょう。
