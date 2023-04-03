@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -395,8 +395,8 @@ scikit-learn では NumPy の ndarray でデータやパラメータを取り扱
 <p>前章で NumPy を用いて実装した重回帰分析を、scikit-learn を使ってより大きなデータセットに対し適用してみましょう。</p>
 <section id="step-1">
 <h3>Step 1：データセットの準備<a class="headerlink" href="#step-1" title="Permalink to this heading">#</a></h3>
-<p>本章では、前章までのような人工データではなく、米国ボストンの 506 の地域ごとの住環境の情報などと家賃の中央値の情報を収集して作られた Boston house prices dataset というデータセットを使用します。</p>
-<p>このデータセットには 506 件のサンプルが含まれており、各サンプルは以下の情報を持っています。</p>
+<p>本章では、前章までのような人工データではなく、カリフォルニアの住宅価格の表形式データ（部屋数や築年数などの8項目）＋ラベル（住宅価格）の California housing dataset というデータセットを使用します。</p>
+<p>このデータセットには20640件のサンプルが含まれており、各サンプルは以下の情報を持っています。</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>属性名</p></th>
@@ -404,132 +404,46 @@ scikit-learn では NumPy の ndarray でデータやパラメータを取り扱
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-left"><p>CRIM</p></td>
-<td class="text-left"><p>人口 1 人あたりの犯罪発生率</p></td>
+<tr class="row-even"><td class="text-left"><p>MedInc</p></td>
+<td class="text-left"><p>収入の中央値</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>ZN</p></td>
-<td class="text-left"><p>25,000 平方フィート以上の住宅区画が占める割合</p></td>
+<tr class="row-odd"><td class="text-left"><p>HouseAge</p></td>
+<td class="text-left"><p>築年数の中央値</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>INDUS</p></td>
-<td class="text-left"><p>小売業以外の商業が占める面積の割合</p></td>
+<tr class="row-even"><td class="text-left"><p>AveRooms</p></td>
+<td class="text-left"><p>家にある部屋数の平均値</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>CHAS</p></td>
-<td class="text-left"><p>チャールズ川の川沿いかどうか (0 or 1)</p></td>
+<tr class="row-odd"><td class="text-left"><p>AveBedrms</p></td>
+<td class="text-left"><p>家にある寝室数の平均値</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>NOX</p></td>
-<td class="text-left"><p>窒素酸化物の濃度</p></td>
+<tr class="row-even"><td class="text-left"><p>Population</p></td>
+<td class="text-left"><p>人口</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>RM</p></td>
-<td class="text-left"><p>住居の平均部屋数</p></td>
+<tr class="row-odd"><td class="text-left"><p>AveOccup</p></td>
+<td class="text-left"><p>家に住んでいる人数の平均値</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>AGE</p></td>
-<td class="text-left"><p>1940 年より前に建てられた持ち主が住んでいる物件の割合</p></td>
+<tr class="row-even"><td class="text-left"><p>Latitude</p></td>
+<td class="text-left"><p>緯度</p></td>
 </tr>
-<tr class="row-odd"><td class="text-left"><p>DIS</p></td>
-<td class="text-left"><p>5 つのボストン雇用施設からの重み付き距離</p></td>
+<tr class="row-odd"><td class="text-left"><p>Longitude</p></td>
+<td class="text-left"><p>経度</p></td>
 </tr>
-<tr class="row-even"><td class="text-left"><p>RAD</p></td>
-<td class="text-left"><p>環状高速道路へのアクセシビリティ指標</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>TAX</p></td>
-<td class="text-left"><p>$10,000 あたりの固定資産税率</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>PTRATIO</p></td>
-<td class="text-left"><p>町ごとにみた教師 1 人あたりの生徒数</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>B</p></td>
-<td class="text-left"><p>町ごとにみた黒人の比率を Bk としたときの (Bk - 0.63)^2 の値</p></td>
-</tr>
-<tr class="row-even"><td class="text-left"><p>LSTAT</p></td>
-<td class="text-left"><p>給与の低い職業に従事する人口の割合</p></td>
-</tr>
-<tr class="row-odd"><td class="text-left"><p>MEDV</p></td>
-<td class="text-left"><p>物件価格の中央値</p></td>
+<tr class="row-even"><td class="text-left"><p>MedHouseVal</p></td>
+<td class="text-left"><p>住宅価格の中央値</p></td>
 </tr>
 </tbody>
 </table>
-<p>このデータセットを用いて、最後の MEDV 以外の 13 個の指標から、MEDV を予測する回帰問題に取り組んでみましょう。
-このデータセットは、scikit-learn の <code class="docutils literal notranslate"><span class="pre">load_boston()</span></code> という関数を呼び出すことで読み込むことができます。</p>
+<p>このデータセットを用いて、 最後の MedHouseVal 以外の 8 個の指標から、 MedHouseVal を予測する回帰問題に取り組んでみましょう。このデータセットは、scikit-learn の <code class="docutils literal notranslate"><span class="pre">fetch_california_housing()</span></code>という関数を呼び出すことで読み込むことができます。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_boston</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_california_housing</span>
 
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_boston</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>---------------------------------------------------------------------------
-ImportError                               Traceback (most recent call last)
-Cell In[1], line 1
-----&gt; 1 from sklearn.datasets import load_boston
-      3 dataset = load_boston()
-
-File /opt/hostedtoolcache/Python/3.8.16/x64/lib/python3.8/site-packages/sklearn/datasets/__init__.py:156, in __getattr__(name)
-    105 if name == &quot;load_boston&quot;:
-    106     msg = textwrap.dedent(
-    107         &quot;&quot;&quot;
-    108         `load_boston` has been removed from scikit-learn since version 1.2.
-   (...)
-    154         &quot;&quot;&quot;
-    155     )
---&gt; 156     raise ImportError(msg)
-    157 try:
-    158     return globals()[name]
-
-ImportError: 
-`load_boston` has been removed from scikit-learn since version 1.2.
-
-The Boston housing prices dataset has an ethical problem: as
-investigated in [1], the authors of this dataset engineered a
-non-invertible variable &quot;B&quot; assuming that racial self-segregation had a
-positive impact on house prices [2]. Furthermore the goal of the
-research that led to the creation of this dataset was to study the
-impact of air quality but it did not give adequate demonstration of the
-validity of this assumption.
-
-The scikit-learn maintainers therefore strongly discourage the use of
-this dataset unless the purpose of the code is to study and educate
-about ethical issues in data science and machine learning.
-
-In this special case, you can fetch the dataset from the original
-source::
-
-    import pandas as pd
-    import numpy as np
-
-    data_url = &quot;http://lib.stat.cmu.edu/datasets/boston&quot;
-    raw_df = pd.read_csv(data_url, sep=&quot;\s+&quot;, skiprows=22, header=None)
-    data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :2]])
-    target = raw_df.values[1::2, 2]
-
-Alternative datasets include the California housing dataset and the
-Ames housing dataset. You can load the datasets as follows::
-
-    from sklearn.datasets import fetch_california_housing
-    housing = fetch_california_housing()
-
-for the California housing dataset and::
-
-    from sklearn.datasets import fetch_openml
-    housing = fetch_openml(name=&quot;house_prices&quot;, as_frame=True)
-
-for the Ames housing dataset.
-
-[1] M Carlisle.
-&quot;Racist data destruction?&quot;
-&lt;https://medium.com/@docintangible/racist-data-destruction-113e3eff54a8&gt;
-
-[2] Harrison Jr, David, and Daniel L. Rubinfeld.
-&quot;Hedonic housing prices and the demand for clean air.&quot;
-Journal of environmental economics and management 5.1 (1978): 81-102.
-&lt;https://www.researchgate.net/publication/4974606_Hedonic_housing_prices_and_the_demand_for_clean_air&gt;
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>読み込んだデータセットは、<code class="docutils literal notranslate"><span class="pre">data</span></code> という属性と <code class="docutils literal notranslate"><span class="pre">target</span></code> という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。
-これらを取り出して、それぞれ <code class="docutils literal notranslate"><span class="pre">x</span></code> と <code class="docutils literal notranslate"><span class="pre">t</span></code> という変数に格納しておきましょう。</p>
+<p>読み込んだデータセットは、data という属性と target という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。 これらを取り出して、それぞれ x と t という変数に格納しておきましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">data</span>
@@ -538,7 +452,7 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 </div>
 </div>
 </div>
-<p>入力値が格納されている <code class="docutils literal notranslate"><span class="pre">x</span></code> は、506 個の 13 次元ベクトルを並べたものになっています。
+<p>入力値が格納されている <code class="docutils literal notranslate"><span class="pre">x</span></code> は、20640 個の 8 次元ベクトルを並べたものになっています。
 形を確認してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,12 +461,12 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506, 13)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20640, 8)
 </pre></div>
 </div>
 </div>
 </div>
-<p>一方 <code class="docutils literal notranslate"><span class="pre">t</span></code> は、各データ点ごとに 1 つの値を持つため、506 次元のベクトルになっています。
+<p>一方 <code class="docutils literal notranslate"><span class="pre">t</span></code> は、各データ点ごとに 1 つの値を持つため、20640 次元のベクトルになっています。
 形を確認してみましょう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +475,7 @@ Journal of environmental economics and management 5.1 (1978): 81-102.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(506,)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(20640,)
 </pre></div>
 </div>
 </div>
@@ -641,11 +555,7 @@ scikit-learn に用意されている手法の多くは、共通して <code cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
-         normalize=False)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 <p>モデルの訓練が完了しました。
 求まったパラメータの値を確認してみましょう。
@@ -659,10 +569,8 @@ scikit-learn に用意されている手法の多くは、共通して <code cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.21310401e-01,  4.44664254e-02,  1.13416945e-02,  2.51124642e+00,
-       -1.62312529e+01,  3.85906801e+00, -9.98516565e-03, -1.50026956e+00,
-        2.42143466e-01, -1.10716124e-02, -1.01775264e+00,  6.81446545e-03,
-       -4.86738066e-01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4.46773975e-01,  9.18409990e-03, -1.18116775e-01,  6.42290879e-01,
+       -9.37026507e-06, -4.08535934e-03, -4.09023312e-01, -4.23419564e-01])
 </pre></div>
 </div>
 </div>
@@ -675,7 +583,7 @@ scikit-learn に用意されている手法の多くは、共通して <code cla
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>37.93710774183255
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-36.01222888765237
 </pre></div>
 </div>
 </div>
@@ -697,7 +605,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7645451026942549
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6112941337977225
 </pre></div>
 </div>
 </div>
@@ -717,7 +625,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([24.9357079])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.2702672])
 </pre></div>
 </div>
 </div>
@@ -730,12 +638,12 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.369
 </pre></div>
 </div>
 </div>
 </div>
-<p>22.6 という目標値に対して、およそ 24.94 という予測値が返ってきました。</p>
+<p>1.369 という目標値に対して、およそ 2.270 という予測値が返ってきました。</p>
 </section>
 <section id="id4">
 <h3>テスト用データセットを用いた評価<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
@@ -747,12 +655,12 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6733825506400194
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5926087785518772
 </pre></div>
 </div>
 </div>
 </div>
-<p>訓練用データセットを用いて算出した値（およそ 0.765）よりも、低い値がでてしまいました。</p>
+<p>訓練用データセットを用いて算出した値（およそ 0.611）よりも、低い値がでてしまいました。</p>
 <p>教師あり学習の目的は、訓練時には見たことがない新しいデータ、ここではテスト用データセットに含まれているデータに対しても、高い性能を発揮するように、モデルを訓練することです。
 逆に、訓練時に用いたデータに対してはよく当てはまっていても、訓練時に用いなかったデータに対しては予測値と目標値の差異が大きくなってしまう現象を、<strong>過学習 (overfitting)</strong> と言います。</p>
 <p>過学習を防ぐために、色々な方法が研究されています。
@@ -765,7 +673,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 <h3>Step 1 の改善：前処理<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p><strong>前処理 (preprocessing)</strong> とは、欠損値の補完、外れ値の除去、特徴量選択、正規化などの処理を訓練を開始する前にデータセットに対して行うことです。</p>
 <p>手法やデータに合わせた前処理が必要となるため、適切な前処理を行うためには手法そのものについて理解している必要があるだけでなく、使用するデータの特性についてもよく調べておく必要があります。</p>
-<p>今回のデータは、入力値の値の範囲が CRIM, ZN, INDUS, … といった指標ごとに大きく異なっています。
+<p>今回のデータは、入力値の値の範囲が指標ごとに大きく異なっています。
 そこで、各入力変数ごとに平均が 0、分散が 1 となるように値をスケーリングする<strong>標準化 (standardization)</strong> をおこなってみましょう。</p>
 <p>scikit-learn では <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> というモジュール以下に <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> というクラスが定義されています。
 今回は、これを用いてデータセットに対し標準化を適用します。
@@ -789,10 +697,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>StandardScaler(copy=True, with_mean=True, with_std=True)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-2 {color: black;background-color: white;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>StandardScaler()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div>
 </div>
 <p>すべてのサンプルではなく、訓練用データセットのみを用いてこれらの値を算出します。
 先ほどの <code class="docutils literal notranslate"><span class="pre">fit()</span></code> の実行の結果、算出された平均値が <code class="docutils literal notranslate"><span class="pre">mean_</span></code> 属性に、分散が <code class="docutils literal notranslate"><span class="pre">var_</span></code> 属性に格納されているので、確認してみましょう。</p>
@@ -804,10 +709,8 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.35828432e+00, 1.18093220e+01, 1.10787571e+01, 6.49717514e-02,
-       5.56098305e-01, 6.30842655e+00, 6.89940678e+01, 3.76245876e+00,
-       9.35310734e+00, 4.01782486e+02, 1.84734463e+01, 3.60601186e+02,
-       1.24406497e+01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 3.86666741e+00,  2.86187016e+01,  5.42340368e+00,  1.09477484e+00,
+        1.42515732e+03,  3.04051776e+00,  3.56300934e+01, -1.19566647e+02])
 </pre></div>
 </div>
 </div>
@@ -820,10 +723,8 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6.95792305e+01, 5.57886665e+02, 4.87753572e+01, 6.07504229e-02,
-       1.33257561e-02, 4.91423928e-01, 7.83932705e+02, 4.26314655e+00,
-       7.49911344e+01, 2.90195600e+04, 4.93579208e+00, 7.31040807e+03,
-       4.99634123e+01])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3.57623030e+00, 1.58665727e+02, 5.23284007e+00, 2.04970135e-01,
+       1.32144307e+06, 4.71684495e+01, 4.57979889e+00, 4.02611175e+00])
 </pre></div>
 </div>
 </div>
@@ -848,11 +749,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
-         normalize=False)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-3 {color: black;background-color: white;}#sk-container-id-3 pre{padding: 0;}#sk-container-id-3 div.sk-toggleable {background-color: white;}#sk-container-id-3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-3 div.sk-item {position: relative;z-index: 1;}#sk-container-id-3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-3 div.sk-item::before, #sk-container-id-3 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-3 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-3 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-3 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-3 div.sk-label-container {text-align: center;}#sk-container-id-3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked><label for="sk-estimator-id-3" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,7 +759,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7645451026942549
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6112941337977225
 </pre></div>
 </div>
 </div>
@@ -875,7 +772,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6733825506400195
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5926087785518777
 </pre></div>
 </div>
 </div>
@@ -898,11 +795,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
-         normalize=False)
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-4 {color: black;background-color: white;}#sk-container-id-4 pre{padding: 0;}#sk-container-id-4 div.sk-toggleable {background-color: white;}#sk-container-id-4 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-4 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-4 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-4 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-4 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-4 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-4 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-4 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-4 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-4 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-4 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-4 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-4 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-4 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-4 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-4 div.sk-item {position: relative;z-index: 1;}#sk-container-id-4 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-4 div.sk-item::before, #sk-container-id-4 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-4 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-4 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-4 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-4 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-4 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-4 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-4 div.sk-label-container {text-align: center;}#sk-container-id-4 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-4 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked><label for="sk-estimator-id-4" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +805,7 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7859862562650238
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6229916507316948
 </pre></div>
 </div>
 </div>
@@ -925,7 +818,54 @@ R^{2} = 1 - \dfrac{\sum_{n=1}^{N}\left( t_{n} - y_{n} \right)^{2}}{\sum_{n=1}^{N
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7002856552456189
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6131647319379137
+</pre></div>
+</div>
+</div>
+</div>
+<p>結果が少し改善しました。
+ここで、目標値である MedHouseValにも前処理として対数変換を適用し再度同じモデルの訓練を行ってみましょう。尚、目的変数に変換をした場合、精度を確認するときにはモデルの予測に逆変換を行って元のスケールで行います。sklearnの<code class="docutils literal notranslate"><span class="pre">TransformerTargetRegressor</span></code>を用いると目的変数の対数変換とその逆変換を学習の前後に自動的に行なってくれます。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">TransformedTargetRegressor</span>
+
+<span class="n">reg_model</span> <span class="o">=</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span>
+    <span class="n">regressor</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">(),</span> <span class="c1"># モデルにはLinearRegressionを指定</span>
+    <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">,</span> <span class="c1"># 学習前に行う変換の関数を指定</span>
+    <span class="n">inverse_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span> <span class="c1"># 学習後の精度確認前に行う逆変換の関数を指定</span>
+<span class="p">)</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-5 {color: black;background-color: white;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>TransformedTargetRegressor(func=&lt;ufunc &#x27;log1p&#x27;&gt;, inverse_func=&lt;ufunc &#x27;expm1&#x27;&gt;,
+                           regressor=LinearRegression())</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-5" type="checkbox" ><label for="sk-estimator-id-5" class="sk-toggleable__label sk-toggleable__label-arrow">TransformedTargetRegressor</label><div class="sk-toggleable__content"><pre>TransformedTargetRegressor(func=&lt;ufunc &#x27;log1p&#x27;&gt;, inverse_func=&lt;ufunc &#x27;expm1&#x27;&gt;,
+                           regressor=LinearRegression())</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-6" type="checkbox" ><label for="sk-estimator-id-6" class="sk-toggleable__label sk-toggleable__label-arrow">regressor: LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練データでの決定係数</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_train_scaled</span><span class="p">,</span> <span class="n">t_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6658173722018323
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># テストデータでの決定係数</span>
+<span class="n">reg_model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test_scaled</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6575264578077608
 </pre></div>
 </div>
 </div>
@@ -940,10 +880,14 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 
-<span class="c1"># パイプラインの作成 (scaler -&gt; svr)</span>
+<span class="c1"># パイプラインの作成 (scaler -&gt; reg)</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
     <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">PowerTransformer</span><span class="p">()),</span>
-    <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())</span>
+    <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span>
+        <span class="n">regressor</span><span class="o">=</span><span class="n">LinearRegression</span><span class="p">(),</span> <span class="c1"># モデルにはLinerRegressionを指定</span>
+        <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">,</span> <span class="c1"># 学習前に行う変換の関数を指定</span>
+        <span class="n">inverse_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">expm1</span> <span class="c1"># 精度確認前に行う逆変換の関数を指定</span>
+    <span class="p">))</span>
 <span class="p">])</span>
 </pre></div>
 </div>
@@ -957,12 +901,16 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pipeline(memory=None,
-     steps=[(&#39;scaler&#39;, PowerTransformer(copy=True, method=&#39;yeo-johnson&#39;, standardize=True)), (&#39;reg&#39;, LinearRegression(copy_X=True, fit_intercept=True, n_jobs=None,
-         normalize=False))])
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><style>#sk-container-id-6 {color: black;background-color: white;}#sk-container-id-6 pre{padding: 0;}#sk-container-id-6 div.sk-toggleable {background-color: white;}#sk-container-id-6 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-6 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-6 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-6 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-6 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-6 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-6 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-6 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-6 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-6 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-6 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-6 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-6 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-6 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-6 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-6 div.sk-item {position: relative;z-index: 1;}#sk-container-id-6 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-6 div.sk-item::before, #sk-container-id-6 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-6 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-6 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-6 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-6 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-6 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-6 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-6 div.sk-label-container {text-align: center;}#sk-container-id-6 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-6 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-6" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, PowerTransformer()),
+                (&#x27;reg&#x27;,
+                 TransformedTargetRegressor(func=&lt;ufunc &#x27;log1p&#x27;&gt;,
+                                            inverse_func=&lt;ufunc &#x27;expm1&#x27;&gt;,
+                                            regressor=LinearRegression()))])</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;scaler&#x27;, PowerTransformer()),
+                (&#x27;reg&#x27;,
+                 TransformedTargetRegressor(func=&lt;ufunc &#x27;log1p&#x27;&gt;,
+                                            inverse_func=&lt;ufunc &#x27;expm1&#x27;&gt;,
+                                            regressor=LinearRegression()))])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">PowerTransformer</label><div class="sk-toggleable__content"><pre>PowerTransformer()</pre></div></div></div><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-10" type="checkbox" ><label for="sk-estimator-id-10" class="sk-toggleable__label sk-toggleable__label-arrow">reg: TransformedTargetRegressor</label><div class="sk-toggleable__content"><pre>TransformedTargetRegressor(func=&lt;ufunc &#x27;log1p&#x27;&gt;, inverse_func=&lt;ufunc &#x27;expm1&#x27;&gt;,
+                           regressor=LinearRegression())</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-11" type="checkbox" ><label for="sk-estimator-id-11" class="sk-toggleable__label sk-toggleable__label-arrow">regressor: LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-12" type="checkbox" ><label for="sk-estimator-id-12" class="sk-toggleable__label sk-toggleable__label-arrow">LinearRegression</label><div class="sk-toggleable__content"><pre>LinearRegression()</pre></div></div></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -972,7 +920,7 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7859862562650238
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6658173722018323
 </pre></div>
 </div>
 </div>
@@ -987,7 +935,7 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7002856552456189
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6575264578077608
 </pre></div>
 </div>
 </div>
@@ -1025,7 +973,10 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="03_Basic_Math_for_Machine_Learning.html"
@@ -1045,7 +996,10 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1086,7 +1040,7 @@ scikit-learn には、パイプラインと呼ばれる一連の処理を統合�
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1116,7 +1070,7 @@ By PlayGround
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1125,8 +1079,8 @@ By PlayGround
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
