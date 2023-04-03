@@ -40,48 +40,41 @@
 #
 # ### Step 1：データセットの準備
 #
-# 本章では、前章までのような人工データではなく、米国ボストンの 506 の地域ごとの住環境の情報などと家賃の中央値の情報を収集して作られた Boston house prices dataset というデータセットを使用します。
+# 本章では、前章までのような人工データではなく、カリフォルニアの住宅価格の表形式データ（部屋数や築年数などの8項目）＋ラベル（住宅価格）の California housing dataset というデータセットを使用します。
 #
-# このデータセットには 506 件のサンプルが含まれており、各サンプルは以下の情報を持っています。
+# このデータセットには20640件のサンプルが含まれており、各サンプルは以下の情報を持っています。
 #
 # | 属性名 | 説明 |
 # |:--|:--|
-# | CRIM | 人口 1 人あたりの犯罪発生率 |
-# | ZN | 25,000 平方フィート以上の住宅区画が占める割合 |
-# | INDUS | 小売業以外の商業が占める面積の割合 |
-# | CHAS | チャールズ川の川沿いかどうか (0 or 1) |
-# | NOX | 窒素酸化物の濃度 |
-# | RM | 住居の平均部屋数 |
-# | AGE | 1940 年より前に建てられた持ち主が住んでいる物件の割合 |
-# | DIS | 5 つのボストン雇用施設からの重み付き距離 |
-# | RAD | 環状高速道路へのアクセシビリティ指標 |
-# | TAX | $10,000 あたりの固定資産税率 |
-# | PTRATIO | 町ごとにみた教師 1 人あたりの生徒数 |
-# | B | 町ごとにみた黒人の比率を Bk としたときの (Bk - 0.63)^2 の値 |
-# | LSTAT | 給与の低い職業に従事する人口の割合 |
-# | MEDV | 物件価格の中央値 |
+# | MedInc | 収入の中央値 |
+# | HouseAge | 築年数の中央値 |
+# | AveRooms | 家にある部屋数の平均値 |
+# | AveBedrms | 家にある寝室数の平均値 |
+# | Population | 人口 |
+# | AveOccup | 家に住んでいる人数の平均値 |
+# | Latitude | 緯度 |
+# | Longitude | 経度 |
+# | MedHouseVal | 住宅価格の中央値 |
 #
-# このデータセットを用いて、最後の MEDV 以外の 13 個の指標から、MEDV を予測する回帰問題に取り組んでみましょう。
-# このデータセットは、scikit-learn の `load_boston()` という関数を呼び出すことで読み込むことができます。
+# このデータセットを用いて、 最後の MedHouseVal 以外の 8 個の指標から、 MedHouseVal を予測する回帰問題に取り組んでみましょう。このデータセットは、scikit-learn の `fetch_california_housing()`という関数を呼び出すことで読み込むことができます。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 89} colab_type="code" id="v7s7ivnO1eWA" outputId="3134bcd1-1e5b-4a65-8f20-3b0c201e7c43"
-from sklearn.datasets import load_boston
+from sklearn.datasets import fetch_california_housing
 
-dataset = load_boston()
+dataset = fetch_california_housing()
 # -
 
-# 読み込んだデータセットは、`data` という属性と `target` という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。
-# これらを取り出して、それぞれ `x` と `t` という変数に格納しておきましょう。
+# 読み込んだデータセットは、data という属性と target という属性を持っており、それぞれに入力値と目標値を並べた ndarray が格納されています。 これらを取り出して、それぞれ x と t という変数に格納しておきましょう。
 
 x = dataset.data
 t = dataset.target
 
-# 入力値が格納されている `x` は、506 個の 13 次元ベクトルを並べたものになっています。
+# 入力値が格納されている `x` は、20640 個の 8 次元ベクトルを並べたものになっています。
 # 形を確認してみましょう。
 
 x.shape
 
-# 一方 `t` は、各データ点ごとに 1 つの値を持つため、506 次元のベクトルになっています。
+# 一方 `t` は、各データ点ごとに 1 つの値を持つため、20640 次元のベクトルになっています。
 # 形を確認してみましょう。
 
 t.shape
@@ -216,7 +209,7 @@ reg_model.predict(x_test[:1])
 
 t_test[0]
 
-# 22.6 という目標値に対して、およそ 24.94 という予測値が返ってきました。
+# 1.369 という目標値に対して、およそ 2.270 という予測値が返ってきました。
 
 # ### テスト用データセットを用いた評価
 #
@@ -226,7 +219,7 @@ t_test[0]
 reg_model.score(x_test, t_test)
 # -
 
-# 訓練用データセットを用いて算出した値（およそ 0.765）よりも、低い値がでてしまいました。
+# 訓練用データセットを用いて算出した値（およそ 0.611）よりも、低い値がでてしまいました。
 #
 # 教師あり学習の目的は、訓練時には見たことがない新しいデータ、ここではテスト用データセットに含まれているデータに対しても、高い性能を発揮するように、モデルを訓練することです。
 # 逆に、訓練時に用いたデータに対してはよく当てはまっていても、訓練時に用いなかったデータに対しては予測値と目標値の差異が大きくなってしまう現象を、**過学習 (overfitting)** と言います。
@@ -243,7 +236,7 @@ reg_model.score(x_test, t_test)
 #
 # 手法やデータに合わせた前処理が必要となるため、適切な前処理を行うためには手法そのものについて理解している必要があるだけでなく、使用するデータの特性についてもよく調べておく必要があります。
 #
-# 今回のデータは、入力値の値の範囲が CRIM, ZN, INDUS, ... といった指標ごとに大きく異なっています。
+# 今回のデータは、入力値の値の範囲が指標ごとに大きく異なっています。
 # そこで、各入力変数ごとに平均が 0、分散が 1 となるように値をスケーリングする**標準化 (standardization)** をおこなってみましょう。
 #
 # scikit-learn では `sklearn.preprocessing` というモジュール以下に `StandardScaler` というクラスが定義されています。
@@ -324,6 +317,27 @@ reg_model.score(x_train_scaled, t_train)
 reg_model.score(x_test_scaled, t_test)
 
 # + [markdown] colab_type="text" id="4rkchSc_1eYG"
+# 結果が少し改善しました。
+# ここで、目標値である MedHouseValにも前処理として対数変換を適用し再度同じモデルの訓練を行ってみましょう。尚、目的変数に変換をした場合、精度を確認するときにはモデルの予測に逆変換を行って元のスケールで行います。sklearnの`TransformerTargetRegressor`を用いると目的変数の対数変換とその逆変換を学習の前後に自動的に行なってくれます。
+
+# +
+import numpy as np
+from sklearn.compose import TransformedTargetRegressor
+
+reg_model = TransformedTargetRegressor(
+    regressor=LinearRegression(), # モデルにはLinearRegressionを指定
+    func=np.log1p, # 学習前に行う変換の関数を指定
+    inverse_func=np.expm1 # 学習後の精度確認前に行う逆変換の関数を指定
+)
+reg_model.fit(x_train_scaled, t_train)
+# -
+
+# 訓練データでの決定係数
+reg_model.score(x_train_scaled, t_train)
+
+# テストデータでの決定係数
+reg_model.score(x_test_scaled, t_test)
+
 # 結果が改善しました。
 
 # + [markdown] colab_type="text" id="iNERbB_21eYG"
@@ -336,10 +350,14 @@ reg_model.score(x_test_scaled, t_test)
 # + colab={} colab_type="code" id="qudHL8J51eYG"
 from sklearn.pipeline import Pipeline
 
-# パイプラインの作成 (scaler -> svr)
+# パイプラインの作成 (scaler -> reg)
 pipeline = Pipeline([
     ('scaler', PowerTransformer()),
-    ('reg', LinearRegression())
+    ('reg', TransformedTargetRegressor(
+        regressor=LinearRegression(), # モデルにはLinerRegressionを指定
+        func=np.log1p, # 学習前に行う変換の関数を指定
+        inverse_func=np.expm1 # 精度確認前に行う逆変換の関数を指定
+    ))
 ])
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 109} colab_type="code" id="CmpM51eh1eYK" outputId="7493f796-dead-45ac-dfd1-e11fefb52d70"
