@@ -23,6 +23,9 @@ $x = \dfrac{-b\pm \sqrt{b^2 - 4ac}}{2a}$
 ### 補足
 
 - ルート（ $\sqrt{a}$ ）は、2 分の 1 乗（ $a^{1/2}$ ）として計算できます。
+- (4) の解には計算誤差が含まれると思います。Python がどこまで正しい精度で計算できるかは『[制御構文 問 4. マシンイプシロン][eps]』を解くと分かります。（お楽しみに）
+
+[eps]: https://shinonome.io/PythonTutorialForDSCourse/exercise/02_02_Basics_of_Python_control.html#id5
 
 ---
 
