@@ -48,7 +48,7 @@ df.head(5)
 plt.scatter(df['median_income'], df['median_house_value'])
 # -
 
-# 次に、`pupulation` 列の値と `median_house_value` 列の値をそれぞれ横軸と縦軸にとった散布図を描画します。
+# 次に、`population` 列の値と `median_house_value` 列の値をそれぞれ横軸と縦軸にとった散布図を描画します。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 283} colab_type="code" id="ubHdt6jcOiKr" outputId="f0d59fb9-8948-49f5-8379-5e35d407afc3"
 plt.scatter(df['population'], df['median_house_value'])
@@ -58,7 +58,7 @@ plt.scatter(df['population'], df['median_house_value'])
 #
 # データ中にどのような値がよく登場しているかという値ごとの頻度を確認するために使われるものに**ヒストグラム (histogram)** があります。
 #
-# 試しに、`median_house_values` 列の値のヒストグラムを描画してみましょう。
+# 試しに、`median_house_value` 列の値のヒストグラムを描画してみましょう。
 
 # + colab={"base_uri": "https://localhost:8080/", "height": 355} colab_type="code" id="G0icbrhoFVQ9" outputId="101a2d6a-200b-4fc0-bbfd-c984761656bc"
 plt.hist(df['median_house_value'])
